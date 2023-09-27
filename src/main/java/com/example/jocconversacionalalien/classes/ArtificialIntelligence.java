@@ -1,6 +1,6 @@
 package com.example.jocconversacionalalien.classes;
 
-public class artificialIntelligence {
+public class ArtificialIntelligence {
     private boolean angry = false;
     private int randomQuestion = ((int) (Math.random()*(2 - 1))) + 1;
 
