@@ -2,13 +2,8 @@ package com.example.jocconversacionalalien.classes;
 
 public class NonPlayableCharacter extends Character{
     boolean asleep = true;
-
     @Override
-    protected void GoTo(){
-
-    }
+    protected void GoTo(){}
     @Override
-    protected void ToTake(){
-
-    }
+    protected void ToTake(){}
 }

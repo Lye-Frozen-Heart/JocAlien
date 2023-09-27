@@ -1,10 +1,9 @@
 package com.example.jocconversacionalalien.classes;
 
 public class Zone {
-
   private int idZone;
   private boolean hasItem;
-  //int[] items = {1,2}; (array itemClass)
+  private Item[] items = null;
   private boolean hasNpc;
   private boolean hasLight;
   private boolean[] doors = { false, false, false, false };
