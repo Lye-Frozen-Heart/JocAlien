@@ -5,6 +5,6 @@ module com.example.jocconversacionalalien {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.example.jocconversacionalalien to javafx.fxml;
-    exports com.example.jocconversacionalalien;
+    opens com.example.jocconversacionalalien.classes to javafx.fxml;
+    exports com.example.jocconversacionalalien.classes;
 }

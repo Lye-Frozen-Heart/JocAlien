@@ -7,6 +7,7 @@ public class Zone {
   private boolean hasNpc;
   private boolean hasLight;
   private boolean[] doors = { false, false, false, false };
+  private int[] directions = {-1,-1,-1,-1};
   private boolean accessible;
   private boolean hasTraps;
 
