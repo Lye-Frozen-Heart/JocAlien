@@ -7,5 +7,7 @@ public class Enemy extends Character{
     protected void ToTake() {}
     @Override
     protected void GoTo() {}
-    private void pairShift(int shiftCount){}
+    private void pairShift(int shiftCount){
+        if(shiftCount % 2 == 0 && !asleep) GoTo();
+    }
 }

@@ -11,7 +11,15 @@ public class Zone {
   private boolean accessible;
   private boolean hasTraps;
 
-  private void zoneDescription() {}
+  public String getDescriptionZone() {
+    return descriptionZone;
+  }
+
+  public void setDescriptionZone(String descriptionZone) {
+    this.descriptionZone = descriptionZone;
+  }
+
+  private String descriptionZone;
 
   private void openDoor() {}
 
