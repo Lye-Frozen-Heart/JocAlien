@@ -15,6 +15,7 @@ public class Game {
    ColorChanger.printTextToBlue("- NEW GAME --> 1");
    ColorChanger.printTextToGreen("- CREDITS --> 2");
    ColorChanger.printTextToRed("- EXIT GAME --> 3");
+
    ColorChanger.printTextToGreen("_|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|");
    ColorChanger.printTextToGreen("- - - >"); int selected = scanner.nextInt();
    switch (selected){
