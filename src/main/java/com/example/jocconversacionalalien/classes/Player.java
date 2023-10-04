@@ -4,6 +4,7 @@ public class Player extends Character{
     private boolean infected;
     private boolean canBreath;
     private boolean suitWorn;
+    private int idZone;
     @Override
     protected void ToTake() {}
     @Override
