@@ -8,8 +8,16 @@ public class Zone {
   private boolean hasLight;
   private boolean[] doors = { false, false, false, false };
   private int[] directions = {-1,-1,-1,-1};
+  private int[] availableZones = {0,0,0,0};
   private boolean accessible;
   private boolean hasTraps;
+  public int[] getAvailableZones() {
+    return availableZones;
+  }
+
+  public void setAvailableZones(int[] availableZones) {
+    this.availableZones = availableZones;
+  }
 
   public String getDescriptionZone() {
     return descriptionZone;

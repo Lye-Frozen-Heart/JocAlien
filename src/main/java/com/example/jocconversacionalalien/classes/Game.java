@@ -47,7 +47,6 @@ public class Game {
   private static void exitGame() {
     System.exit(0);
   }
-
    //TODO                        /////////////////////////////////
   //TODO                       //            TALLERES          //
  //TODO         /////////////////////                      ///////////////////////
@@ -73,6 +72,7 @@ public class Game {
     workshop.setHasItem(true);workshop.setHasNpc(false);workshop.setHasLight(false);
     workshop.setDoors(new boolean[]{false, false, true, false});workshop.setDirections(new int[]{-1,-1,1,-1});
     workshop.setAccessible(true);workshop.setHasTraps(false);
+    workshop.setAvailableZones(new int[]{-1, -1, 2, -1});
     workshop.setDescriptionZone("The workshop...A metallic and steamy place where the dark begins to blur your eyesight. Seems like the lights are off.You " +
     "should be carefull about all the tools, wires and materials that are left on the floor. Ask your personal AI for the details of the work space or use the flaslight " +
     "for better vision.");
@@ -82,6 +82,7 @@ public class Game {
     offices.setHasItem(true);offices.setHasNpc(false);offices.setHasLight(true);
     offices.setDoors(new boolean[]{true,true,true,true});offices.setDirections(new int[]{1,1,1,1});
     offices.setAccessible(true);offices.setHasTraps(false);
+    offices.setAvailableZones(new int[]{1,8,3,4});
     offices.setDescriptionZone("The principal office! Apparently everything seems quiet and comfy, a perfect place for meetings and study sessions. A plenty of desks and chairs " +
     "appear in front of you. You remember that your identification card it's in one of that desks drawers. You should get it for the ship access before it's too late...");
     //Ya que es la oficina. Sin trampas y con total acceso. Hay luz
@@ -90,12 +91,14 @@ public class Game {
     machineRoom.setHasItem(false);machineRoom.setHasNpc(false);machineRoom.setHasLight(true);
     machineRoom.setDoors(new boolean[]{true,false,false,false});machineRoom.setDirections(new int[]{1,-1,-1,-1});
     machineRoom.setAccessible(false);machineRoom.setHasTraps(false);
+    machineRoom.setAvailableZones(new int[]{2,-1,-1,-1});
     machineRoom.setDescriptionZone("You will never stop getting surprised about this part of the ship. A narrow and uncomfortable room. Why does a place like this have to be " +
     "the principal management room for all the ship? Seems like a psychiatric center... (You think). The lights are open but the fact that this room is pretty closed up and full of soft plates" +
     " makes you a bit insecure.");
 
     //
     Zone lockerRoom = new Zone(); lockerRoom.setIdZone(4);
+    lockerRoom.setAvailableZones(new int[]{-1,2,5,-1});
     //Parámetros del vestuario
 
     //
@@ -104,19 +107,22 @@ public class Game {
     kitchen.setHasItem(true);kitchen.setHasNpc(false);kitchen.setHasLight(true);
     kitchen.setDoors(new boolean[]{true,true,false,false});kitchen.setDirections(new int[]{1,1,-1,-1});
     kitchen.setAccessible(true);kitchen.setHasTraps(false);
+    kitchen.setAvailableZones(new int[]{4,6,-1,-1});
     //La cocina es donde se sitúan los donuts, hay luz y sin trampas.
     Zone dinningRoom = new Zone(); dinningRoom.setIdZone(6);
     //Parámetros del comedor
     dinningRoom.setHasItem(false);dinningRoom.setHasNpc(false);dinningRoom.setHasLight(false);
     dinningRoom.setDoors(new boolean[]{false,true,true,true});dinningRoom.setDirections(new int[]{-1,1,1,1});
     dinningRoom.setAccessible(true);kitchen.setHasTraps(true);
+    dinningRoom.setAvailableZones(new int[]{-1,7,9,5});
     //En la cocina pondremos el estado del gas... Ha habido una fuga y no pueden pasar más de 2 turnos para salir
     Zone bedRoom = new Zone(); bedRoom.setIdZone(7);
     //Params del dormitorio
-
+    bedRoom.setAvailableZones(new int[]{8,-1,-1,6});
     //
     Zone bathRooms = new Zone(); bathRooms.setIdZone(8);
     //Params de los Baños...
+    bathRooms.setAvailableZones(new int[]{-1,-1,7,2});
 
     //
     Zone exitRoom = new Zone(); exitRoom.setIdZone(9);
@@ -124,6 +130,7 @@ public class Game {
     exitRoom.setHasItem(false);exitRoom.setHasNpc(false);exitRoom.setHasLight(true);
     exitRoom.setDoors(new boolean[]{true, false, false, false});exitRoom.setDirections(new int[]{1,-1,-1,-1});
     exitRoom.setAccessible(false);exitRoom.setHasTraps(false);
+    exitRoom.setAvailableZones(new int[]{6,-1,-1,-1});
     exitRoom.setDescriptionZone("Finally! You see the empty dark of the void absorbing the light for every star you see. Now you can take one escape capsule and" +
     " ensure your destiny hasn't been settled right now. You can live once again, congrats! YOU WON!");
     //
