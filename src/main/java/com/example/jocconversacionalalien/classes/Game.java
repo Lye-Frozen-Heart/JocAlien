@@ -95,12 +95,15 @@ public class Game {
     machineRoom.setDescriptionZone("You will never stop getting surprised about this part of the ship. A narrow and uncomfortable room. Why does a place like this have to be " +
     "the principal management room for all the ship? Seems like a psychiatric center... (You think). The lights are open but the fact that this room is pretty closed up and full of soft plates" +
     " makes you a bit insecure.");
-
-    //
+    //O sala de comandos, todo por defecto.
     Zone lockerRoom = new Zone(); lockerRoom.setIdZone(4);
-    lockerRoom.setAvailableZones(new int[]{-1,2,5,-1});
     //Parámetros del vestuario
-
+    lockerRoom.setHasItem(false);lockerRoom.setHasNpc(false);lockerRoom.setHasLight(false);
+    lockerRoom.setDoors(new boolean[]{false,true,true,false});lockerRoom.setDirections(new int[]{-1,1,1,-1});
+    lockerRoom.setAccessible(false);lockerRoom.setHasTraps(false);
+    lockerRoom.setAvailableZones(new int[]{-1,2,5,-1});
+    lockerRoom.setDescriptionZone("A creepy feel gets your spine...Everything in the dark seems suspicious at the locker room. Perhaps you shouldn't stay long." +
+    " The coats, hats and clothers are starting to acquire life and they watch you as you get to the other side of the room.");
     //
     Zone kitchen = new Zone(); kitchen.setIdZone(5);
     //Parámetros de la cocina
@@ -108,6 +111,8 @@ public class Game {
     kitchen.setDoors(new boolean[]{true,true,false,false});kitchen.setDirections(new int[]{1,1,-1,-1});
     kitchen.setAccessible(true);kitchen.setHasTraps(false);
     kitchen.setAvailableZones(new int[]{4,6,-1,-1});
+    kitchen.setDescriptionZone("Apparently not everything is yummy when you are being chased. Be careful with the cooking tools and sharping materials it's" +
+    " said that the Hunter follows your blood wherever you go.");
     //La cocina es donde se sitúan los donuts, hay luz y sin trampas.
     Zone dinningRoom = new Zone(); dinningRoom.setIdZone(6);
     //Parámetros del comedor
@@ -115,9 +120,13 @@ public class Game {
     dinningRoom.setDoors(new boolean[]{false,true,true,true});dinningRoom.setDirections(new int[]{-1,1,1,1});
     dinningRoom.setAccessible(true);kitchen.setHasTraps(true);
     dinningRoom.setAvailableZones(new int[]{-1,7,9,5});
+    dinningRoom.setDescriptionZone("Subliminal place this is. A room full of tables and chairs wherever you look at it. Can you get out? You are starting to get" +
+    " anxious.");
     //En la cocina pondremos el estado del gas... Ha habido una fuga y no pueden pasar más de 2 turnos para salir
     Zone bedRoom = new Zone(); bedRoom.setIdZone(7);
     //Params del dormitorio
+    bedRoom.setHasItem(false);bedRoom.setHasNpc(false);bedRoom.setHasLight(true);
+    bedRoom.setDoors(new boolean[]{true,false,false,true});bedRoom.setDirections(new int[]{1,-1,-1,1});
     bedRoom.setAvailableZones(new int[]{8,-1,-1,6});
     //
     Zone bathRooms = new Zone(); bathRooms.setIdZone(8);
