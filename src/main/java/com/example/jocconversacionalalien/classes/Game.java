@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Game {
 
   //CONSTANTS FOR ROOM ID
+  private static final int timeToWrite = 120;
   private static final int NO_ROOM = 0;
   private static final int WORKSHOP = 1;
   private static final int OFFICES = 2;
@@ -26,7 +27,6 @@ public class Game {
   private int countTurn;
   Zone[] zones = {};
   private static void menu() {
-     final int timeToWrite = 120;
    Scanner scanner = new Scanner(System.in);
    WordElapser.writeWordWithTimeDelay(
 "Good to see you again Captain, have you slept well? Select a menu option:",timeToWrite);
@@ -55,7 +55,15 @@ public class Game {
   }
 
   private void startGame() {
-  //TODO
+  WordElapser.writeWordWithTimeDelay("It's the year 2120 D.C. The spaceship P.A.I XXII explores the empty void of space. It's destination... The planet SM-2523G where it's" +
+  "believed to be the appropriate environment to root another human life colony.We can't stay longer freely on Earth so it is necessary to explore other planets." +
+  "\nThe chief of the ship awakes from the inducted sleep. The main computer of the ship, Halley, has detected one anomaly inside the ship so it does need the Captain intervention" +
+  "\nHalley: How did you sleep Captain? Sadly I have to get you up from your sleep...But I detected an anomaly inside the ship." +
+  "\nCaptain: *sighs* I hope it was worth it for you to awake me...Or you will need an intensive reprogramming session." +
+  "\nHalley: I guarantee you Captain, it's not a false alarm. I can't risk to be punished like that." +
+  "\nCaptain: Okay Halley, explain to me the situation as fast as you can please. I want to take my sleep again." +
+  "\n<*>Halley proceeds to explain the status of the ship, seems like a little meteor hit one side of the complex. The system" +
+  " needs a repair because the propulsion engine has been damaged.",25);
   }
 
   private void pauseGame() {
