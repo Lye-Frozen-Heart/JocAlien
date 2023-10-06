@@ -5,5 +5,6 @@ public abstract class Character {
     private Item[] inventario = null;
     private int zoneId;
     protected abstract void ToTake();
-    protected abstract void GoTo();
+    protected abstract void GoTo(int imputDirection,boolean[] doors, int[] directions, int[]availableZones);
+    protected abstract void CheckZone(int idZone);
 }
