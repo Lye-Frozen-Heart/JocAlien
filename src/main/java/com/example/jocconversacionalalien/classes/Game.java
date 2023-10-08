@@ -26,9 +26,9 @@ public class Game {
 
   private int countTurn;
 
-  boolean validAnswer = false;
-  Zone[] zones = {};
-  Player player = new Player();
+  static boolean validAnswer = false;
+  static Zone[] zones = {};
+  static Player player = new Player();
 
   private static void menu() {
     Scanner scanner = new Scanner(System.in);
@@ -52,6 +52,7 @@ public class Game {
     switch (selected) {
       case 1:
         WordElapser.writeWordWithTimeDelay("Genial comenzaste", timeToWrite);
+        startGame();
         break;
       case 2:
         ColorChanger.printTextToGreen("/--//--//--//--//--//--//--//--//--/");
@@ -68,7 +69,7 @@ public class Game {
     }
   }
 
-  private void startGame() {
+  private static  void startGame() {
     final int LOOK_AROUD = 1;
     final int CHECK_DOORS = 2;
     final int MOVE = 3;
@@ -121,7 +122,7 @@ public class Game {
     } while (options != EXIT_GAME);
   }
 
-  private void movement() {
+  private static void movement() {
     validAnswer = false;
     Scanner scanner = new Scanner(System.in);
     do {
