@@ -11,6 +11,8 @@ public class Zone {
   private int[] availableZones = {0,0,0,0};
   private boolean accessible;
   private boolean hasTraps;
+  private String descriptionZone;
+  
   public int[] getAvailableZones() {
     return availableZones;
   }
@@ -27,7 +29,7 @@ public class Zone {
     this.descriptionZone = descriptionZone;
   }
 
-  private String descriptionZone;
+  
 
   private void openDoor() {}
 

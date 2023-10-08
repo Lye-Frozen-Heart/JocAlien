@@ -5,9 +5,18 @@ public class Enemy extends Character{
     private int shiftCount = 0;
     @Override
     protected void ToTake() {}
+   
+    private void pairShift(int shiftCount,int imputDirection,boolean[] doors, int[] directions, int[]availableZones){
+        if(shiftCount % 2 == 0 && !asleep) GoTo(imputDirection,doors,directions,availableZones);
+    }
     @Override
-    protected void GoTo() {}
-    private void pairShift(int shiftCount){
-        if(shiftCount % 2 == 0 && !asleep) GoTo();
+    protected void CheckZone(int idZone) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'CheckZone'");
+    }
+    @Override
+    protected void GoTo(int imputDirection, boolean[] doors, int[] directions, int[] availableZones) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'GoTo'");
     }
 }
