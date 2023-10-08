@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Game {
 
   //CONSTANTS FOR ROOM ID
-  private static final int timeToWrite = 120;
+  private static final int timeToWrite = 0;
   private static final int NO_ROOM = 0;
   private static final int WORKSHOP = 1;
   private static final int OFFICES = 2;
@@ -27,7 +27,7 @@ public class Game {
   private int countTurn;
 
   static boolean validAnswer = false;
-  static Zone[] zones = {};
+  static Zone[] zones = setUpZones();
   static Player player = new Player();
 
   private static void menu() {
@@ -51,7 +51,6 @@ public class Game {
     int selected = scanner.nextInt();
     switch (selected) {
       case 1:
-        WordElapser.writeWordWithTimeDelay("Genial comenzaste", timeToWrite);
         startGame();
         break;
       case 2:
@@ -62,6 +61,7 @@ public class Game {
         );
         ColorChanger.printTextToGreen("/--//--//--//--//--//--//--//--//--/");
         ColorChanger.printTextToBlack("© All rights to be reserved...");
+        menu();
         break;
       case 3:
         exitGame();
@@ -77,23 +77,23 @@ public class Game {
 
     int options = 0;
     WordElapser.writeWordWithTimeDelay(
-      "It's the year 2120 D.C. The spaceship P.A.I XXII explores the empty void of space. It's destination... The planet SM-2523G where it's" +
-      "believed to be the appropriate environment to root another human life colony.We can't stay longer freely on Earth so it is necessary to explore other planets." +
-      "\nThe chief of the ship awakes from the inducted sleep. The main computer of the ship, Halley, has detected one anomaly inside the ship so it does need the Captain intervention" +
+      "It's the year 2120 D.C. The spaceship P.A.I XXII explores the empty void of space. It's destination...\nThe planet SM-2523G where it's " +
+      "believed to be the appropriate environment to root another human life colony.\nWe can't stay longer freely on Earth so it is necessary to explore other planets." +
+      "The chief of the ship awakes from the inducted sleep.\nThe main computer of the ship, Halley, has detected one anomaly inside the ship so it does need the Captain intervention" +
       "\nHalley: How did you sleep Captain? Sadly I have to get you up from your sleep...But I detected an anomaly inside the ship." +
       "\nCaptain: *sighs* I hope it was worth it for you to awake me...Or you will need an intensive reprogramming session." +
       "\nHalley: I guarantee you Captain, it's not a false alarm. I can't risk to be punished like that." +
       "\nCaptain: Okay Halley, explain to me the situation as fast as you can please. I want to take my sleep again." +
-      "\n<*>Halley proceeds to explain the status of the ship, seems like a little meteor hit one side of the complex. The system" +
+      "\n<*>Halley proceeds to explain the status of the ship, seems like a little meteor hit one side of the complex.\nThe system" +
       " needs a repair because the propulsion engine has been damaged.",
-      25
+      timeToWrite
     );
     Scanner scanner = new Scanner(System.in);
     do {
       do {
         validAnswer = false;
-        System.out.println(
-          "whats do you want to do? 1- look around, 2-check doors, 3-move, 4-exit game"
+        ColorChanger.printTextToBlue(
+          "What do you want to do? 1- Look around, 2-Check Doors, 3-Move, 4-Exit the Game"
         );
         if (scanner.hasNextInt()) {
           options = scanner.nextInt();
@@ -105,7 +105,7 @@ public class Game {
 
       switch (options) {
         case LOOK_AROUD:
-          zones[player.getIdZone()].getDescriptionZone();
+         WordElapser.writeWordWithTimeDelay(zones[player.getIdZone()].getDescriptionZone(),timeToWrite);
           break;
         case CHECK_DOORS:
           player.LookAround(zones[player.getIdZone()].getAvailableZones());
@@ -117,7 +117,7 @@ public class Game {
           exitGame();
           break;
         default:
-          System.out.println("not a valid option");
+          System.out.println("Wrong option");
       }
     } while (options != EXIT_GAME);
   }
@@ -127,12 +127,12 @@ public class Game {
     Scanner scanner = new Scanner(System.in);
     do {
       System.out.println(
-        "where doy you want to move? 1-north, 2-east, 3-south, 4-west"
+        "Where do you want to move? 0 - North, 1 - East, 2 - South, 3 - West"
       );
       if (scanner.hasNextInt()) {
-        int selected = scanner.nextInt() - 1;
+        int selected = scanner.nextInt();
         if (selected < 0 || selected > 3) {
-          System.out.println("thats not a option");
+          System.out.println("That's not an option");
         } else {
           player.GoTo(
             selected,
@@ -143,7 +143,7 @@ public class Game {
           validAnswer = true;
         }
       } else {
-        System.out.println("thats not an option");
+        System.out.println("That's not an option");
       }
     } while (!validAnswer);
   }
@@ -202,14 +202,14 @@ public class Game {
       }
     );
     workshop.setDirections(
-      new int[] { DOOR_FALSE, DOOR_FALSE, DOOR_CLOSED, DOOR_FALSE }
+      new int[] { DOOR_FALSE, DOOR_FALSE, DOOR_OPEN, DOOR_FALSE }
     );
     workshop.setAvailableZones(
       new int[] { NO_ROOM, NO_ROOM, OFFICES, NO_ROOM }
     );
     workshop.setDescriptionZone(
-      "The workshop...A metallic and steamy place where the dark begins to blur your eyesight. Seems like the lights are off.You " +
-      "should be carefull about all the tools, wires and materials that are left on the floor. Ask your personal AI for the details of the work space or use the flaslight " +
+      "The workshop...A metallic and steamy place where the dark begins to blur your eyesight.\nSeems like the lights are off.You " +
+      "should be carefull about all the tools, wires and materials that are left on the floor.\nAsk your personal AI for the details of the work space or use the flaslight " +
       "for better vision."
     );
     //Taller es zona de item, sin trampas ni nada. Salida por abajo ya que és única. No hay luz
@@ -225,14 +225,14 @@ public class Game {
       new boolean[] { DOOR_EXISTS, DOOR_EXISTS, DOOR_EXISTS, DOOR_EXISTS }
     );
     offices.setDirections(
-      new int[] { DOOR_CLOSED, DOOR_CLOSED, DOOR_CLOSED, DOOR_CLOSED }
+      new int[] { DOOR_CLOSED, DOOR_CLOSED, DOOR_OPEN, DOOR_CLOSED }
     );
     offices.setAvailableZones(
       new int[] { WORKSHOP, BATHROOM, MACHINE_ROOM, LOCKER_ROOM }
     );
     offices.setDescriptionZone(
-      "The principal office! Apparently everything seems quiet and comfy, a perfect place for meetings and study sessions. A plenty of desks and chairs " +
-      "appear in front of you. You remember that your identification card it's in one of that desks drawers. You should get it for the ship access before it's too late..."
+      "The principal office! Apparently everything seems quiet and comfy, a perfect place for meetings and study sessions.\nA plenty of desks and chairs " +
+      "appear in front of you. You remember that your identification card it's in one of that desks drawers.\nYou should get it for the ship access before it's too late..."
     );
     //Ya que es la oficina. Sin trampas y con total acceso. Hay luz
     Zone machineRoom = new Zone();
@@ -252,14 +252,14 @@ public class Game {
       }
     );
     machineRoom.setDirections(
-      new int[] { DOOR_CLOSED, DOOR_FALSE, DOOR_FALSE, DOOR_FALSE }
+      new int[] { DOOR_OPEN, DOOR_FALSE, DOOR_FALSE, DOOR_FALSE }
     );
     machineRoom.setAvailableZones(
       new int[] { OFFICES, NO_ROOM, NO_ROOM, NO_ROOM }
     );
     machineRoom.setDescriptionZone(
-      "You will never stop getting surprised about this part of the ship. A narrow and uncomfortable room. Why does a place like this have to be " +
-      "the principal management room for all the ship? Seems like a psychiatric center... (You think). The lights are open but the fact that this room is pretty closed up and full of soft plates" +
+      "You will never stop getting surprised about this part of the ship.\nA narrow and uncomfortable room. Why does a place like this have to be " +
+      "the principal management room for all the ship?\nSeems like a psychiatric center...(You think).\nThe lights are open but the fact that this room is pretty closed up and full of soft plates" +
       " makes you a bit insecure."
     );
     //
@@ -275,14 +275,14 @@ public class Game {
       new boolean[] { DOOR_NO_EXISTS, DOOR_EXISTS, DOOR_EXISTS, DOOR_NO_EXISTS }
     );
     lockerRoom.setDirections(
-      new int[] { DOOR_FALSE, DOOR_CLOSED, DOOR_CLOSED, DOOR_FALSE }
+      new int[] { DOOR_FALSE, DOOR_OPEN, DOOR_OPEN, DOOR_FALSE }
     );
     lockerRoom.setAvailableZones(
       new int[] { NO_ROOM, OFFICES, KITCHEN, NO_ROOM }
     );
     lockerRoom.setDescriptionZone(
-      "Coats, suits and other clothes hide in this room. When it's dark " +
-      "everything that does not move appears to be suspicious. You need to get to the other side asap."
+      "Coats, suits and other clothes hide in this room.\nWhen it's dark " +
+      "everything that does not move appears to be suspicious.\nYou need to get to the other side asap."
     );
     //
     Zone kitchen = new Zone();
@@ -297,13 +297,13 @@ public class Game {
       new boolean[] { DOOR_EXISTS, DOOR_EXISTS, DOOR_NO_EXISTS, DOOR_NO_EXISTS }
     );
     kitchen.setDirections(
-      new int[] { DOOR_CLOSED, DOOR_CLOSED, DOOR_FALSE, DOOR_FALSE }
+      new int[] { DOOR_OPEN, DOOR_OPEN, DOOR_FALSE, DOOR_FALSE }
     );
     kitchen.setAvailableZones(
       new int[] { LOCKER_ROOM, DINNING_ROOM, NO_ROOM, NO_ROOM }
     );
     kitchen.setDescriptionZone(
-      "The metallic sound of the cooking tools itch in your ears. Don't get too close " +
+      "The metallic sound of the cooking tools itch in your ears.\nDon't get too close " +
       "to the ones that are sharp, the hunter can smell your fear but also your blood."
     );
     //La cocina es donde se sitúan los donuts, hay luz y trampas.
@@ -319,13 +319,13 @@ public class Game {
       new boolean[] { DOOR_NO_EXISTS, DOOR_EXISTS, DOOR_EXISTS, DOOR_EXISTS }
     );
     dinningRoom.setDirections(
-      new int[] { DOOR_FALSE, DOOR_CLOSED, DOOR_CLOSED, DOOR_CLOSED }
+      new int[] { DOOR_FALSE, DOOR_OPEN, DOOR_OPEN, DOOR_CLOSED }
     );
     dinningRoom.setAvailableZones(
       new int[] { NO_ROOM, BEDROOM, EXIT_ROOM, KITCHEN }
     );
     dinningRoom.setDescriptionZone(
-      "A subliminal place to be.Desks and chairs get along your entire sight. " +
+      "A subliminal place to be.Desks and chairs get along your entire sight.\n" +
       "The darkness and the well ordered room start to get you nervous and dizzy."
     );
     //En la cocina pondremos el estado del gas... Ha habido una fuga y no pueden pasar más de 4 turnos para salir
@@ -341,14 +341,14 @@ public class Game {
       new boolean[] { DOOR_EXISTS, DOOR_NO_EXISTS, DOOR_NO_EXISTS, DOOR_EXISTS }
     );
     bedRoom.setDirections(
-      new int[] { DOOR_CLOSED, DOOR_FALSE, DOOR_FALSE, DOOR_CLOSED }
+      new int[] { DOOR_OPEN, DOOR_FALSE, DOOR_FALSE, DOOR_OPEN }
     );
     bedRoom.setAvailableZones(
       new int[] { BATHROOM, NO_ROOM, NO_ROOM, DINNING_ROOM }
     );
     bedRoom.setDescriptionZone(
-      "Get comfy, take a sleep, dream about everything you could be doing right now " +
-      "but remember, it is looking at you and your actions..."
+      "Get comfy, take a sleep, dream about everything you could be doing right now.\n" +
+      "But remember, it is looking at you and your actions..."
     );
     //
     Zone bathRooms = new Zone();
@@ -363,14 +363,14 @@ public class Game {
       new boolean[] { DOOR_NO_EXISTS, DOOR_NO_EXISTS, DOOR_EXISTS, DOOR_EXISTS }
     );
     bathRooms.setDirections(
-      new int[] { DOOR_FALSE, DOOR_FALSE, DOOR_CLOSED, DOOR_CLOSED }
+      new int[] { DOOR_FALSE, DOOR_FALSE, DOOR_OPEN, DOOR_OPEN }
     );
     bathRooms.setAvailableZones(
       new int[] { NO_ROOM, NO_ROOM, BEDROOM, OFFICES }
     );
     bathRooms.setDescriptionZone(
       "A pretty smelly place. Don't get nauseous coming along the " +
-      "water closets and also don't get too close to the mirrors someone could be watching."
+      "water closets\nand also don't get too close to the mirrors someone could be watching."
     );
     //
     Zone exitRoom = new Zone();
@@ -390,14 +390,14 @@ public class Game {
       }
     );
     exitRoom.setDirections(
-      new int[] { DOOR_CLOSED, DOOR_FALSE, DOOR_FALSE, DOOR_FALSE }
+      new int[] { DOOR_OPEN, DOOR_FALSE, DOOR_FALSE, DOOR_FALSE }
     );
     exitRoom.setAvailableZones(
       new int[] { DINNING_ROOM, NO_ROOM, NO_ROOM, NO_ROOM }
     );
     exitRoom.setDescriptionZone(
-      "Finally! You see the empty dark of the void absorbing the light for every star you see. Now you can take one escape capsule and" +
-      " ensure your destiny hasn't been settled right now. You can live once again, congrats! YOU WON!"
+      "Finally! You see the empty dark of the void absorbing the light for every star you see.\nNow you can take one escape capsule and" +
+      " ensure your destiny hasn't been settled right now.\nYou can live once again, congrats! YOU WON!"
     );
     //
     //Zone propulsors/Space = new Zone(); propulsors.setIdZone(10); TODO No hay décima zona únicamente hay 9 en todo el mapa!

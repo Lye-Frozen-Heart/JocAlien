@@ -6,8 +6,8 @@ public class Player extends Character {
   private boolean canBreath = true;
   private boolean suitWorn = false;
   private int idZone = 3;
-  private   String[] arrayRoomNames= {"no Door", "Workshop", "Ofices", "Machine Room",
-  "Locker", "kitchen", "dining Room", "bedroom","bathroom", "exit"};
+  private   String[] arrayRoomNames= {"No Door", "Workshop", "Offices", "Machine Room",
+  "Locker Room", "Kitchen", "Dinning Room", "Bedroom","Bathroom", "Exit"};
   
 
   @Override
@@ -17,7 +17,7 @@ public class Player extends Character {
   protected void GoTo(int imputDirection,boolean[] doors, int[] directions, int[]availableZones) {
     if(checkDoorsOpen(imputDirection, doors, directions)){
       setIdZone(availableZones[imputDirection]);
-      System.out.println("you just moved to t " + arrayRoomNames[availableZones[imputDirection]] );
+      ColorChanger.printTextToGreen("You just moved to the " + arrayRoomNames[availableZones[imputDirection]]);
     }
     
   }
@@ -52,7 +52,7 @@ public class Player extends Character {
    * 
    */
   public void LookAround(int[]availableZones){
-    System.out.println("you look around and can see that: going north " + arrayRoomNames[availableZones[0]] + " going east " + arrayRoomNames[availableZones[1]] + " going south " + arrayRoomNames[availableZones[2]] + " and going west " + arrayRoomNames[availableZones[3]]);
+    ColorChanger.printTextToGreen("You look around...Directions you can see: Heading North: " + arrayRoomNames[availableZones[0]] + " Tilting East: The " + arrayRoomNames[availableZones[1]] + " Backing South: The " + arrayRoomNames[availableZones[2]] + " And tilting out to West: " + arrayRoomNames[availableZones[3]]);
   }
 
   public boolean getInfected() {
@@ -92,11 +92,11 @@ public class Player extends Character {
       if(directions[imputDirection]==1){
         canMove=true;
       }else{
-        System.out.println("the door is closed");
+        ColorChanger.printTextToRed("Door's Closed");
       }
 
     }else{
-      System.out.println("there is no door there");
+      ColorChanger.printTextToBlue("There is no door there");
     }
     return canMove;
   }
