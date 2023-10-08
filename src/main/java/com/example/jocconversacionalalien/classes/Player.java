@@ -51,7 +51,7 @@ public class Player extends Character {
   /**
    * 
    */
-  private void LookAround(int[]availableZones){
+  public void LookAround(int[]availableZones){
     System.out.println("you look around and can see that: going north " + arrayRoomNames[availableZones[0]] + " going east " + arrayRoomNames[availableZones[1]] + " going south " + arrayRoomNames[availableZones[2]] + " and going west " + arrayRoomNames[availableZones[3]]);
   }
 
@@ -67,7 +67,7 @@ public class Player extends Character {
     return suitWorn;
   }
 
-  public int getIdZone() {
+  public  int getIdZone() {
     return idZone;
   }
 

@@ -17,8 +17,6 @@ public class Game {
   private static final int BATHROOM = 8;
   private static final int EXIT_ROOM = 9;
 
-  
-
   //CONSTANTS FOR DOORS
   private static final int DOOR_OPEN = 1;
   private static final int DOOR_CLOSED = -1;
@@ -27,7 +25,10 @@ public class Game {
   private static final boolean DOOR_NO_EXISTS = false;
 
   private int countTurn;
+
+  boolean validAnswer = false;
   Zone[] zones = {};
+  Player player = new Player();
 
   private static void menu() {
     Scanner scanner = new Scanner(System.in);
@@ -68,6 +69,12 @@ public class Game {
   }
 
   private void startGame() {
+    final int LOOK_AROUD = 1;
+    final int CHECK_DOORS = 2;
+    final int MOVE = 3;
+    final int EXIT_GAME = 4;
+
+    int options = 0;
     WordElapser.writeWordWithTimeDelay(
       "It's the year 2120 D.C. The spaceship P.A.I XXII explores the empty void of space. It's destination... The planet SM-2523G where it's" +
       "believed to be the appropriate environment to root another human life colony.We can't stay longer freely on Earth so it is necessary to explore other planets." +
@@ -80,6 +87,64 @@ public class Game {
       " needs a repair because the propulsion engine has been damaged.",
       25
     );
+    Scanner scanner = new Scanner(System.in);
+    do {
+      do {
+        validAnswer = false;
+        System.out.println(
+          "whats do you want to do? 1- look around, 2-check doors, 3-move, 4-exit game"
+        );
+        if (scanner.hasNextInt()) {
+          options = scanner.nextInt();
+          validAnswer = true;
+        } else {
+          System.out.println("thats not an option");
+        }
+      } while (!validAnswer);
+
+      switch (options) {
+        case LOOK_AROUD:
+          zones[player.getIdZone()].getDescriptionZone();
+          break;
+        case CHECK_DOORS:
+          player.LookAround(zones[player.getIdZone()].getAvailableZones());
+          break;
+        case MOVE:
+          movement();
+          break;
+        case EXIT_GAME:
+          exitGame();
+          break;
+        default:
+          System.out.println("not a valid option");
+      }
+    } while (options != EXIT_GAME);
+  }
+
+  private void movement() {
+    validAnswer = false;
+    Scanner scanner = new Scanner(System.in);
+    do {
+      System.out.println(
+        "where doy you want to move? 1-north, 2-east, 3-south, 4-west"
+      );
+      if (scanner.hasNextInt()) {
+        int selected = scanner.nextInt() - 1;
+        if (selected < 0 || selected > 3) {
+          System.out.println("thats not a option");
+        } else {
+          player.GoTo(
+            selected,
+            zones[player.getIdZone()].getDoors(),
+            zones[player.getIdZone()].getDirections(),
+            zones[player.getIdZone()].getAvailableZones()
+          );
+          validAnswer = true;
+        }
+      } else {
+        System.out.println("thats not an option");
+      }
+    } while (!validAnswer);
   }
 
   private void pauseGame() {
