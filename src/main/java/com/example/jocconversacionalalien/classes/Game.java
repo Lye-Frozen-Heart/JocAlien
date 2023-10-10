@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Game {
 
   //CONSTANTS FOR ROOM ID
-  private static final int timeToWrite = 120;
+  private static final int timeToWrite = 0;
   private static final int NO_ROOM = 0;
   private static final int WORKSHOP = 1;
   private static final int OFFICES = 2;
@@ -76,6 +76,7 @@ public class Game {
     final int EXIT_GAME = 4;
 
     int options = 0;
+    zones=setUpZones();
     WordElapser.writeWordWithTimeDelay(
       "It's the year 2120 D.C. The spaceship P.A.I XXII explores the empty void of space. It's destination... The planet SM-2523G where it's" +
       "believed to be the appropriate environment to root another human life colony.We can't stay longer freely on Earth so it is necessary to explore other planets." +
@@ -86,7 +87,7 @@ public class Game {
       "\nCaptain: Okay Halley, explain to me the situation as fast as you can please. I want to take my sleep again." +
       "\n<*>Halley proceeds to explain the status of the ship, seems like a little meteor hit one side of the complex. The system" +
       " needs a repair because the propulsion engine has been damaged.",
-      25
+      timeToWrite
     );
     Scanner scanner = new Scanner(System.in);
     do {
@@ -105,10 +106,10 @@ public class Game {
 
       switch (options) {
         case LOOK_AROUD:
-          zones[player.getIdZone()].getDescriptionZone();
+          zones[player.getIdZone()-1].getDescriptionZone();
           break;
         case CHECK_DOORS:
-          player.LookAround(zones[player.getIdZone()].getAvailableZones());
+          player.LookAround(zones[player.getIdZone()-1].getAvailableZones());
           break;
         case MOVE:
           movement();
@@ -136,9 +137,9 @@ public class Game {
         } else {
           player.GoTo(
             selected,
-            zones[player.getIdZone()].getDoors(),
-            zones[player.getIdZone()].getDirections(),
-            zones[player.getIdZone()].getAvailableZones()
+            zones[player.getIdZone()-1].getDoors(),
+            zones[player.getIdZone()-1].getDirections(),
+            zones[player.getIdZone()-1].getAvailableZones()
           );
           validAnswer = true;
         }
@@ -225,7 +226,7 @@ public class Game {
       new boolean[] { DOOR_EXISTS, DOOR_EXISTS, DOOR_EXISTS, DOOR_EXISTS }
     );
     offices.setDirections(
-      new int[] { DOOR_CLOSED, DOOR_CLOSED, DOOR_CLOSED, DOOR_CLOSED }
+      new int[] { DOOR_OPEN, DOOR_OPEN, DOOR_OPEN, DOOR_OPEN }
     );
     offices.setAvailableZones(
       new int[] { WORKSHOP, BATHROOM, MACHINE_ROOM, LOCKER_ROOM }
@@ -252,7 +253,7 @@ public class Game {
       }
     );
     machineRoom.setDirections(
-      new int[] { DOOR_CLOSED, DOOR_FALSE, DOOR_FALSE, DOOR_FALSE }
+      new int[] { DOOR_OPEN, DOOR_FALSE, DOOR_FALSE, DOOR_FALSE }
     );
     machineRoom.setAvailableZones(
       new int[] { OFFICES, NO_ROOM, NO_ROOM, NO_ROOM }

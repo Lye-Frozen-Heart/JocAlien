@@ -22,6 +22,7 @@ public class Zone {
   }
 
   public String getDescriptionZone() {
+    System.out.println(this.descriptionZone);
     return descriptionZone;
   }
 
