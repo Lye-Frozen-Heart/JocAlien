@@ -8,7 +8,7 @@ public class Player extends Character {
   private int idZone = 3;
   private   String[] arrayRoomNames= {"no Door", "Workshop", "Ofices", "Machine Room",
   "Locker", "kitchen", "dining Room", "bedroom","bathroom", "exit"};
-  
+  private Item[] inventario ={};
 
   @Override
   protected void ToTake() {}
