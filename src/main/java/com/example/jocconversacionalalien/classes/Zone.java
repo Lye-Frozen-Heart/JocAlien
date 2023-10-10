@@ -93,6 +93,9 @@ public class Zone {
   public void setDirections(int[] directions) {
     this.directions = directions;
   }
+  public void setDirection (int door, int status){
+    directions[door]= status;
+  }
 
   public boolean isAccessible() {
     return accessible;
