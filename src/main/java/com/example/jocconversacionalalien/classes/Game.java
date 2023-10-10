@@ -105,10 +105,10 @@ public class Game {
 
       switch (options) {
         case LOOK_AROUD:
-         WordElapser.writeWordWithTimeDelay(zones[player.getIdZone()].getDescriptionZone(),timeToWrite);
+          zones[player.getIdZone()-1].getDescriptionZone();
           break;
         case CHECK_DOORS:
-          player.LookAround(zones[player.getIdZone()].getAvailableZones());
+          player.LookAround(zones[player.getIdZone()-1].getAvailableZones());
           break;
         case MOVE:
           movement();
@@ -127,18 +127,18 @@ public class Game {
     Scanner scanner = new Scanner(System.in);
     do {
       System.out.println(
-        "Where do you want to move? 0 - North, 1 - East, 2 - South, 3 - West"
+        "where doy you want to move? 1-north, 2-east, 3-south, 4-west"
       );
       if (scanner.hasNextInt()) {
-        int selected = scanner.nextInt();
+        int selected = scanner.nextInt() - 1;
         if (selected < 0 || selected > 3) {
-          System.out.println("That's not an option");
+          System.out.println("thats not a option");
         } else {
           player.GoTo(
             selected,
-            zones[player.getIdZone()].getDoors(),
-            zones[player.getIdZone()].getDirections(),
-            zones[player.getIdZone()].getAvailableZones()
+            zones[player.getIdZone()-1].getDoors(),
+            zones[player.getIdZone()-1].getDirections(),
+            zones[player.getIdZone()-1].getAvailableZones()
           );
           validAnswer = true;
         }
@@ -202,7 +202,7 @@ public class Game {
       }
     );
     workshop.setDirections(
-      new int[] { DOOR_FALSE, DOOR_FALSE, DOOR_OPEN, DOOR_FALSE }
+      new int[] { DOOR_FALSE, DOOR_FALSE, DOOR_CLOSED, DOOR_FALSE }
     );
     workshop.setAvailableZones(
       new int[] { NO_ROOM, NO_ROOM, OFFICES, NO_ROOM }
@@ -225,7 +225,7 @@ public class Game {
       new boolean[] { DOOR_EXISTS, DOOR_EXISTS, DOOR_EXISTS, DOOR_EXISTS }
     );
     offices.setDirections(
-      new int[] { DOOR_CLOSED, DOOR_CLOSED, DOOR_OPEN, DOOR_CLOSED }
+      new int[] { DOOR_OPEN, DOOR_OPEN, DOOR_OPEN, DOOR_OPEN }
     );
     offices.setAvailableZones(
       new int[] { WORKSHOP, BATHROOM, MACHINE_ROOM, LOCKER_ROOM }
@@ -275,7 +275,7 @@ public class Game {
       new boolean[] { DOOR_NO_EXISTS, DOOR_EXISTS, DOOR_EXISTS, DOOR_NO_EXISTS }
     );
     lockerRoom.setDirections(
-      new int[] { DOOR_FALSE, DOOR_OPEN, DOOR_OPEN, DOOR_FALSE }
+      new int[] { DOOR_FALSE, DOOR_CLOSED, DOOR_CLOSED, DOOR_FALSE }
     );
     lockerRoom.setAvailableZones(
       new int[] { NO_ROOM, OFFICES, KITCHEN, NO_ROOM }
@@ -297,7 +297,7 @@ public class Game {
       new boolean[] { DOOR_EXISTS, DOOR_EXISTS, DOOR_NO_EXISTS, DOOR_NO_EXISTS }
     );
     kitchen.setDirections(
-      new int[] { DOOR_OPEN, DOOR_OPEN, DOOR_FALSE, DOOR_FALSE }
+      new int[] { DOOR_CLOSED, DOOR_CLOSED, DOOR_FALSE, DOOR_FALSE }
     );
     kitchen.setAvailableZones(
       new int[] { LOCKER_ROOM, DINNING_ROOM, NO_ROOM, NO_ROOM }
@@ -319,7 +319,7 @@ public class Game {
       new boolean[] { DOOR_NO_EXISTS, DOOR_EXISTS, DOOR_EXISTS, DOOR_EXISTS }
     );
     dinningRoom.setDirections(
-      new int[] { DOOR_FALSE, DOOR_OPEN, DOOR_OPEN, DOOR_CLOSED }
+      new int[] { DOOR_FALSE, DOOR_CLOSED, DOOR_CLOSED, DOOR_CLOSED }
     );
     dinningRoom.setAvailableZones(
       new int[] { NO_ROOM, BEDROOM, EXIT_ROOM, KITCHEN }
@@ -341,7 +341,7 @@ public class Game {
       new boolean[] { DOOR_EXISTS, DOOR_NO_EXISTS, DOOR_NO_EXISTS, DOOR_EXISTS }
     );
     bedRoom.setDirections(
-      new int[] { DOOR_OPEN, DOOR_FALSE, DOOR_FALSE, DOOR_OPEN }
+      new int[] { DOOR_CLOSED, DOOR_FALSE, DOOR_FALSE, DOOR_CLOSED }
     );
     bedRoom.setAvailableZones(
       new int[] { BATHROOM, NO_ROOM, NO_ROOM, DINNING_ROOM }
@@ -363,7 +363,7 @@ public class Game {
       new boolean[] { DOOR_NO_EXISTS, DOOR_NO_EXISTS, DOOR_EXISTS, DOOR_EXISTS }
     );
     bathRooms.setDirections(
-      new int[] { DOOR_FALSE, DOOR_FALSE, DOOR_OPEN, DOOR_OPEN }
+      new int[] { DOOR_FALSE, DOOR_FALSE, DOOR_CLOSED, DOOR_CLOSED }
     );
     bathRooms.setAvailableZones(
       new int[] { NO_ROOM, NO_ROOM, BEDROOM, OFFICES }
@@ -390,7 +390,7 @@ public class Game {
       }
     );
     exitRoom.setDirections(
-      new int[] { DOOR_OPEN, DOOR_FALSE, DOOR_FALSE, DOOR_FALSE }
+      new int[] { DOOR_CLOSED, DOOR_FALSE, DOOR_FALSE, DOOR_FALSE }
     );
     exitRoom.setAvailableZones(
       new int[] { DINNING_ROOM, NO_ROOM, NO_ROOM, NO_ROOM }
