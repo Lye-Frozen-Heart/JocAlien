@@ -46,20 +46,20 @@ public class Player extends Character {
 
   public void ToOpen(Item[]items, Zone[] zone,int actualZone, int door) {
     if (hasCard(items)){
-      System.out.println("you succesfully opened the door");
+      System.out.println("You successfully opened the door");
 
       zone[actualZone].setDirection( door,1);
     }else{
-      System.out.println("you dont have the card to open de door");
+      System.out.println("You dont have the card to open de door");
     }
   }
   public void ToClose(Item[]items, Zone[] zone,int door) {
     if (hasCard(items)){
-      System.out.println("you succesfully opened the door");
+      System.out.println("You successfully closed the door");
 
       zone[0].setDirection( door,-1);
     }else{
-      System.out.println("you dont have the card to open de door");
+      System.out.println("You dont have the card to open de door");
     }
   }
 
@@ -67,7 +67,9 @@ public class Player extends Character {
    * 
    */
   public void LookAround(int[]availableZones){
-    ColorChanger.printTextToGreen("You look around...Directions you can see: Heading North: " + arrayRoomNames[availableZones[0]] + " Tilting East: The " + arrayRoomNames[availableZones[1]] + " Backing South: The " + arrayRoomNames[availableZones[2]] + " And tilting out to West: " + arrayRoomNames[availableZones[3]]);
+    ColorChanger.printTextToGreen("You look around...Directions you can see:" +
+    "\nHeading North: " + arrayRoomNames[availableZones[0]] + "\nTilting East: " + arrayRoomNames[availableZones[1]] +
+    "\nBacking South: " + arrayRoomNames[availableZones[2]] + "\nAnd tilting out to West: " + arrayRoomNames[availableZones[3]]);
   }
 
   public boolean getInfected() {

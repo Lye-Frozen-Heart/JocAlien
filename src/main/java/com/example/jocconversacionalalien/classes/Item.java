@@ -1,7 +1,7 @@
 package com.example.jocconversacionalalien.classes;
 
 public class Item {
-
+  private int itemId;
   private String name;
   private String description;
   private boolean status;
@@ -9,7 +9,9 @@ public class Item {
   private int owner;
 
   private void useItem(){}
-
+  public void setItemId(int itemId){
+    this.itemId = itemId;
+  }
   public void setName(String name) {
     this.name = name;
   }
@@ -29,7 +31,9 @@ public class Item {
   public void setOwner(int owner) {
     this.owner = owner;
   }
-
+  public int getItemId() {
+    return itemId;
+  }
   public String getName() {
     return name;
   }
