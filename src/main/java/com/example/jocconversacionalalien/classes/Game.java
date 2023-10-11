@@ -14,44 +14,44 @@ public class Game {
     static Item[] items = {};
     static Player player = new Player();
 
-    private static void menu() {
-        Scanner scanner = new Scanner(System.in);
-        WordElapser.writeWordWithTimeDelay(
-                "Good to see you again Captain, have you slept well? Select a menu option:",
-                timeToWrite
-        );
-        ColorChanger.printTextToGreen(
-                "_|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|\n" +
-                        "___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|__"
-        );
-        ColorChanger.printTextToBlue("- NEW GAME --> 1");
-        ColorChanger.printTextToGreen("- CREDITS --> 2");
-        ColorChanger.printTextToRed("- EXIT GAME --> 3");
+  private static void menu() {
+    Scanner scanner = new Scanner(System.in);
+    WordElapser.writeWordWithTimeDelay(
+      "Good to see you again Captain, have you slept well? Select a menu option:",
+      timeToWrite
+    );
+    ColorChanger.printTextToGreen(
+      "_|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|\n" +
+      "___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|__"
+    );
+    ColorChanger.printTextToBlue("- NEW GAME --> 1");
+    ColorChanger.printTextToGreen("- CREDITS --> 2");
+    ColorChanger.printTextToRed("- EXIT GAME --> 3");
 
-        ColorChanger.printTextToGreen(
-                "_|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|"
+    ColorChanger.printTextToGreen(
+      "_|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|"
+    );
+    ColorChanger.printTextToGreen("- - - >");
+    int selected = scanner.nextInt();
+    switch (selected) {
+      case 1:
+        startGame();
+        break;
+      case 2:
+        ColorChanger.printTextToGreen("/--//--//--//--//--//--//--//--//--/");
+        WordElapser.writeWordWithTimeDelay(
+          "This game has been developed by Alexandre Torres Bravo and Sergi Andreu Vila",
+          timeToWrite
         );
-        ColorChanger.printTextToGreen("- - - >");
-        int selected = scanner.nextInt();
-        switch (selected) {
-            case 1:
-                WordElapser.writeWordWithTimeDelay("Genial comenzaste", timeToWrite);
-                startGame();
-                break;
-            case 2:
-                ColorChanger.printTextToGreen("/--//--//--//--//--//--//--//--//--/");
-                WordElapser.writeWordWithTimeDelay(
-                        "This game has been developed by Alexandre Torres Bravo and Sergi Andreu Vila",
-                        timeToWrite
-                );
-                ColorChanger.printTextToGreen("/--//--//--//--//--//--//--//--//--/");
-                ColorChanger.printTextToBlack("© All rights to be reserved...");
-                break;
-            case 3:
-                exitGame();
-                break;
-        }
+        ColorChanger.printTextToGreen("/--//--//--//--//--//--//--//--//--/");
+        ColorChanger.printTextToBlack("© All rights to be reserved...");
+        menu();
+        break;
+      case 3:
+        exitGame();
+        break;
     }
+  }
 
     private static void startGame() {
 
@@ -137,59 +137,59 @@ public class Game {
         } while (options != EXIT_GAME);
     }
 
-    private static void movement() {
-        validAnswer = false;
-        Scanner scanner = new Scanner(System.in);
-        do {
-            System.out.println(
-                    "where doy you want to move? \n 1-north, 2-east, 3-south, 4-west"
-            );
-            if (scanner.hasNextInt()) {
-                int selected = scanner.nextInt() - 1;
-                if (selected < 0 || selected > 3) {
-                    System.out.println("thats not a option");
-                } else {
-                    player.GoTo(
-                            selected,
-                            zones[player.getIdZone() - 1].getDoors(),
-                            zones[player.getIdZone() - 1].getDirections(),
-                            zones[player.getIdZone() - 1].getAvailableZones()
-                    );
-                    validAnswer = true;
-                }
-            } else {
-                System.out.println("thats not an option");
-            }
-        } while (!validAnswer);
-    }
+  private static void movement() {
+    validAnswer = false;
+    Scanner scanner = new Scanner(System.in);
+    do {
+      System.out.println(
+        "where doy you want to move? 1-north, 2-east, 3-south, 4-west"
+      );
+      if (scanner.hasNextInt()) {
+        int selected = scanner.nextInt() - 1;
+        if (selected < 0 || selected > 3) {
+          System.out.println("thats not a option");
+        } else {
+          player.GoTo(
+            selected,
+            zones[player.getIdZone()-1].getDoors(),
+            zones[player.getIdZone()-1].getDirections(),
+            zones[player.getIdZone()-1].getAvailableZones()
+          );
+          validAnswer = true;
+        }
+      } else {
+        System.out.println("thats not an option");
+      }
+    } while (!validAnswer);
+  }
 
-    private void pauseGame() {
-        //TODO
-    }
+  private void pauseGame() {
+    //TODO
+  }
 
-    private void restartGame() {
-        //TODO
-    }
+  private void restartGame() {
+    //TODO
+  }
 
-    private static void exitGame() {
-        System.exit(0);
-    }
+  private static void exitGame() {
+    System.exit(0);
+  }
 
-    //TODO                        /////////////////////////////////
-    //TODO                       //            TALLERES          //
-    //TODO         /////////////////////                      ///////////////////////
-    //TODO         ||                  |                      |                     ||
-    //TODO         ||    VESTUARIO              OFICINAS               BAÑOS         ||
-    //TODO         ||                  |                     |                      ||
-    //TODO         ||/////      //////////////      /////////////////       ////////||
-    //TODO         ||                  |      MÁQUINAS       |                      ||
-    //TODO         ||                  |                     |                      ||
-    //TODO         ||////        /////////////////////////////////////     /////////||
-    //TODO         ||                  |                     |                      ||
-    //TODO         ||     COCINA            COMEDOR                DORMITORIO       ||
-    //TODO         ||                  |                     |                      ||
-    //TODO        /////////////////////////////    /////////////////////////////////||
-    //TODO                                    SALIDA
+  //TODO                        /////////////////////////////////
+  //TODO                       //            TALLERES          //
+  //TODO         /////////////////////                      ///////////////////////
+  //TODO         ||                  |                      |                     ||
+  //TODO         ||    VESTUARIO              OFICINAS               BAÑOS         ||
+  //TODO         ||                  |                     |                      ||
+  //TODO         ||/////      //////////////      /////////////////       ////////||
+  //TODO         ||                  |      MÁQUINAS       |                      ||
+  //TODO         ||                  |                     |                      ||
+  //TODO         ||////        /////////////////////////////////////     /////////||
+  //TODO         ||                  |                     |                      ||
+  //TODO         ||     COCINA            COMEDOR                DORMITORIO       ||
+  //TODO         ||                  |                     |                      ||
+  //TODO        /////////////////////////////    /////////////////////////////////||
+  //TODO                                    SALIDA
 
 
     public static void main(String[] args) {
