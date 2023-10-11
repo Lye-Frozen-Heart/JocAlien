@@ -44,9 +44,24 @@ public class Player extends Character {
 
   private void ToTalk() {}
 
-  private void ToOpen() {}
+  public void ToOpen(Item[]items, Zone[] zone,int actualZone, int door) {
+    if (hasCard(items)){
+      System.out.println("you succesfully opened the door");
 
-  private void ToClose() {}
+      zone[actualZone].setDirection( door,1);
+    }else{
+      System.out.println("you dont have the card to open de door");
+    }
+  }
+  public void ToClose(Item[]items, Zone[] zone,int door) {
+    if (hasCard(items)){
+      System.out.println("you succesfully opened the door");
+
+      zone[0].setDirection( door,-1);
+    }else{
+      System.out.println("you dont have the card to open de door");
+    }
+  }
 
   /**
    * 
@@ -100,4 +115,14 @@ public class Player extends Character {
     }
     return canMove;
   }
+
+  public boolean hasCard(Item[] items) {
+    boolean card = false;
+    if(items[0].getOwner()== 1){
+      card = true;
+    }
+    return card;
+  }
 }
+
+
