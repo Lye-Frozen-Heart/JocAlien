@@ -86,14 +86,14 @@ public class Game {
         do {
             do {
                 validAnswer = false;
-                System.out.println(
-                        "whats do you want to do? 1- look around, 2-check doors, 3-move, 4-Open door, 5-exit game"
+                ColorChanger.printTextToBlue(
+                        "What do you want to do? 1 - Look around, 2 - Check doors, 3 - Move, 4 - Open Door, 5 - Exit game"
                 );
                 if (scanner.hasNextInt()) {
                     options = scanner.nextInt();
                     validAnswer = true;
                 } else {
-                    System.out.println("thats not an option");
+                    ColorChanger.printTextToRed("That's not an option");
                 }
             } while (!validAnswer);
 
@@ -110,9 +110,9 @@ public class Game {
                 case OPEN_DOOR:
                     do {
                         validAnswer = false;
-                        System.out.println(
-                                "Wich door do you want to open?" +
-                                        "\n 1- North, 2-East, 3-South, 4-West"
+                        ColorChanger.printTextToBlue(
+                                "Which door do you want to open?" +
+                                        "\n 1 - North, 2 - East, 3 - South, 4 - West"
                         );
                         if (scanner.hasNextInt()) {
                             int direction = scanner.nextInt();
@@ -120,10 +120,10 @@ public class Game {
                                 validAnswer = true;
                                 player.ToOpen(items, zones, player.getIdZone()-1, direction - 1);
                             } else {
-                                System.out.println("thats not an option");
+                                System.out.println("That's not an option");
                             }
                         } else {
-                            System.out.println("thats not an option");
+                            System.out.println("That's not an option");
                         }
                     } while (!validAnswer);
 
@@ -132,7 +132,7 @@ public class Game {
                     exitGame();
                     break;
                 default:
-                    System.out.println("not a valid option");
+                    System.out.println("Not a valid option");
             }
         } while (options != EXIT_GAME);
     }
@@ -141,13 +141,14 @@ public class Game {
     validAnswer = false;
     Scanner scanner = new Scanner(System.in);
     do {
-      System.out.println(
-        "where doy you want to move? 1-north, 2-east, 3-south, 4-west"
+      ColorChanger.printTextToBlue(
+        "Where do you want to move?" +
+             "\n 1 - North, 2 - East, 3 - South, 4 - West"
       );
       if (scanner.hasNextInt()) {
         int selected = scanner.nextInt() - 1;
         if (selected < 0 || selected > 3) {
-          System.out.println("thats not a option");
+          System.out.println("That's not a option");
         } else {
           player.GoTo(
             selected,
@@ -158,7 +159,7 @@ public class Game {
           validAnswer = true;
         }
       } else {
-        System.out.println("thats not an option");
+        System.out.println("That's not an option");
       }
     } while (!validAnswer);
   }

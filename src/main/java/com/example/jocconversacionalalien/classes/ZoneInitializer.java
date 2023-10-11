@@ -50,9 +50,10 @@ public class ZoneInitializer {
                 new int[] { NO_ROOM, NO_ROOM, OFFICES, NO_ROOM }
         );
         workshop.setDescriptionZone(
-                "The workshop...A metallic and steamy place where the dark begins to blur your eyesight. Seems like the lights are off.You " +
-                        "should be carefull about all the tools, wires and materials that are left on the floor. Ask your personal AI for the details of the work space or use the flaslight " +
-                        "for better vision."
+        "The workshop...A metallic and steamy place where the dark begins to blur your eyesight. Seems like the lights are off.\nYou " +
+        "should be carefull about all the tools, wires and materials that are left on the floor.\nAsk your personal AI for the details" +
+        " of the work space or use the flaslight " +
+        "for better vision."
         );
         //Taller es zona de item, sin trampas ni nada. Salida por abajo ya que és única. No hay luz
         Zone offices = new Zone();
@@ -73,8 +74,8 @@ public class ZoneInitializer {
                 new int[] { WORKSHOP, BATHROOM, MACHINE_ROOM, LOCKER_ROOM }
         );
         offices.setDescriptionZone(
-                "The principal office! Apparently everything seems quiet and comfy, a perfect place for meetings and study sessions. A plenty of desks and chairs " +
-                        "appear in front of you. You remember that your identification card it's in one of that desks drawers. You should get it for the ship access before it's too late..."
+        "The principal office! Apparently everything seems quiet and comfy, a perfect place for meetings and study sessions.\nA plenty of desks and chairs " +
+        "appear in front of you.\nYou remember that your identification card it's in one of that desks drawers.\nYou should get it for the ship access before it's too late..."
         );
         //Ya que es la oficina. Sin trampas y con total acceso. Hay luz
         Zone machineRoom = new Zone();
@@ -100,9 +101,9 @@ public class ZoneInitializer {
                 new int[] { OFFICES, NO_ROOM, NO_ROOM, NO_ROOM }
         );
         machineRoom.setDescriptionZone(
-                "You will never stop getting surprised about this part of the ship. A narrow and uncomfortable room. Why does a place like this have to be " +
-                        "the principal management room for all the ship? Seems like a psychiatric center... (You think). The lights are open but the fact that this room is pretty closed up and full of soft plates" +
-                        " makes you a bit insecure."
+        "You will never stop getting surprised about this part of the ship.\nA narrow and uncomfortable room.\nWhy does a place like this have to be " +
+        "the principal management room for all the ship?\nSeems like a psychiatric center... (You think).\nThe lights are open but the fact that this room is pretty closed up and full of soft plates" +
+        " makes you a bit insecure."
         );
         //
         Zone lockerRoom = new Zone();
@@ -123,8 +124,8 @@ public class ZoneInitializer {
                 new int[] { NO_ROOM, OFFICES, KITCHEN, NO_ROOM }
         );
         lockerRoom.setDescriptionZone(
-                "Coats, suits and other clothes hide in this room. When it's dark " +
-                        "everything that does not move appears to be suspicious. You need to get to the other side asap."
+        "Coats, suits and other clothes hide in this room.\nWhen it's dark " +
+        "everything that does not move appears to be suspicious.\nYou need to get to the other side asap."
         );
         //
         Zone kitchen = new Zone();
@@ -145,8 +146,8 @@ public class ZoneInitializer {
                 new int[] { LOCKER_ROOM, DINNING_ROOM, NO_ROOM, NO_ROOM }
         );
         kitchen.setDescriptionZone(
-                "The metallic sound of the cooking tools itch in your ears. Don't get too close " +
-                        "to the ones that are sharp, the hunter can smell your fear but also your blood."
+        "The metallic sound of the cooking tools itch in your ears.\nDon't get too close " +
+        "to the ones that are sharp, the hunter can smell your fear but also your blood."
         );
         //La cocina es donde se sitúan los donuts, hay luz y trampas.
         Zone dinningRoom = new Zone();
@@ -167,8 +168,8 @@ public class ZoneInitializer {
                 new int[] { NO_ROOM, BEDROOM, EXIT_ROOM, KITCHEN }
         );
         dinningRoom.setDescriptionZone(
-                "A subliminal place to be.Desks and chairs get along your entire sight. " +
-                        "The darkness and the well ordered room start to get you nervous and dizzy."
+        "A subliminal place to be.Desks and chairs get along your entire sight.\n" +
+        "The darkness and the well ordered room start to get you nervous and dizzy."
         );
         //En la cocina pondremos el estado del gas... Ha habido una fuga y no pueden pasar más de 4 turnos para salir
         Zone bedRoom = new Zone();
@@ -189,8 +190,8 @@ public class ZoneInitializer {
                 new int[] { BATHROOM, NO_ROOM, NO_ROOM, DINNING_ROOM }
         );
         bedRoom.setDescriptionZone(
-                "Get comfy, take a sleep, dream about everything you could be doing right now " +
-                        "but remember, it is looking at you and your actions..."
+        "Get comfy, take a sleep, dream about everything you could be doing right now\n " +
+        "but remember, it is looking at you and your actions..."
         );
         //
         Zone bathRooms = new Zone();
@@ -211,8 +212,8 @@ public class ZoneInitializer {
                 new int[] { NO_ROOM, NO_ROOM, BEDROOM, OFFICES }
         );
         bathRooms.setDescriptionZone(
-                "A pretty smelly place. Don't get nauseous coming along the " +
-                        "water closets and also don't get too close to the mirrors someone could be watching."
+        "A pretty smelly place.\nDon't get nauseous coming along the " +
+        "water closets and also don't get too close to the mirrors.\nSomeone could be watching."
         );
         //
         Zone exitRoom = new Zone();
@@ -238,8 +239,8 @@ public class ZoneInitializer {
                 new int[] { DINNING_ROOM, NO_ROOM, NO_ROOM, NO_ROOM }
         );
         exitRoom.setDescriptionZone(
-                "Finally! You see the empty dark of the void absorbing the light for every star you see. Now you can take one escape capsule and" +
-                        " ensure your destiny hasn't been settled right now. You can live once again, congrats! YOU WON!"
+        "Finally!\nYou see the empty dark of the void absorbing the light for every star you see.\nNow you can take one escape capsule and" +
+        " ensure your destiny hasn't been settled right now.\nYou can live once again, congrats! YOU WON!"
         );
         //
         //Zone propulsors/Space = new Zone(); propulsors.setIdZone(10); TODO No hay décima zona únicamente hay 9 en todo el mapa!
