@@ -44,18 +44,16 @@ public class Player extends Character {
 
   private void ToTalk() {}
 
-  private void ToOpen(Item[]items, Zone[] zone,int door) {
+  public void ToOpen(Item[]items, Zone[] zone,int actualZone, int door) {
     if (hasCard(items)){
       System.out.println("you succesfully opened the door");
 
-      zone[0].setDirection( door,1);
+      zone[actualZone].setDirection( door,1);
     }else{
       System.out.println("you dont have the card to open de door");
     }
   }
-
-
-  private void ToClose(Item[]items, Zone[] zone,int door) {
+  public void ToClose(Item[]items, Zone[] zone,int door) {
     if (hasCard(items)){
       System.out.println("you succesfully opened the door");
 
@@ -69,7 +67,7 @@ public class Player extends Character {
    * 
    */
   public void LookAround(int[]availableZones){
-    System.out.println("you look around and can see that: going north " + arrayRoomNames[availableZones[0]] + " going east " + arrayRoomNames[availableZones[1]] + " going south " + arrayRoomNames[availableZones[2]] + " and going west " + arrayRoomNames[availableZones[3]]);
+    System.out.println("you look around and can see that: \n North " + arrayRoomNames[availableZones[0]] + " \n East " + arrayRoomNames[availableZones[1]] + " \n South " + arrayRoomNames[availableZones[2]] + " \n West " + arrayRoomNames[availableZones[3]]);
   }
 
   public boolean getInfected() {
