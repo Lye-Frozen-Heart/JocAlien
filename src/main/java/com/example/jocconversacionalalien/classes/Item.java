@@ -5,7 +5,7 @@ public class Item {
   private String name;
   private String description;
   private boolean status;
-  private String localization;
+  private int localization;
   private int owner;
 
   private void useItem(){}
@@ -24,7 +24,7 @@ public class Item {
     this.status = status;
   }
 
-  public void setLocalization(String localization) {
+  public void setLocalization(int localization) {
     this.localization = localization;
   }
 
@@ -46,7 +46,7 @@ public class Item {
     return status;
   }
 
-  public String getLocalization() {
+  public int getLocalization() {
     return localization;
   }
 
