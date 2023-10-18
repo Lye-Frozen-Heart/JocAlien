@@ -40,10 +40,10 @@ public class Menus {
                     player.LookAround(zones[player.getIdZone() - 1].getAvailableZones());
                     break;
                 case LOOK_ITEMS:
-                    Strings.NotImplemented();
+                    zones[player.getIdZone()-1].printItems();
                     break;
                 case OPEN_BACKPACK:
-                    Strings.NotImplemented();
+                    player.printItems();
                     break;
                 case MOVE:
                     movement(player, zones);

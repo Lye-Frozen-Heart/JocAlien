@@ -1,14 +1,17 @@
 package com.example.jocconversacionalalien.classes;
 
+import java.util.ArrayList;
+
 public class Player extends Character {
 
   private boolean infected = false;
   private boolean canBreath = true;
   private boolean suitWorn = false;
   private int idZone = 3;
+  private ArrayList<Item> inventory = new ArrayList<Item>();
   private   String[] arrayRoomNames= {"No Door", "Workshop", "Offices", "Machine Room",
   "Locker Room", "Kitchen", "Dinning Room", "Bedroom","Bathroom", "Exit"};
-  private Item[]inventario = {};
+
 
   @Override
   protected void ToTake() {}
@@ -72,6 +75,10 @@ public class Player extends Character {
     "\nBacking South: " + arrayRoomNames[availableZones[2]] + "\nAnd tilting out to West: " + arrayRoomNames[availableZones[3]]);
   }
 
+  public ArrayList<Item> getInventory() {
+    return inventory;
+  }
+
   public boolean getInfected() {
     return infected;
   }
@@ -86,6 +93,10 @@ public class Player extends Character {
 
   public  int getIdZone() {
     return idZone;
+  }
+
+  public void setInventory(ArrayList<Item> inventory) {
+    this.inventory = inventory;
   }
 
   public void setInfected(boolean infected) {
@@ -125,6 +136,31 @@ public class Player extends Character {
     }
     return card;
   }
+  public void printItems(){
+    if(inventory.isEmpty()){
+      System.out.println("you have nothing in your inventory");
+    }else{
+      System.out.println("you have ");
+      for (Item items :inventory) {
+        System.out.println(items.getName()+"test");
+      }
+    }
+
+  }
+
+  public ArrayList<Item> addItemsInventory(){
+
+    ArrayList<Item> itemsToReturn = new ArrayList<Item>();
+
+    for(int i =0; i< Game.items.length;i++){
+      if(Game.items[i].getOwner() == 1){
+        itemsToReturn.add(Game.items[i]);
+
+      }
+    }
+    return itemsToReturn;
+  }
+
 }
 
 

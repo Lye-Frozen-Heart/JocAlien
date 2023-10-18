@@ -139,10 +139,15 @@ public class Zone {
     }
 
     public void printItems(){
-        System.out.println("theres something on the ground");
-        for (Item itemlist :items) {
-            System.out.println(itemlist.getName());
+        if(items== null){
+            System.out.println("there is nothing in this room");
+        }else{
+            System.out.println("theres something on the ground");
+            for (Item itemlist :items) {
+                System.out.println(itemlist.getName());
+            }
         }
+
     }
 
     public ArrayList<Item> addItems(){

@@ -7,8 +7,16 @@ public class Game {
 
     static Zone[] zones = {};
     static Item[] items = {};
-    static Player player = new Player();
+    static Player player;
+
+    static {
+        player = new Player();
+        player.setInventory(player.addItemsInventory());
+
+    }
+
     static Menus menus = new Menus();
+
     static ArtificialIntelligence iHall = new ArtificialIntelligence();
 
 

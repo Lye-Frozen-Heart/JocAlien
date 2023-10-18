@@ -4,7 +4,7 @@ import static com.example.jocconversacionalalien.classes.ItemInitializer.random;
 
 public class ArtificialIntelligence {
     private boolean angry = false;
-    private int randomQuestion = (random.nextInt(2) + 1);
+    private int randomQuestion ;
     static Item[] gameItems = ItemInitializer.setUpItems();
     static Zone[] gameZones = ZoneInitializer.setUpZones();
     String zone;
@@ -28,10 +28,7 @@ public class ArtificialIntelligence {
 
         int flashlightLocation = gameItems[3].getLocalization();
 
-        if (randomQuestion == 1) {
-            zone = gameZones[flashlightLocation - 1].getName();
-            return zone;
-        } else {
+        if (IsRandom()) {
             int randomZone;
             do {
                 randomZone = random.nextInt(9) + 1;
@@ -40,6 +37,20 @@ public class ArtificialIntelligence {
             zone = gameZones[(randomZone)].getName();
 
             return zone;
+
+        } else {
+            zone = gameZones[flashlightLocation - 1].getName();
+            return zone;
         }
+    }
+
+    public boolean IsRandom(){
+        boolean isRandom =true;
+        int number =random.nextInt(2) + 1;
+
+        if(number==1){isRandom=false;}
+
+
+        return isRandom;
     }
 }
