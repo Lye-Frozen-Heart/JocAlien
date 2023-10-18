@@ -1,13 +1,21 @@
 package com.example.jocconversacionalalien.classes;
 
 public class Enemy extends Character{
-    private boolean asleep = true;
-    private int shiftCount = 0;
+    public int getIdZone() {
+        return idZone;
+    }
+
+    public void setIdZone(int idZone) {
+        this.idZone = idZone;
+    }
+
+    private int idZone;
+    private boolean asleep = false;
     @Override
     protected void ToTake() {}
    
-    private void pairShift(int shiftCount,int imputDirection,boolean[] doors, int[] directions, int[]availableZones){
-        if(shiftCount % 2 == 0 && !asleep) GoTo(imputDirection,doors,directions,availableZones);
+    private void pairShift(int shiftCount){
+        if(shiftCount % 2 == 0 && !asleep) double rand = Math.random(); setIdZone();
     }
     @Override
     protected void CheckZone(int idZone) {
@@ -15,8 +23,7 @@ public class Enemy extends Character{
         throw new UnsupportedOperationException("Unimplemented method 'CheckZone'");
     }
     @Override
-    protected void GoTo(int imputDirection, boolean[] doors, int[] directions, int[] availableZones) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'GoTo'");
+    protected void GoTo(int inputDirection, boolean[] doors, int[] directions, int[] availableZones) {
+
     }
 }

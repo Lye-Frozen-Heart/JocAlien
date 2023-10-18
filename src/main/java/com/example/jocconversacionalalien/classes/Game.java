@@ -6,14 +6,13 @@ public class Game {
 
     //CONSTANTS FOR ROOM ID
     private static final int timeToWrite = 0;
-
-    private int countTurn;
-
+    private static int countTurn = 0;
     static boolean validAnswer = false;
     static Zone[] zones = {};
     static Item[] items = {};
     static Player player = new Player();
-
+    static Enemy alien = new Enemy();
+    static NonPlayableCharacter npc = new NonPlayableCharacter();
   private static void menu() {
     Scanner scanner = new Scanner(System.in);
     WordElapser.writeWordWithTimeDelay(
@@ -91,10 +90,14 @@ public class Game {
                 );
                 if (scanner.hasNextInt()) {
                     options = scanner.nextInt();
+                    setCountTurn(countTurn++);
                     validAnswer = true;
                 } else {
                     ColorChanger.printTextToRed("That's not an option");
                 }
+                if(alien.pairShift(countTurn,))
+                //If( player.id  === alien.id )
+
             } while (!validAnswer);
 
             switch (options) {
@@ -175,6 +178,13 @@ public class Game {
   private static void exitGame() {
     System.exit(0);
   }
+    public static int getCountTurn() {
+        return countTurn;
+    }
+
+    public static void setCountTurn(int countTurn) {
+        Game.countTurn = countTurn;
+    }
 
   //TODO                        /////////////////////////////////
   //TODO                       //            TALLERES          //
