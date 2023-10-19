@@ -1,5 +1,8 @@
 package com.example.jocconversacionalalien.classes;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 import static com.example.jocconversacionalalien.classes.ItemInitializer.random;
 
 public class ArtificialIntelligence {
@@ -20,8 +23,9 @@ public class ArtificialIntelligence {
 
     private void makeLifeImpossible() {
     }
-    public String askForAlien(){
-        return "not implemented";
+    public void askForAlien(Zone[] zones,Enemy alien){
+        Stream<Zone> zonaAlien = Arrays.stream(zones).filter(filter -> filter.getIdZone() == alien.getIdZone());
+        if(!IsRandom()) zonaAlien.forEach( zona -> Strings.WhereIsAlien(zona.getName())); else Strings.RandomFact();
     }
 
     public String askForFlashlight() {

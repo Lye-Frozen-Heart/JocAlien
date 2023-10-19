@@ -6,11 +6,12 @@ public class Menus {
     static Scanner scanner = new Scanner(System.in);
 
     static int option = 0;
+    static int shift = 0;
     static boolean validAnswer = false;
 
 
 
-    public void LightOnMenu(Zone[] zones, Item[] items, Player player, ArtificialIntelligence iHall) {
+    public void LightOnMenu(Zone[] zones, Item[] items, Player player, ArtificialIntelligence iHall, Enemy alien) {
         final int SPEAK_IHALL = 1;
         final int LOOK_DOORS = 2;
         final int LOOK_ITEMS = 3;
@@ -30,24 +31,30 @@ public class Menus {
                 } else {
                     Strings.InputError();
                 }
+                alien.pairShift(shift);
             } while (!validAnswer);
 
             switch (option) {
                 case SPEAK_IHALL:
-                    SpeakIHall(items, zones, player, iHall);
+                    SpeakIHall(items, zones, player, iHall,alien);
+                    shift++;
                     break;
                 case LOOK_DOORS:
                     player.LookAround(zones[player.getIdZone() - 1].getAvailableZones());
+                    shift++;
                     break;
                 case LOOK_ITEMS:
                     zones[player.getIdZone()-1].printItems();
+                    shift++;
                     break;
                 case OPEN_BACKPACK:
                     player.printItems();
+                    shift++;
                     break;
                 case MOVE:
                     movement(player, zones);
                     zones[player.getIdZone() - 1].getDescriptionZone();
+                    shift++;
                     break;
                 case EXIT_GAME:
                     Game.exitGame();
@@ -55,12 +62,13 @@ public class Menus {
                 default:
                     Strings.InputError();
             }
-
+            if(alien.getIdZone() == player.getIdZone()) Strings.AlienIsHere(); //Si el alien está en la sala...
+           // if (player.getIdZone() == ZoneInitializer.EXIT_ROOM && player.doPlayerHaveSuit()) option = EXIT_GAME;
         } while (option != EXIT_GAME);
 
     }
 
-    public void SpeakIHall(Item[] items, Zone[] zones, Player player, ArtificialIntelligence iHall) {
+    public void SpeakIHall(Item[] items, Zone[] zones, Player player, ArtificialIntelligence iHall,Enemy alien) {
         final int FLASHLIGHT_LOCATION = 1;
         final int ALIEN_LOCATION = 2;
         final int OPEN_DOOR = 3;
@@ -82,8 +90,7 @@ public class Menus {
                     Strings.IHallFlashlightLocation(iHall.askForFlashlight());
                     break;
                 case ALIEN_LOCATION:
-                    iHall.askForAlien();
-                    Strings.NotImplemented();
+                    iHall.askForAlien(zones,alien);
                     break;
                 case OPEN_DOOR:
                     do {

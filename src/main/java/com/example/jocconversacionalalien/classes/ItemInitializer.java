@@ -16,7 +16,7 @@ public class ItemInitializer {
     private static final int NPC_CARD = 1;
     private static final int TOOL = 2;
     private static final int FLASHLIGHT = 3;
-    private static final int SPACE_SUIT = 4;
+    public static final int SPACE_SUIT = 4;
     private static final int DONUT = 5;
 
     static Random random = new Random();

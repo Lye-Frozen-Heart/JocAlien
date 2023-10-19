@@ -1,5 +1,7 @@
 package com.example.jocconversacionalalien.classes;
 
+import static com.example.jocconversacionalalien.classes.ItemInitializer.random;
+
 public class Strings {
     private static final int timeToWrite = 0;
 
@@ -57,7 +59,7 @@ public class Strings {
         ColorChanger.printTextToGreen(
                 "_|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|"
         );
-        ColorChanger.printTextToGreen("- - - >");
+        ColorChanger.printTextToGreen("Introduce an option: ⇣");
     }
 
 
@@ -71,7 +73,7 @@ public class Strings {
     }
 
     public static void IHallExit() {
-        NotImplemented();
+        WordElapser.writeWordWithTimeDelay("Closing menu...",timeToWrite);
     }
 
 
@@ -89,7 +91,6 @@ public class Strings {
                 timeToWrite
         );
     }
-
     public static void Credits() {
         ColorChanger.printTextToGreen("/--//--//--//--//--//--//--//--//--/");
         WordElapser.writeWordWithTimeDelay(
@@ -98,5 +99,42 @@ public class Strings {
         );
         ColorChanger.printTextToGreen("/--//--//--//--//--//--//--//--//--/");
         ColorChanger.printTextToBlack("© All rights to be reserved...");
+    }
+    public static void AlienIsHere(){
+        ColorChanger.printTextToRed("You feel chills down your spine. Something dangerous is here...");
+    }
+    public static void WhereIsAlien(String text){
+        ColorChanger.printTextToBlue("The alien is located in: " + text);
+    }
+
+    public static void RandomFact(){
+       int randomFact = (int)(Math.random()*5)+1;
+       switch (randomFact){
+           case 0:
+           WordElapser.writeWordWithTimeDelay("Did you know?\nHoney never spoils.\n" +
+           " Archaeologists have found pots of honey in ancient Egyptian tombs\n that are over 3,000 years old and still perfectly edible. ",timeToWrite);
+           break;
+           case 1:
+           WordElapser.writeWordWithTimeDelay("Did you know?\nThe shortest war in history took place between Britain and Zanzibar on August 27, 1896.\n" +
+           " It lasted just 38 minutes.",timeToWrite);
+           break;
+           case 2:
+           WordElapser.writeWordWithTimeDelay("Did you know?\nOctopuses have three hearts. Two pump blood to the gills,\n" +
+           "while the third pumps it to the rest of the body.",timeToWrite);
+           break;
+           case 3:
+           WordElapser.writeWordWithTimeDelay("Did you know?\nThe Eiffel Tower can be 15 cm taller during the summer\ndue to the expansion of the iron in the heat.",timeToWrite);
+           break;
+           case 4:
+           WordElapser.writeWordWithTimeDelay("Did you know?\nThe unicorn is Scotland's national animal.",timeToWrite);
+           break;
+           case 5:
+           WordElapser.writeWordWithTimeDelay("Did you know?\nBananas are berries, but strawberries are not.\nIn botanical terms," +
+           " a berry is a fruit produced from the ovary of a single flower\nwith seeds embedded in the flesh. ",timeToWrite);
+           break;
+       }
+    }
+    public static void EmptyInventory(){
+        ColorChanger.printTextToGreen("You have nothing in your inventory");
     }
 }

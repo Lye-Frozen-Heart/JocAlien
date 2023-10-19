@@ -65,7 +65,17 @@ public class Player extends Character {
       System.out.println("You dont have the card to open de door");
     }
   }
-
+  public boolean doPlayerHaveSuit(){
+    //TODO Hay que hacer que los objetos esten en el inventario
+    boolean resp = false;
+    for (Item item : inventory){
+      if(item.getItemId() == ItemInitializer.SPACE_SUIT ){
+        setSuitWorn(true);
+        resp = true;
+      }
+    }
+    return resp;
+  }
   /**
    * 
    */
@@ -138,11 +148,11 @@ public class Player extends Character {
   }
   public void printItems(){
     if(inventory.isEmpty()){
-      System.out.println("you have nothing in your inventory");
+      Strings.EmptyInventory();
     }else{
-      System.out.println("you have ");
+      ColorChanger.printTextToBlue("You have: ");
       for (Item items :inventory) {
-        System.out.println(items.getName()+"test");
+        System.out.println(items.getName());
       }
     }
 

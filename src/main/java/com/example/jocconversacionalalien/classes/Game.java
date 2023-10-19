@@ -8,11 +8,12 @@ public class Game {
     static Zone[] zones = {};
     static Item[] items = {};
     static Player player;
+    static Enemy alien;
 
     static {
         player = new Player();
+        alien = new Enemy();
         player.setInventory(player.addItemsInventory());
-
     }
 
     static Menus menus = new Menus();
@@ -52,7 +53,7 @@ public class Game {
             } while (!validAnswer);
             switch (option) {
                 case START_GAME:
-                    menus.LightOnMenu(zones, items, player, iHall);
+                    menus.LightOnMenu(zones, items, player, iHall,alien);
                     break;
                 case CREDITS:
                     Strings.Credits();
