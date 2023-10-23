@@ -31,17 +31,13 @@ public class ArtificialIntelligence {
         if (IsRandom()) {
             int randomZone;
             do {
-                randomZone = random.nextInt(9) + 1;
+                randomZone = random.nextInt(8) + 1;
             } while (randomZone == flashlightLocation - 1);
-
             zone = gameZones[(randomZone)].getName();
-
-            return zone;
-
         } else {
             zone = gameZones[flashlightLocation - 1].getName();
-            return zone;
         }
+        return zone;
     }
 
     public boolean IsRandom(){

@@ -6,19 +6,19 @@ public class Game {
 
 
     static Zone[] zones = {};
-    static Item[] items = {};
+    public static Item[] items = {};
     static Player player;
 
     static {
         player = new Player();
-        player.setInventory(player.addItemsInventory());
+
 
     }
 
     static Menus menus = new Menus();
 
     static ArtificialIntelligence iHall = new ArtificialIntelligence();
-
+    static Enemy alien = new Enemy();
 
 
     public static void startGame() {
@@ -28,6 +28,7 @@ public class Game {
         //initialize
         zones = ZoneInitializer.setUpZones();
         items = ItemInitializer.setUpItems();
+        player.setInventory(player.addItemsInventory());
 
         //Start Game
 
@@ -35,7 +36,7 @@ public class Game {
         final int CREDITS = 2;
         final int EXIT_GAME = 3;
 
-        boolean validAnswer = false;
+        boolean validAnswer;
         int option = 0;
         Scanner scanner = new Scanner(System.in);
 
@@ -52,7 +53,7 @@ public class Game {
             } while (!validAnswer);
             switch (option) {
                 case START_GAME:
-                    menus.LightOnMenu(zones, items, player, iHall);
+                    menus.LightOnMenu(zones, items, player, alien, iHall);
                     break;
                 case CREDITS:
                     Strings.Credits();

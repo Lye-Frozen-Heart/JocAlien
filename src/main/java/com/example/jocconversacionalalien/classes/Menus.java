@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 public class Menus {
     static Scanner scanner = new Scanner(System.in);
-
+    static Item item = new Item();
     static int option = 0;
     static boolean validAnswer = false;
 
 
-
-    public void LightOnMenu(Zone[] zones, Item[] items, Player player, ArtificialIntelligence iHall) {
+    public void LightOnMenu(Zone[] zones, Item[] items, Player player, Enemy alien, ArtificialIntelligence iHall) {
         final int SPEAK_IHALL = 1;
         final int LOOK_DOORS = 2;
         final int LOOK_ITEMS = 3;
@@ -40,10 +39,11 @@ public class Menus {
                     player.LookAround(zones[player.getIdZone() - 1].getAvailableZones());
                     break;
                 case LOOK_ITEMS:
-                    zones[player.getIdZone()-1].printItems();
+                    zones[player.getIdZone() - 1].printItems();
                     break;
                 case OPEN_BACKPACK:
                     player.printItems();
+                    backpackItemSelection(items, player, alien);
                     break;
                 case MOVE:
                     movement(player, zones);
@@ -116,6 +116,94 @@ public class Menus {
 
     }
 
+    private static void backpackItemSelection(Item[] items, Player player, Enemy alien) {
+        final int EXIT = 0;
+        do {
+            validAnswer = false;
+            Strings.MenuItemSelection();
+            if (scanner.hasNextInt()) {
+                option = scanner.nextInt();
+                if (option >= 0 && option < items.length + 1) {
+                    validAnswer = true;
+                } else {
+                    Strings.InputError();
+                }
+            } else {
+                Strings.InputError();
+            }
+        } while (!validAnswer);
+        if (option != EXIT) {
+            backpackMenu(items, player, option, alien);
+        }
+
+
+    }
+
+    private static void backpackMenu(Item[] items, Player player, int selectedItem, Enemy alien) {
+
+        final int ITEM_DESCRIPTION = 1;
+        final int USE_ITEM = 2;
+        final int DROP_ITEM = 3;
+        final int EXIT = 4;
+
+        final int CARD = 0;
+        final int NPC_CARD = 1;
+        final int TOOL = 2;
+        final int FLASHLIGHT = 3;
+        final int SPACE_SUIT = 4;
+        final int DONUT = 5;
+
+
+        do {
+            do {
+                validAnswer = false;
+                Strings.MenuBackpack();
+                if (scanner.hasNextInt()) {
+                    option = scanner.nextInt();
+                    validAnswer = true;
+                } else {
+                    Strings.InputError();
+                }
+            } while (!validAnswer);
+            switch (option) {
+                case ITEM_DESCRIPTION:
+                    player.getItemDescription(selectedItem, items);
+                    break;
+                case USE_ITEM:
+                    switch (selectedItem) {
+                        case CARD, NPC_CARD:
+                            item.useCard();
+                            break;
+                        case TOOL:
+                            item.useTool(player, alien);
+                            break;
+                        case FLASHLIGHT:
+                            item.useFlashlight(player);
+                            break;
+                        case SPACE_SUIT:
+                            item.useSpaceSuit(player);
+                            break;
+                        case DONUT:
+                            item.useDonut(items, selectedItem, player, alien);
+                            break;
+                    }
+                    break;
+                case DROP_ITEM:
+                    player.dropItem(selectedItem, items, player);
+                    player.setInventory(player.addItemsInventory());
+                    option = EXIT;
+                    break;
+                case EXIT:
+                    break;
+                default:
+                    Strings.InputError();
+            }
+
+        } while (option != EXIT);
+
+
+    }
+
     private static void movement(Player player, Zone[] zones) {
         validAnswer = false;
         Scanner scanner = new Scanner(System.in);
@@ -141,8 +229,4 @@ public class Menus {
 
 
     }
-
-
-
-
 }
