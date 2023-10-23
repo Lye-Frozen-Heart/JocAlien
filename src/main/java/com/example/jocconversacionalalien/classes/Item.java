@@ -79,4 +79,7 @@ public class Item {
   public void useCard(){
     Strings.UseCard();
   }
+
+  public void setStatus(boolean b) {
+  }
 }
