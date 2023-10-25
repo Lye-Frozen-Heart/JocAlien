@@ -27,6 +27,10 @@ public class ArtificialIntelligence {
         Stream<Zone> zonaAlien = Arrays.stream(zones).filter(filter -> filter.getIdZone() == alien.getIdZone());
         if(!IsRandom()) zonaAlien.forEach( zona -> Strings.WhereIsAlien(zona.getName())); else Strings.RandomFact();
     }
+    public void askForNpc(Zone[] zones,NonPlayableCharacter npc){
+        Stream<Zone> zonaNpc = Arrays.stream(zones).filter(filter -> filter.getIdZone() == npc.getIdZone());
+        if(!IsRandom()) zonaNpc.forEach( zona -> Strings.WhereIsNpc(zona.getName())); else Strings.RandomFact();
+    }
 
     public String askForFlashlight() {
 

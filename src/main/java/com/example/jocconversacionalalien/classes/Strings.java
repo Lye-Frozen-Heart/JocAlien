@@ -24,7 +24,7 @@ public class Strings {
 
     public static void MenuIHall() {
         ColorChanger.printTextToBlue(
-                "Hi i'm IHall what do you need? \n1 - Flashlight location, \n2 - Alien location, \n3 - Open door, \n4 - What to do, \n5 - Sorry my bad i didnt what to speak with you"
+                "Hi i'm IHall what do you need? \n1 - Flashlight location \n2 - Alien location \n3 - Open door \n4 - What to do \n5 - Companion location \n6 - Sorry my bad i didnt what to speak with you"
         );
     }
 
@@ -103,9 +103,13 @@ public class Strings {
     public static void AlienIsHere(){
         ColorChanger.printTextToRed("You feel chills down your spine. Something dangerous is here...");
     }
+    public static void NpcIsHere(){
+        ColorChanger.printTextToGreen("Tu compañero está en la sala ve a decirle hola!");
+    }
     public static void WhereIsAlien(String text){
         ColorChanger.printTextToBlue("The alien is located in: " + text);
     }
+    public static void WhereIsNpc(String text){ColorChanger.printTextToBlue("Your companion is located in: " + text);}
 
     public static void RandomFact(){
        int randomFact = (int)(Math.random()*5)+1;

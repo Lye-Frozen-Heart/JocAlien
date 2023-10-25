@@ -20,6 +20,7 @@ public class Enemy extends Character{
         this.idZone = idZone;
     }
     public void pairShift(int shiftCount){
+        //SE UTILIZA PARA MOVER AL ALIEN
         if(shiftCount % 2 == 0 && !asleep){
             int randomZone = (int)(Math.random()*9) + 1; //Este random funciona
             setIdZone(randomZone);

@@ -27,7 +27,7 @@ public class ItemInitializer {
         card.setItemId(CARD);
         card.setName("Card");
         card.setDescription("Its a card used to open rooms");
-        card.setOwner(NPC);
+        card.setOwner(PLAYER);
         card.setLocalization(0);
         card.setStatus(false);
 

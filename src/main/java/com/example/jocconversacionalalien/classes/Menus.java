@@ -11,13 +11,14 @@ public class Menus {
 
 
 
-    public void LightOnMenu(Zone[] zones, Item[] items, Player player, ArtificialIntelligence iHall, Enemy alien) {
+    public void LightOnMenu(Zone[] zones, Item[] items, Player player, ArtificialIntelligence iHall, Enemy alien, NonPlayableCharacter npc) {
         final int SPEAK_IHALL = 1;
         final int LOOK_DOORS = 2;
         final int LOOK_ITEMS = 3;
         final int OPEN_BACKPACK = 4;
         final int MOVE = 5;
-        final int EXIT_GAME = 6;
+        final int TALK_NPC = 6;
+        final int EXIT_GAME = 7;
 
 
         zones[player.getIdZone() - 1].getDescriptionZone();
@@ -32,11 +33,12 @@ public class Menus {
                     Strings.InputError();
                 }
                 alien.pairShift(shift);
+                npc.fourthShift(shift);
             } while (!validAnswer);
 
             switch (option) {
                 case SPEAK_IHALL:
-                    SpeakIHall(items, zones, player, iHall,alien);
+                    SpeakIHall(items, zones, player, iHall,alien,npc);
                     shift++;
                     break;
                 case LOOK_DOORS:
@@ -56,6 +58,9 @@ public class Menus {
                     zones[player.getIdZone() - 1].getDescriptionZone();
                     shift++;
                     break;
+                case TALK_NPC:
+
+                break;
                 case EXIT_GAME:
                     Game.exitGame();
                     break;
@@ -63,17 +68,19 @@ public class Menus {
                     Strings.InputError();
             }
             if(alien.getIdZone() == player.getIdZone()) Strings.AlienIsHere(); //Si el alien está en la sala...
+            if(npc.getIdZone() == player.getIdZone()) Strings.NpcIsHere();
            // if (player.getIdZone() == ZoneInitializer.EXIT_ROOM && player.doPlayerHaveSuit()) option = EXIT_GAME;
         } while (option != EXIT_GAME);
 
     }
 
-    public void SpeakIHall(Item[] items, Zone[] zones, Player player, ArtificialIntelligence iHall,Enemy alien) {
+    public void SpeakIHall(Item[] items, Zone[] zones, Player player, ArtificialIntelligence iHall,Enemy alien,NonPlayableCharacter npc) {
         final int FLASHLIGHT_LOCATION = 1;
         final int ALIEN_LOCATION = 2;
         final int OPEN_DOOR = 3;
         final int HELP = 4;
-        final int EXIT_IHALL = 5;
+        final int COMPANION_LOCATION = 5;
+        final int EXIT_IHALL = 6;
         do {
             do {
                 validAnswer = false;
@@ -112,6 +119,8 @@ public class Menus {
                 case HELP:
                     Strings.IHallHelp();
                     break;
+                case COMPANION_LOCATION:
+                    iHall.askForNpc(zones,npc);
                 case EXIT_IHALL:
                     Strings.IHallExit();
                     break;

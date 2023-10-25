@@ -9,10 +9,13 @@ public class Game {
     static Item[] items = {};
     static Player player;
     static Enemy alien;
+    static NonPlayableCharacter npc;
 
     static {
         player = new Player();
         alien = new Enemy();
+        npc = new NonPlayableCharacter();
+        npc.setIdZone(ZoneInitializer.BEDROOM);
         player.setInventory(player.addItemsInventory());
     }
 
@@ -53,7 +56,7 @@ public class Game {
             } while (!validAnswer);
             switch (option) {
                 case START_GAME:
-                    menus.LightOnMenu(zones, items, player, iHall,alien);
+                    menus.LightOnMenu(zones, items, player, iHall,alien,npc);
                     break;
                 case CREDITS:
                     Strings.Credits();
@@ -81,20 +84,20 @@ public class Game {
     }
 
     //TODO                        /////////////////////////////////
-    //TODO                       //            WORKSHOP         //
+    //TODO                       //            WORKSHOP     1    //
     //TODO         /////////////////////                      ///////////////////////
     //TODO         ||                  |                      |                     ||
-    //TODO         ||    DRESSER                OFFICES               BATHROOM      ||
+    //TODO         ||    LOCKER  4             OFFICES    2           BATHROOM 8    ||
     //TODO         ||                  |                     |                      ||
     //TODO         ||/////      //////////////      /////////////////       ////////||
     //TODO         ||                  |      MACHINE        |                      ||
-    //TODO         ||                  |       ROOM          |                      ||
+    //TODO         ||                  |       ROOM       3  |                      ||
     //TODO         ||////        /////////////////////////////////////     /////////||
     //TODO         ||                  |                     |                      ||
-    //TODO         ||     KITCHEN           DINNING                BEDROOM          ||
-    //TODO         ||                  |     ROOM            |                      ||
+    //TODO         ||     KITCHEN  5          DINNING   6            BEDROOM 7      ||
+    //TODO         ||                  |        ROOM         |                      ||
     //TODO        /////////////////////////////    /////////////////////////////////||
-    //TODO                                    EXIT
+    //TODO                                    EXIT 9
 
 
     public static void main(String[] args) {
