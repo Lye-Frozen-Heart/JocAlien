@@ -12,7 +12,7 @@ public class Menus {
     private static void setUpItems(Zone[] zones,Item[] items,Player player){
         player.setInventory(player.addItemsInventory());
 
-        zones[player.getIdZone()-1].setItems(Zone.addItems(items));
+        zones[player.getIdZone()-1].setItems(Zone.addItems(items, player.getIdZone()));
     }
 
 

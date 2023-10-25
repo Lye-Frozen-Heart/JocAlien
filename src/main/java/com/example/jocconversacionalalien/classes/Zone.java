@@ -6,7 +6,7 @@ public class Zone {
     private String name;
     private static int idZone;
     private boolean hasItem;
-    private ArrayList<Item> items = new ArrayList<Item>();
+    private ArrayList<Item> items;
     private boolean hasNpc;
     private boolean hasLight;
     private boolean[] doors = {false, false, false, false};
@@ -99,7 +99,7 @@ public class Zone {
     }
 
     public void printItems(){
-        if(items== null){
+        if(items.toArray().length== 0){
             System.out.println("there is nothing in this room");
         }else{
             System.out.println("theres something on the ground");
@@ -108,7 +108,7 @@ public class Zone {
             }
         }
     }
-    public static ArrayList<Item> addItems(Item[]items){
+    public static ArrayList<Item> addItems(Item[]items,int idZone){
 
                 ArrayList<Item> itemsToReturn = new ArrayList<Item>();
 
