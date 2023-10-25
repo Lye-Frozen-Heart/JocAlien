@@ -22,8 +22,7 @@ public class NonPlayableCharacter extends Character{
     private int idZone;
     @Override
     protected void GoTo(int imputDirection,boolean[] doors, int[] directions, int[]availableZones){}
-    @Override
-    protected void ToTake(){}
+
     @Override
     protected void CheckZone(int idZone) {
         // TODO Auto-generated method stub

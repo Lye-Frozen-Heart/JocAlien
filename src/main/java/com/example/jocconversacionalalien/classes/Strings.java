@@ -21,6 +21,16 @@ public class Strings {
                 "What do you want to do? \n1 - Speak with iHall , \n2 - Look for doors, \n3 - Look for items, \n4 - Open Backpack, \n5 - Move to another room, \n6 - Exit Game"
         );
     }
+    public static void MenuItemSelection() {
+        ColorChanger.printTextToBlue(
+                "Select the item you want to look closer or pres 0 to EXIT "
+        );
+    }
+    public static void MenuBackpack() {
+        ColorChanger.printTextToBlue(
+                "what do you want to do? \n1 - Watch item closely \n2 - use item \n3 - drop item \n4 - Exit Backpack"
+        );
+    }
 
     public static void MenuIHall() {
         ColorChanger.printTextToBlue(
@@ -67,6 +77,15 @@ public class Strings {
     public static void IHallFlashlightLocation(String flashlightLocation) {
         System.out.println("The Flashlight is located at: " + flashlightLocation);
     }
+    public static void ItemDropped(String playerLocation) {
+        System.out.println("Item Dropped at " + playerLocation);
+    }
+    public static void UseCard( ) {
+        System.out.println("You can ask IHall to open doors with it");
+    }
+    public static void NoInteracton( ) {
+        System.out.println("You can't use this item now");
+    }
 
     public static void IHallHelp() {
         NotImplemented();
@@ -79,15 +98,14 @@ public class Strings {
 
     public static void GameIntroduction() {
         WordElapser.writeWordWithTimeDelay(
-                "It's the year 2120 D.C. The spaceship P.A.I XXII explores the empty void of space. It's destination... The planet SM-2523G where it's" +
-                        "believed to be the appropriate environment to root another human life colony.We can't stay longer freely on Earth so it is necessary to explore other planets." +
-                        "\nThe chief of the ship awakes from the inducted sleep. The main computer of the ship, Halley, has detected one anomaly inside the ship so it does need the Captain intervention" +
-                        "\nHalley: How did you sleep Captain? Sadly I have to get you up from your sleep...But I detected an anomaly inside the ship." +
-                        "\nCaptain: *sighs* I hope it was worth it for you to awake me...Or you will need an intensive reprogramming session." +
-                        "\nHalley: I guarantee you Captain, it's not a false alarm. I can't risk to be punished like that." +
-                        "\nCaptain: Okay Halley, explain to me the situation as fast as you can please. I want to take my sleep again." +
-                        "\n<*>Halley proceeds to explain the status of the ship, seems like a little meteor hit one side of the complex. The system" +
-                        " needs a repair because the propulsion engine has been damaged.",
+                """
+                        It's the year 2120 D.C. The spaceship P.A.I XXII explores the empty void of space. It's destination... The planet SM-2523G where it's believed to be the appropriate environment to root another human life colony.We can't stay longer freely on Earth so it is necessary to explore other planets.
+                        The chief of the ship awakes from the inducted sleep. The main computer of the ship, Halley, has detected one anomaly inside the ship so it does need the Captain intervention
+                        Halley: How did you sleep Captain? Sadly I have to get you up from your sleep...But I detected an anomaly inside the ship.
+                        Captain: *sighs* I hope it was worth it for you to awake me...Or you will need an intensive reprogramming session.
+                        Halley: I guarantee you Captain, it's not a false alarm. I can't risk to be punished like that.
+                        Captain: Okay Halley, explain to me the situation as fast as you can please. I want to take my sleep again.
+                        <*>Halley proceeds to explain the status of the ship, seems like a little meteor hit one side of the complex. The system needs a repair because the propulsion engine has been damaged.""",
                 timeToWrite
         );
     }

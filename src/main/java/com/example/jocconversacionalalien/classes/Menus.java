@@ -9,9 +9,14 @@ public class Menus {
     static int shift = 0;
     static boolean validAnswer = false;
 
+    private static void setUpItems(Zone[] zones,Item[] items,Player player){
+        player.setInventory(player.addItemsInventory());
+
+        zones[player.getIdZone()-1].setItems(Zone.addItems(items));
+    }
 
 
-    public void LightOnMenu(Zone[] zones, Item[] items, Player player, ArtificialIntelligence iHall, Enemy alien, NonPlayableCharacter npc) {
+    public void LightOnMenu(Zone[] zones, Item[] items, Player player, Enemy alien, NonPlayableCharacter npc, ArtificialIntelligence iHall) {
         final int SPEAK_IHALL = 1;
         final int LOOK_DOORS = 2;
         final int LOOK_ITEMS = 3;
@@ -51,6 +56,7 @@ public class Menus {
                     break;
                 case OPEN_BACKPACK:
                     player.printItems();
+                    backpackItemSelection(items, player, alien, zones);
                     shift++;
                     break;
                 case MOVE:
@@ -132,6 +138,94 @@ public class Menus {
 
     }
 
+    private static void backpackItemSelection(Item[] items, Player player, Enemy alien, Zone[] zones) {
+        final int EXIT = 0;
+        do {
+            validAnswer = false;
+            Strings.MenuItemSelection();
+            if (scanner.hasNextInt()) {
+                option = scanner.nextInt();
+                if (option >= 0 && option < items.length + 1) {
+                    validAnswer = true;
+                } else {
+                    Strings.InputError();
+                }
+            } else {
+                Strings.InputError();
+            }
+        } while (!validAnswer);
+        if (option != EXIT) {
+            backpackMenu(items, player, option, alien, zones);
+        }
+
+
+    }
+
+    private static void backpackMenu(Item[] items, Player player, int selectedItem, Enemy alien, Zone[] zones) {
+
+        final int ITEM_DESCRIPTION = 1;
+        final int USE_ITEM = 2;
+        final int DROP_ITEM = 3;
+        final int EXIT = 4;
+
+        final int CARD = 0;
+        final int NPC_CARD = 1;
+        final int TOOL = 2;
+        final int FLASHLIGHT = 3;
+        final int SPACE_SUIT = 4;
+        final int DONUT = 5;
+
+
+        do {
+            do {
+                validAnswer = false;
+                Strings.MenuBackpack();
+                if (scanner.hasNextInt()) {
+                    option = scanner.nextInt();
+                    validAnswer = true;
+                } else {
+                    Strings.InputError();
+                }
+            } while (!validAnswer);
+            switch (option) {
+                case ITEM_DESCRIPTION:
+                    player.getItemDescription(selectedItem, items);
+                    break;
+                case USE_ITEM:
+                    switch (selectedItem) {
+                        case CARD, NPC_CARD:
+                            item.useCard();
+                            break;
+                        case TOOL:
+                            item.useTool(player, alien);
+                            break;
+                        case FLASHLIGHT:
+                            item.useFlashlight(player);
+                            break;
+                        case SPACE_SUIT:
+                            item.useSpaceSuit(player);
+                            break;
+                        case DONUT:
+                            item.useDonut(items, selectedItem, player, alien);
+                            break;
+                    }
+                    break;
+                case DROP_ITEM:
+                    player.dropItem(selectedItem, items, player);
+                    setUpItems(zones,items, player);
+                    option = EXIT;
+                    break;
+                case EXIT:
+                    break;
+                default:
+                    Strings.InputError();
+            }
+
+        } while (option != EXIT);
+
+
+    }
+
     private static void movement(Player player, Zone[] zones) {
         validAnswer = false;
         Scanner scanner = new Scanner(System.in);
@@ -157,8 +251,5 @@ public class Menus {
 
 
     }
-
-
-
 
 }

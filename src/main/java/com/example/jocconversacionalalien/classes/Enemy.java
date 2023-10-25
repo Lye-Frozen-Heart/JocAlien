@@ -12,9 +12,6 @@ public class Enemy extends Character{
     private ArrayList<Item> inventory = new ArrayList<Item>();
     @Override
     protected void ToTake() {}
-    public int getIdZone() {
-        return idZone;
-    }
 
     public void setIdZone(int idZone) {
         this.idZone = idZone;
@@ -34,5 +31,17 @@ public class Enemy extends Character{
     @Override
     protected void GoTo(int inputDirection, boolean[] doors, int[] directions, int[] availableZones) {
 
+    }
+
+    public int getIdZone() {
+        return idZone;
+    }
+
+    public boolean isAsleep() {
+        return asleep;
+    }
+
+    public void setAsleep(boolean asleep) {
+        this.asleep = asleep;
     }
 }

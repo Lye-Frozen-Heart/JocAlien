@@ -6,7 +6,7 @@ public class Game {
 
 
     static Zone[] zones = {};
-    static Item[] items = {};
+    public static Item[] items = {};
     static Player player;
     static Enemy alien;
     static NonPlayableCharacter npc;
@@ -30,8 +30,12 @@ public class Game {
         Strings.GameIntroduction();
 
         //initialize
-        zones = ZoneInitializer.setUpZones();
         items = ItemInitializer.setUpItems();
+        player.setInventory(player.addItemsInventory());
+        zones = ZoneInitializer.setUpZones(items);
+
+        ArtificialIntelligence.setGameZones(zones);
+        ArtificialIntelligence.setGameItems(items);
 
         //Start Game
 
@@ -56,7 +60,7 @@ public class Game {
             } while (!validAnswer);
             switch (option) {
                 case START_GAME:
-                    menus.LightOnMenu(zones, items, player, iHall,alien,npc);
+                    menus.LightOnMenu(zones, items, player, iHall,alien,npc,iHall);
                     break;
                 case CREDITS:
                     Strings.Credits();
@@ -84,20 +88,20 @@ public class Game {
     }
 
     //TODO                        /////////////////////////////////
-    //TODO                       //            WORKSHOP     1    //
+    //TODO                       //            WORKSHOP         //
     //TODO         /////////////////////                      ///////////////////////
     //TODO         ||                  |                      |                     ||
-    //TODO         ||    LOCKER  4             OFFICES    2           BATHROOM 8    ||
+    //TODO         ||    DRESSER                OFFICES               BATHROOM      ||
     //TODO         ||                  |                     |                      ||
     //TODO         ||/////      //////////////      /////////////////       ////////||
     //TODO         ||                  |      MACHINE        |                      ||
-    //TODO         ||                  |       ROOM       3  |                      ||
+    //TODO         ||                  |       ROOM          |                      ||
     //TODO         ||////        /////////////////////////////////////     /////////||
     //TODO         ||                  |                     |                      ||
-    //TODO         ||     KITCHEN  5          DINNING   6            BEDROOM 7      ||
-    //TODO         ||                  |        ROOM         |                      ||
+    //TODO         ||     KITCHEN           DINNING                BEDROOM          ||
+    //TODO         ||                  |     ROOM            |                      ||
     //TODO        /////////////////////////////    /////////////////////////////////||
-    //TODO                                    EXIT 9
+    //TODO                                    EXIT
 
 
     public static void main(String[] args) {

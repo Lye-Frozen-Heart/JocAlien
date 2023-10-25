@@ -27,7 +27,7 @@ public class ItemInitializer {
         card.setItemId(CARD);
         card.setName("Card");
         card.setDescription("Its a card used to open rooms");
-        card.setOwner(PLAYER);
+        card.setOwner(NPC);
         card.setLocalization(0);
         card.setStatus(false);
 
@@ -52,7 +52,7 @@ public class ItemInitializer {
         flashlight.setName("Flashlight");
         flashlight.setDescription("You can't see anything? Try to turn it on");
         flashlight.setOwner(NO_OWNER);
-        flashlight.setLocalization(3); //random.nextInt(9) + 1
+        flashlight.setLocalization(random.nextInt(8) + 1); //random.nextInt(8) + 1
         flashlight.setStatus(false);
 
         Item spaceSuit = new Item();
