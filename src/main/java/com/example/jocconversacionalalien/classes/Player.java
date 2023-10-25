@@ -38,10 +38,37 @@ public class Player extends Character {
       System.out.println("You dont have the card to open de door");
     }
   }
+  public boolean doPlayerHaveSuit(){
+    //TODO Hay que hacer que los objetos esten en el inventario
+    boolean resp = false;
+    for (Item item : inventory){
+      if(item.getItemId() == ItemInitializer.SPACE_SUIT ){
+        setSuitWorn(true);
+        resp = true;
+      }
+    }
+    return resp;
+  }
+  /**
+   * 
+   */
+
+  public ArrayList<Item> getInventory() {
+    return inventory;
+  }
+
+  public boolean getInfected() {
+    return infected;
+  }
+
+  public boolean getCanBreath() {
+    return canBreath;
+  }
 
   public boolean getSuitWorn() {
     return suitWorn;
   }
+
   public  int getIdZone() {
     return idZone;
   }
@@ -52,12 +79,19 @@ public class Player extends Character {
   public void setInventory(ArrayList<Item> inventory) {
     this.inventory = inventory;
   }
+
   public void setInfected(boolean infected) {
     this.infected = infected;
   }
+
+  public void setCanBreath(boolean canBreath) {
+    this.canBreath = canBreath;
+  }
+
   public void setSuitWorn(boolean suitWorn) {
     this.suitWorn = suitWorn;
   }
+
   public void setIdZone(int idZone) {
     this.idZone = idZone;
   }
@@ -105,9 +139,9 @@ public class Player extends Character {
   public void printItems(){
     int num =1;
     if(inventory.isEmpty()){
-      System.out.println("you have nothing in your inventory");
+      Strings.EmptyInventory();
     }else{
-      System.out.println("you have ");
+      ColorChanger.printTextToBlue("You have: ");
       for (Item items :inventory) {
         System.out.println(num+ " - "+items.getName());
         num++;
@@ -115,6 +149,7 @@ public class Player extends Character {
     }
 
   }
+
   public ArrayList<Item> addItemsInventory(){
 
     ArrayList<Item> itemsToReturn = new ArrayList<Item>();
@@ -122,6 +157,7 @@ public class Player extends Character {
     for(int i =0; i< Game.items.length;i++){
       if(Game.items[i].getOwner() == 1){
         itemsToReturn.add(Game.items[i]);
+
       }
     }
     return itemsToReturn;

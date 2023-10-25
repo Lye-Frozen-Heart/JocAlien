@@ -48,6 +48,9 @@ public class Zone {
     public int[] getDirections() {
         return directions;
     }
+
+    public  int getIdZone() {return idZone;}
+
     public boolean isAccessible() {
         return accessible;
     }

@@ -16,7 +16,7 @@ public class ItemInitializer {
     private static final int NPC_CARD = 1;
     private static final int TOOL = 2;
     private static final int FLASHLIGHT = 3;
-    private static final int SPACE_SUIT = 4;
+    public static final int SPACE_SUIT = 4;
     private static final int DONUT = 5;
 
     static Random random = new Random();
@@ -27,8 +27,8 @@ public class ItemInitializer {
         card.setItemId(CARD);
         card.setName("Card");
         card.setDescription("Its a card used to open rooms");
-        card.setOwner(PLAYER);
-        card.setLocalization(0);//not final
+        card.setOwner(NPC);
+        card.setLocalization(0);
         card.setStatus(false);
 
         Item npcCard = new Item();
@@ -36,7 +36,7 @@ public class ItemInitializer {
         npcCard.setName("NPC Card");
         npcCard.setDescription("Its a card used to open rooms");
         npcCard.setOwner(NPC);
-        npcCard.setLocalization(3);
+        npcCard.setLocalization(0);
         npcCard.setStatus(false);
 
         Item tool = new Item();

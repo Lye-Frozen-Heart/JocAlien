@@ -3,15 +3,15 @@ package com.example.jocconversacionalalien.classes;
 public class ZoneInitializer {
 
     private static final int NO_ROOM = 0;
-    private static final int WORKSHOP = 1;
-    private static final int OFFICES = 2;
-    private static final int MACHINE_ROOM = 3;
-    private static final int LOCKER_ROOM = 4;
-    private static final int KITCHEN = 5;
-    private static final int DINNING_ROOM = 6;
-    private static final int BEDROOM = 7;
-    private static final int BATHROOM = 8;
-    private static final int EXIT_ROOM = 9;
+    public static final int WORKSHOP = 1;
+    public static final int OFFICES = 2;
+    public static final int MACHINE_ROOM = 3;
+    public static final int LOCKER_ROOM = 4;
+    public static final int KITCHEN = 5;
+    public static final int DINNING_ROOM = 6;
+    public static final int BEDROOM = 7;
+    public static final int BATHROOM = 8;
+    public static final int EXIT_ROOM = 9;
 
     //CONSTANTS FOR DOORS
     private static final int DOOR_OPEN = 1;
@@ -150,7 +150,7 @@ public class ZoneInitializer {
         dinningRoom.setAvailableZones(new int[]{NO_ROOM, BEDROOM, EXIT_ROOM, KITCHEN});
         dinningRoom.setItems(dinningRoom.addItems(items));
         dinningRoom.setDescriptionZone(
-                "A subliminal place to be.Desks and chairs get along your entire sight.\n" +
+                "A subliminal place to be.\nDesks and chairs get along your entire sight.\n" +
                         "The darkness and the well ordered room start to get you nervous and dizzy."
         );
 
