@@ -52,6 +52,10 @@ public class Menus {
                     break;
                 case LOOK_ITEMS:
                     zones[player.getIdZone()-1].printItems();
+                    if(zones[player.getIdZone()-1].hasItems()){
+                        pickUpItemMenu(zones, player, items);
+                        setUpItems(zones,items,player);
+                    }
                     shift++;
                     break;
                 case OPEN_BACKPACK:
@@ -78,6 +82,25 @@ public class Menus {
             if(npc.getIdZone() == player.getIdZone()) Strings.NpcIsHere();
            // if (player.getIdZone() == ZoneInitializer.EXIT_ROOM && player.doPlayerHaveSuit()) option = EXIT_GAME;
         } while (option != EXIT_GAME);
+
+    }
+
+    private void pickUpItemMenu(Zone[] zones, Player player,Item[]items) {
+        do {
+            validAnswer = false;
+            Strings.MenuPickUpItem();
+            if (scanner.hasNextInt()) {
+                option = scanner.nextInt();
+                if (option > 0 && option < zones[player.getIdZone()-1].getItems().size() + 1) {
+                    validAnswer = true;
+                } else {
+                    Strings.InputError();
+                }
+            } else {
+                Strings.InputError();
+            }
+        } while (!validAnswer);
+        player.pickUpItem(option,items,player,zones);
 
     }
 

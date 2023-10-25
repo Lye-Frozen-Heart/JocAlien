@@ -29,15 +29,12 @@ public class Zone {
         System.out.println(this.descriptionZone);
         return descriptionZone;
     }
-    public boolean isHasItem() {
-        hasItem = false;
-        for (Item item : gameItems) {
-            if (item.getLocalization() == idZone) {
-                hasItem = true;
-                break;
-            }
+    public boolean hasItems() {
+       boolean hasItems = true;
+        if(items.size()==0){
+            hasItems= false;
         }
-        return hasItem;
+        return hasItems;
     }
     public boolean isHasLight() {
         return hasLight;
@@ -99,16 +96,23 @@ public class Zone {
     }
 
     public void printItems(){
+        int itemPosition =1;
         if(items.toArray().length== 0){
             System.out.println("there is nothing in this room");
         }else{
             System.out.println("theres something on the ground");
             for (Item itemlist :items) {
-                System.out.println(itemlist.getName());
+                System.out.println(itemPosition + " - "+itemlist.getName());
+                itemPosition++;
             }
         }
     }
-    public static ArrayList<Item> addItems(Item[]items,int idZone){
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public static ArrayList<Item> addItems(Item[]items, int idZone){
 
                 ArrayList<Item> itemsToReturn = new ArrayList<Item>();
 

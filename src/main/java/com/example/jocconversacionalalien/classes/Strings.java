@@ -18,12 +18,17 @@ public class Strings {
     //Menu Strings
     public static void MenuLightOnOptions() {
         ColorChanger.printTextToBlue(
-                "What do you want to do? \n1 - Speak with iHall , \n2 - Look for doors, \n3 - Look for items, \n4 - Open Backpack, \n5 - Move to another room, \n6 - Exit Game"
+                "What do you want to do? \n1 - Speak with iHall \n2 - Look for doors \n3 - Look for items \n4 - Open Backpack \n5 - Move to another room\n6 - Talk to NPC \n7 - Exit Game"
         );
     }
     public static void MenuItemSelection() {
         ColorChanger.printTextToBlue(
                 "Select the item you want to look closer or pres 0 to EXIT "
+        );
+    }
+    public static void MenuPickUpItem(){
+        ColorChanger.printTextToBlue(
+                "Select the item you want to pick up "
         );
     }
     public static void MenuBackpack() {
