@@ -129,7 +129,7 @@ public class Player extends Character {
   public void dropItem(int inventoryPosition, Item[] gameItems, Player player){
     int itemId = inventory.get(inventoryPosition -1).getItemId();
     gameItems[itemId].setOwner(0);
-    gameItems[itemId].setLocalization(player.getIdZone()-1);
+    gameItems[itemId].setLocalization(player.getIdZone());
     Strings.ItemDropped(arrayRoomNames[player.getIdZone()-1]);
   }
   public void getItemDescription(int inventoryPosition, Item[] gameItems){

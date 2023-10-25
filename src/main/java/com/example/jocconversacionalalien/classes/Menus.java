@@ -8,6 +8,13 @@ public class Menus {
     static int option = 0;
     static boolean validAnswer = false;
 
+    private static void setUpItems(Zone[] zones,Item[] items,Player player){
+        player.setInventory(player.addItemsInventory());
+
+        zones[player.getIdZone()-1].setItems(Zone.addItems(items));
+    }
+
+
 
     public void LightOnMenu(Zone[] zones, Item[] items, Player player, Enemy alien, ArtificialIntelligence iHall) {
         final int SPEAK_IHALL = 1;
@@ -43,7 +50,7 @@ public class Menus {
                     break;
                 case OPEN_BACKPACK:
                     player.printItems();
-                    backpackItemSelection(items, player, alien);
+                    backpackItemSelection(items, player, alien, zones);
                     break;
                 case MOVE:
                     movement(player, zones);
@@ -116,7 +123,7 @@ public class Menus {
 
     }
 
-    private static void backpackItemSelection(Item[] items, Player player, Enemy alien) {
+    private static void backpackItemSelection(Item[] items, Player player, Enemy alien, Zone[] zones) {
         final int EXIT = 0;
         do {
             validAnswer = false;
@@ -133,13 +140,13 @@ public class Menus {
             }
         } while (!validAnswer);
         if (option != EXIT) {
-            backpackMenu(items, player, option, alien);
+            backpackMenu(items, player, option, alien, zones);
         }
 
 
     }
 
-    private static void backpackMenu(Item[] items, Player player, int selectedItem, Enemy alien) {
+    private static void backpackMenu(Item[] items, Player player, int selectedItem, Enemy alien, Zone[] zones) {
 
         final int ITEM_DESCRIPTION = 1;
         final int USE_ITEM = 2;
@@ -190,7 +197,7 @@ public class Menus {
                     break;
                 case DROP_ITEM:
                     player.dropItem(selectedItem, items, player);
-                    player.setInventory(player.addItemsInventory());
+                    setUpItems(zones,items, player);
                     option = EXIT;
                     break;
                 case EXIT:
@@ -229,4 +236,5 @@ public class Menus {
 
 
     }
+
 }

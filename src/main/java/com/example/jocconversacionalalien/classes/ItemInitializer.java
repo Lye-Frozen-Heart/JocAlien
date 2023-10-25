@@ -28,7 +28,7 @@ public class ItemInitializer {
         card.setName("Card");
         card.setDescription("Its a card used to open rooms");
         card.setOwner(PLAYER);
-        card.setLocalization(3);//not final
+        card.setLocalization(0);//not final
         card.setStatus(false);
 
         Item npcCard = new Item();
@@ -36,7 +36,7 @@ public class ItemInitializer {
         npcCard.setName("NPC Card");
         npcCard.setDescription("Its a card used to open rooms");
         npcCard.setOwner(NPC);
-        npcCard.setLocalization(0);
+        npcCard.setLocalization(3);
         npcCard.setStatus(false);
 
         Item tool = new Item();

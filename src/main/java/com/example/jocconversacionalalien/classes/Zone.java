@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Zone {
     private String name;
-    private int idZone;
+    private static int idZone;
     private boolean hasItem;
     private ArrayList<Item> items = new ArrayList<Item>();
     private boolean hasNpc;
@@ -105,17 +105,15 @@ public class Zone {
             }
         }
     }
-    public ArrayList<Item> addItems(){
+    public static ArrayList<Item> addItems(Item[]items){
 
                 ArrayList<Item> itemsToReturn = new ArrayList<Item>();
 
-         for(int i =0; i< gameItems.length;i++){
-             if(gameItems[i].getLocalization() == idZone){
-                 itemsToReturn.add(gameItems[i]);
+         for(int i =0; i< items.length;i++){
+             if(items[i].getLocalization() == idZone){
+                 itemsToReturn.add(items[i]);
              }
          }
-        for (Item item : gameItems) {
-        }
         return itemsToReturn;
     }
 }

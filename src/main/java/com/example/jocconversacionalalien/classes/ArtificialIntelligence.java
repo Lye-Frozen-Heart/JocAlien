@@ -5,9 +5,17 @@ import static com.example.jocconversacionalalien.classes.ItemInitializer.random;
 public class ArtificialIntelligence {
     private boolean angry = false;
     private int randomQuestion ;
-    static Item[] gameItems = ItemInitializer.setUpItems();
-    static Zone[] gameZones = ZoneInitializer.setUpZones();
+    static Item[] gameItems ;
+    static Zone[] gameZones ;
     String zone;
+
+    public static void setGameItems(Item[] gameItems) {
+        ArtificialIntelligence.gameItems = gameItems;
+    }
+
+    public static void setGameZones(Zone[] gameZones) {
+        ArtificialIntelligence.gameZones = gameZones;
+    }
 
     private void sayTruth() {
     }

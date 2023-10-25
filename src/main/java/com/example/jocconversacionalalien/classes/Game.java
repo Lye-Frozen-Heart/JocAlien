@@ -26,9 +26,13 @@ public class Game {
         Strings.GameIntroduction();
 
         //initialize
-        zones = ZoneInitializer.setUpZones();
+
         items = ItemInitializer.setUpItems();
         player.setInventory(player.addItemsInventory());
+        zones = ZoneInitializer.setUpZones(items);
+
+        ArtificialIntelligence.setGameZones(zones);
+        ArtificialIntelligence.setGameItems(items);
 
         //Start Game
 
