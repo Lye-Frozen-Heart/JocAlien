@@ -60,7 +60,7 @@ public class Game {
             } while (!validAnswer);
             switch (option) {
                 case START_GAME:
-                    menus.LightOnMenu(zones, items, player, iHall,alien,npc,iHall);
+                    menus.LightOnMenu(zones, items, player,alien,npc,iHall);
                     break;
                 case CREDITS:
                     Strings.Credits();

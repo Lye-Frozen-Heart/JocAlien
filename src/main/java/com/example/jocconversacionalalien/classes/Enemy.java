@@ -10,8 +10,7 @@ public class Enemy extends Character{
     }
 
     private ArrayList<Item> inventory = new ArrayList<Item>();
-    @Override
-    protected void ToTake() {}
+
 
     public void setIdZone(int idZone) {
         this.idZone = idZone;

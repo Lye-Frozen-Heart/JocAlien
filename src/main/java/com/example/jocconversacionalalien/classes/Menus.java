@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Menus {
     static Scanner scanner = new Scanner(System.in);
-
+    static Item item = new Item();
     static int option = 0;
     static int shift = 0;
     static boolean validAnswer = false;
@@ -56,6 +56,7 @@ public class Menus {
                     break;
                 case OPEN_BACKPACK:
                     player.printItems();
+                    //TODO Peta al no tener items
                     backpackItemSelection(items, player, alien, zones);
                     shift++;
                     break;

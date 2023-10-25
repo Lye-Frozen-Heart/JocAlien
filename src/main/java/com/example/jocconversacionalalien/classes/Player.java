@@ -38,15 +38,6 @@ public class Player extends Character {
       System.out.println("You dont have the card to open de door");
     }
   }
-  public void ToClose(Item[]items, Zone[] zone,int door) {
-    if (hasCard(items)){
-      System.out.println("You successfully closed the door");
-
-      zone[0].setDirection( door,-1);
-    }else{
-      System.out.println("You dont have the card to open de door");
-    }
-  }
   public boolean doPlayerHaveSuit(){
     //TODO Hay que hacer que los objetos esten en el inventario
     boolean resp = false;
@@ -61,11 +52,6 @@ public class Player extends Character {
   /**
    * 
    */
-  public void LookAround(int[]availableZones){
-    ColorChanger.printTextToGreen("You look around...Directions you can see:" +
-    "\nHeading North: " + arrayRoomNames[availableZones[0]] + "\nTilting East: " + arrayRoomNames[availableZones[1]] +
-    "\nBacking South: " + arrayRoomNames[availableZones[2]] + "\nAnd tilting out to West: " + arrayRoomNames[availableZones[3]]);
-  }
 
   public ArrayList<Item> getInventory() {
     return inventory;
