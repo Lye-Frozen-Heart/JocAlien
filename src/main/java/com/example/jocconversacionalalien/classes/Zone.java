@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Zone {
     private String name;
-    private int idZone;
+    private static int idZone;
     private boolean hasItem;
     private ArrayList<Item> items = new ArrayList<Item>();
     private boolean hasNpc;
@@ -22,46 +22,13 @@ public class Zone {
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int[] getAvailableZones() {
         return availableZones;
     }
-
-    public void setAvailableZones(int[] availableZones) {
-        this.availableZones = availableZones;
-    }
-
     public String getDescriptionZone() {
         System.out.println(this.descriptionZone);
         return descriptionZone;
     }
-
-    public void setDescriptionZone(String descriptionZone) {
-        this.descriptionZone = descriptionZone;
-    }
-
-
-    private void openDoor() {
-    }
-
-    private void killPlayer() {
-    }
-
-    protected void useItem() {
-    }
-
-    public int getIdZone() {
-        return idZone;
-    }
-
-    public void setIdZone(int idZone) {
-        this.idZone = idZone;
-    }
-
     public boolean isHasItem() {
         hasItem = false;
         for (Item item : gameItems) {
@@ -69,71 +36,61 @@ public class Zone {
                 hasItem = true;
                 break;
             }
-
         }
         return hasItem;
     }
-
-    public void setHasItem(boolean hasItem) {
-        this.hasItem = hasItem;
-    }
-
-    public ArrayList<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
-    }
-
-    public boolean isHasNpc() {
-        return hasNpc;
-    }
-
-    public void setHasNpc(boolean hasNpc) {
-        this.hasNpc = hasNpc;
-    }
-
     public boolean isHasLight() {
         return hasLight;
     }
-
-    public void setHasLight(boolean hasLight) {
-        this.hasLight = hasLight;
-    }
-
     public boolean[] getDoors() {
         return doors;
     }
-
-    public void setDoors(boolean[] doors) {
-        this.doors = doors;
-    }
-
     public int[] getDirections() {
         return directions;
     }
-
-    public void setDirections(int[] directions) {
-        this.directions = directions;
-    }
-
-    public void setDirection(int door, int status) {
-        directions[door] = status;
-    }
-
     public boolean isAccessible() {
         return accessible;
     }
-
-    public void setAccessible(boolean accessible) {
-        this.accessible = accessible;
-    }
-
     public boolean isHasTraps() {
         return hasTraps;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setAvailableZones(int[] availableZones) {
+        this.availableZones = availableZones;
+    }
+    public void setDescriptionZone(String descriptionZone) {
+        this.descriptionZone = descriptionZone;
+    }
+    public void setIdZone(int idZone) {
+        this.idZone = idZone;
+    }
+    public void setHasItem(boolean hasItem) {
+        this.hasItem = hasItem;
+    }
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+    public void setHasNpc(boolean hasNpc) {
+        this.hasNpc = hasNpc;
+    }
+    public void setHasLight(boolean hasLight) {
+        this.hasLight = hasLight;
+    }
+    public void setDoors(boolean[] doors) {
+        this.doors = doors;
+    }
+    public void setDirections(int[] directions) {
+        this.directions = directions;
+    }
+    public void setDirection(int door, int status) {
+        directions[door] = status;
+    }
+    public void setAccessible(boolean accessible) {
+        this.accessible = accessible;
+    }
     public void setHasTraps(boolean hasTraps) {
         this.hasTraps = hasTraps;
     }
@@ -147,22 +104,16 @@ public class Zone {
                 System.out.println(itemlist.getName());
             }
         }
-
     }
-
-    public ArrayList<Item> addItems(){
+    public static ArrayList<Item> addItems(Item[]items){
 
                 ArrayList<Item> itemsToReturn = new ArrayList<Item>();
 
-         for(int i =0; i< gameItems.length;i++){
-             if(gameItems[i].getLocalization() == idZone){
-                 itemsToReturn.add(gameItems[i]);
-
+         for(int i =0; i< items.length;i++){
+             if(items[i].getLocalization() == idZone){
+                 itemsToReturn.add(items[i]);
              }
          }
-        for (Item item : gameItems) {
-
-        }
         return itemsToReturn;
     }
 }
