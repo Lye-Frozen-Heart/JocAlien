@@ -1,7 +1,5 @@
 package com.example.jocconversacionalalien.classes;
 
-import static com.example.jocconversacionalalien.classes.ItemInitializer.random;
-
 public class Strings {
     private static final int timeToWrite = 0;
 
@@ -101,7 +99,7 @@ public class Strings {
     }
 
 
-    public static void GameIntroduction() {
+    public static void gameIntroduction() {
         WordElapser.writeWordWithTimeDelay(
                 """
                         It's the year 2120 D.C. The spaceship P.A.I XXII explores the empty void of space. It's destination... The planet SM-2523G where it's believed to be the appropriate environment to root another human life colony.We can't stay longer freely on Earth so it is necessary to explore other planets.

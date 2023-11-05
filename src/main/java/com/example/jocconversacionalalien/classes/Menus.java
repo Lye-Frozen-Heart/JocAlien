@@ -15,6 +15,20 @@ public class Menus {
         zones[player.getIdZone()-1].setItems(Zone.addItems(items, player.getIdZone()));
     }
 
+    public Zone currentZone(Player player, Zone[]zones){
+        Zone currentZone= null;
+
+        for (Zone zone:zones
+             ) {
+            if (zone.getIdZone()== player.getIdZone()){
+                currentZone = zone;
+            }
+
+        }
+
+        return currentZone;
+    }
+
 
     public void LightOnMenu(Zone[] zones, Item[] items, Player player, Enemy alien, NonPlayableCharacter npc, ArtificialIntelligence iHall) {
         final int SPEAK_IHALL = 1;
@@ -26,7 +40,9 @@ public class Menus {
         final int EXIT_GAME = 7;
 
 
-        zones[player.getIdZone() - 1].getDescriptionZone();
+
+        currentZone(player, zones).getDescriptionZone();
+
         do {
             do {
                 validAnswer = false;
@@ -47,12 +63,12 @@ public class Menus {
                     shift++;
                     break;
                 case LOOK_DOORS:
-                    player.LookAround(zones[player.getIdZone() - 1].getAvailableZones());
+                    player.LookAround(currentZone(player, zones).getAvailableZones());
                     shift++;
                     break;
                 case LOOK_ITEMS:
-                    zones[player.getIdZone()-1].printItems();
-                    if(zones[player.getIdZone()-1].hasItems()){
+                    currentZone(player, zones).printItems();
+                    if(currentZone(player, zones).hasItems()){
                         pickUpItemMenu(zones, player, items);
                         setUpItems(zones,items,player);
                     }
@@ -61,12 +77,14 @@ public class Menus {
                 case OPEN_BACKPACK:
                     player.printItems();
                     //TODO Peta al no tener items
-                    backpackItemSelection(items, player, alien, zones);
+                    if(!player.getInventory().isEmpty()){
+                        backpackItemSelection(items, player, alien, zones);
+                    }
                     shift++;
                     break;
                 case MOVE:
                     movement(player, zones);
-                    zones[player.getIdZone() - 1].getDescriptionZone();
+                    currentZone(player, zones).getDescriptionZone();
                     shift++;
                     break;
                 case TALK_NPC:
