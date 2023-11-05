@@ -27,7 +27,7 @@ public class Game {
 
     public static void startGame() {
 
-        Strings.GameIntroduction();
+        Strings.gameIntroduction();
 
         //initialize
         items = ItemInitializer.setUpItems();

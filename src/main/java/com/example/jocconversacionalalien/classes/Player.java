@@ -173,6 +173,12 @@ public class Player extends Character {
     String description = gameItems[itemId].getDescription();
       System.out.println(description);
   }
+  public void pickUpItem(int invetoryPosition, Item[] gameItems, Player player,Zone []zones){
+    ArrayList<Item> selectedItem = zones[player.getIdZone()-1].getItems();
+    int itemId = selectedItem.get(invetoryPosition-1).getItemId();
+    gameItems[itemId].setOwner(1);
+    gameItems[itemId].setLocalization(0);
+  }
 }
 
 

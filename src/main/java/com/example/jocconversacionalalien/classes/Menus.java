@@ -12,7 +12,21 @@ public class Menus {
     private static void setUpItems(Zone[] zones,Item[] items,Player player){
         player.setInventory(player.addItemsInventory());
 
-        zones[player.getIdZone()-1].setItems(Zone.addItems(items));
+        zones[player.getIdZone()-1].setItems(Zone.addItems(items, player.getIdZone()));
+    }
+
+    public Zone currentZone(Player player, Zone[]zones){
+        Zone currentZone= null;
+
+        for (Zone zone:zones
+             ) {
+            if (zone.getIdZone()== player.getIdZone()){
+                currentZone = zone;
+            }
+
+        }
+
+        return currentZone;
     }
 
 
@@ -26,7 +40,9 @@ public class Menus {
         final int EXIT_GAME = 7;
 
 
-        zones[player.getIdZone() - 1].getDescriptionZone();
+
+        currentZone(player, zones).getDescriptionZone();
+
         do {
             do {
                 validAnswer = false;
@@ -47,22 +63,28 @@ public class Menus {
                     shift++;
                     break;
                 case LOOK_DOORS:
-                    player.LookAround(zones[player.getIdZone() - 1].getAvailableZones());
+                    player.LookAround(currentZone(player, zones).getAvailableZones());
                     shift++;
                     break;
                 case LOOK_ITEMS:
-                    zones[player.getIdZone()-1].printItems();
+                    currentZone(player, zones).printItems();
+                    if(currentZone(player, zones).hasItems()){
+                        pickUpItemMenu(zones, player, items);
+                        setUpItems(zones,items,player);
+                    }
                     shift++;
                     break;
                 case OPEN_BACKPACK:
                     player.printItems();
                     //TODO Peta al no tener items
-                    backpackItemSelection(items, player, alien, zones);
+                    if(!player.getInventory().isEmpty()){
+                        backpackItemSelection(items, player, alien, zones);
+                    }
                     shift++;
                     break;
                 case MOVE:
                     movement(player, zones);
-                    zones[player.getIdZone() - 1].getDescriptionZone();
+                    currentZone(player, zones).getDescriptionZone();
                     shift++;
                     break;
                 case TALK_NPC:
@@ -78,6 +100,25 @@ public class Menus {
             if(npc.getIdZone() == player.getIdZone()) Strings.NpcIsHere();
            // if (player.getIdZone() == ZoneInitializer.EXIT_ROOM && player.doPlayerHaveSuit()) option = EXIT_GAME;
         } while (option != EXIT_GAME);
+
+    }
+
+    private void pickUpItemMenu(Zone[] zones, Player player,Item[]items) {
+        do {
+            validAnswer = false;
+            Strings.MenuPickUpItem();
+            if (scanner.hasNextInt()) {
+                option = scanner.nextInt();
+                if (option > 0 && option < zones[player.getIdZone()-1].getItems().size() + 1) {
+                    validAnswer = true;
+                } else {
+                    Strings.InputError();
+                }
+            } else {
+                Strings.InputError();
+            }
+        } while (!validAnswer);
+        player.pickUpItem(option,items,player,zones);
 
     }
 

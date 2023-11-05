@@ -1,7 +1,5 @@
 package com.example.jocconversacionalalien.classes;
 
-import static com.example.jocconversacionalalien.classes.ItemInitializer.random;
-
 public class Strings {
     private static final int timeToWrite = 0;
 
@@ -18,12 +16,17 @@ public class Strings {
     //Menu Strings
     public static void MenuLightOnOptions() {
         ColorChanger.printTextToBlue(
-                "What do you want to do? \n1 - Speak with iHall , \n2 - Look for doors, \n3 - Look for items, \n4 - Open Backpack, \n5 - Move to another room, \n6 - Exit Game"
+                "What do you want to do? \n1 - Speak with iHall \n2 - Look for doors \n3 - Look for items \n4 - Open Backpack \n5 - Move to another room\n6 - Talk to NPC \n7 - Exit Game"
         );
     }
     public static void MenuItemSelection() {
         ColorChanger.printTextToBlue(
                 "Select the item you want to look closer or pres 0 to EXIT "
+        );
+    }
+    public static void MenuPickUpItem(){
+        ColorChanger.printTextToBlue(
+                "Select the item you want to pick up "
         );
     }
     public static void MenuBackpack() {
@@ -96,7 +99,7 @@ public class Strings {
     }
 
 
-    public static void GameIntroduction() {
+    public static void gameIntroduction() {
         WordElapser.writeWordWithTimeDelay(
                 """
                         It's the year 2120 D.C. The spaceship P.A.I XXII explores the empty void of space. It's destination... The planet SM-2523G where it's believed to be the appropriate environment to root another human life colony.We can't stay longer freely on Earth so it is necessary to explore other planets.
