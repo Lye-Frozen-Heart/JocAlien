@@ -57,7 +57,7 @@ public class Player extends Character {
     return inventory;
   }
 
-  public boolean getInfected() {
+  public boolean isInfected() {
     return infected;
   }
 

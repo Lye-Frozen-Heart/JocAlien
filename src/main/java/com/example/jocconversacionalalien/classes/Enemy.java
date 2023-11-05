@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Enemy extends Character{
     private int idZone;
     private boolean asleep = false;
+    private boolean knocked = false;
     public void setInventory(ArrayList<Item> inventory) {
         this.inventory = inventory;
     }
@@ -36,11 +37,20 @@ public class Enemy extends Character{
         return idZone;
     }
 
+
     public boolean isAsleep() {
         return asleep;
     }
 
+    public boolean isKnocked() {
+        return knocked;
+    }
+
     public void setAsleep(boolean asleep) {
         this.asleep = asleep;
+    }
+
+    public void setKnocked(boolean knocked) {
+        this.knocked = knocked;
     }
 }

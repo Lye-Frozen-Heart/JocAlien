@@ -7,6 +7,7 @@ public class Menus {
     static Item item = new Item();
     static int option = 0;
     static int shift = 0;
+    static int infectedCount =0;
     static boolean validAnswer = false;
 
     private static void setUpItems(Zone[] zones,Item[] items,Player player){
@@ -36,7 +37,7 @@ public class Menus {
         final int LOOK_ITEMS = 3;
         final int OPEN_BACKPACK = 4;
         final int MOVE = 5;
-        final int TALK_NPC = 6;
+        final int OPEN_MAP = 6;
         final int EXIT_GAME = 7;
 
 
@@ -53,9 +54,13 @@ public class Menus {
                 } else {
                     Strings.InputError();
                 }
-                alien.pairShift(shift);
-                npc.fourthShift(shift);
             } while (!validAnswer);
+
+            alien.pairShift(shift);
+            npc.fourthShift(shift);
+
+            if(alien.getIdZone() == player.getIdZone()) Strings.AlienIsHere(); //Si el alien está en la sala...
+            if(npc.getIdZone() == player.getIdZone()) Strings.NpcIsHere();
 
             switch (option) {
                 case SPEAK_IHALL:
@@ -76,7 +81,6 @@ public class Menus {
                     break;
                 case OPEN_BACKPACK:
                     player.printItems();
-                    //TODO Peta al no tener items
                     if(!player.getInventory().isEmpty()){
                         backpackItemSelection(items, player, alien, zones);
                     }
@@ -87,17 +91,39 @@ public class Menus {
                     currentZone(player, zones).getDescriptionZone();
                     shift++;
                     break;
-                case TALK_NPC:
+                case OPEN_MAP:
+                    Strings.PrintMap();
 
                 break;
                 case EXIT_GAME:
+                    Strings.EndGame();
                     Game.exitGame();
                     break;
                 default:
                     Strings.InputError();
             }
-            if(alien.getIdZone() == player.getIdZone()) Strings.AlienIsHere(); //Si el alien está en la sala...
-            if(npc.getIdZone() == player.getIdZone()) Strings.NpcIsHere();
+            if(alien.getIdZone() == player.getIdZone()){
+                if(alien.isAsleep()){
+                    Strings.NoThreat();
+
+                }
+                else if(alien.isKnocked()){
+                    player.setInfected(true);
+                }else{
+                    Strings.EndGame();
+                    Game.exitGame();
+                }
+            }
+
+            if(player.isInfected()){
+                infectedCount++;
+                if(infectedCount==3){
+                    Strings.Infected();
+                    Strings.EndGame();
+                    Game.exitGame();
+                }
+            }
+
            // if (player.getIdZone() == ZoneInitializer.EXIT_ROOM && player.doPlayerHaveSuit()) option = EXIT_GAME;
         } while (option != EXIT_GAME);
 

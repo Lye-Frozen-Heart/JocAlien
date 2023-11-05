@@ -44,9 +44,12 @@ public class Item {
     if(player.getIdZone()==alien.getIdZone()){
       items[itemSelected].setOwner(2);
       items[itemSelected].setLocalization(0);
+      alien.setAsleep(true);
+      Strings.AlienEatDonut();
     }else{
       items[itemSelected].setOwner(0);
       items[itemSelected].setLocalization(0);
+      Strings.EatDonut();
     }
 
   }
@@ -61,8 +64,11 @@ public class Item {
     if(player.getIdZone()==alien.getIdZone()){
       player.setInfected(true);
       alien.setAsleep(true);
+
     }else if(player.getIdZone() == 9){
       System.out.println("you opened the final door finally you are free");
+      Strings.EndGame();
+      Game.exitGame();
 
     }
     else{

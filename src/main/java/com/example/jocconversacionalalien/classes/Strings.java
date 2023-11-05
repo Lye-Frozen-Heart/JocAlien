@@ -16,7 +16,7 @@ public class Strings {
     //Menu Strings
     public static void MenuLightOnOptions() {
         ColorChanger.printTextToBlue(
-                "What do you want to do? \n1 - Speak with iHall \n2 - Look for doors \n3 - Look for items \n4 - Open Backpack \n5 - Move to another room\n6 - Talk to NPC \n7 - Exit Game"
+                "What do you want to do? \n1 - Speak with iHall \n2 - Look for doors \n3 - Look for items \n4 - Open Backpack \n5 - Move to another room\n6 - Open map \n7 - Exit Game"
         );
     }
     public static void MenuItemSelection() {
@@ -86,12 +86,15 @@ public class Strings {
     public static void UseCard( ) {
         System.out.println("You can ask IHall to open doors with it");
     }
+    public static void EatDonut(){
+        ColorChanger.printTextToGreen("you just eat the donut, it calms your appetite");
+    }
     public static void NoInteracton( ) {
         System.out.println("You can't use this item now");
     }
 
     public static void IHallHelp() {
-        NotImplemented();
+        ColorChanger.printTextToGreen("you might be able to fix the ship using the tools from the Workshop");
     }
 
     public static void IHallExit() {
@@ -103,12 +106,12 @@ public class Strings {
         WordElapser.writeWordWithTimeDelay(
                 """
                         It's the year 2120 D.C. The spaceship P.A.I XXII explores the empty void of space. It's destination... The planet SM-2523G where it's believed to be the appropriate environment to root another human life colony.We can't stay longer freely on Earth so it is necessary to explore other planets.
-                        The chief of the ship awakes from the inducted sleep. The main computer of the ship, Halley, has detected one anomaly inside the ship so it does need the Captain intervention
-                        Halley: How did you sleep Captain? Sadly I have to get you up from your sleep...But I detected an anomaly inside the ship.
+                        The chief of the ship awakes from the inducted sleep. The main computer of the ship, iHall, has detected one anomaly inside the ship so it does need the Captain intervention
+                        iHall: How did you sleep Captain? Sadly I have to get you up from your sleep...But I detected an anomaly inside the ship.
                         Captain: *sighs* I hope it was worth it for you to awake me...Or you will need an intensive reprogramming session.
-                        Halley: I guarantee you Captain, it's not a false alarm. I can't risk to be punished like that.
-                        Captain: Okay Halley, explain to me the situation as fast as you can please. I want to take my sleep again.
-                        <*>Halley proceeds to explain the status of the ship, seems like a little meteor hit one side of the complex. The system needs a repair because the propulsion engine has been damaged.""",
+                        iHall: I guarantee you Captain, it's not a false alarm. I can't risk to be punished like that.
+                        Captain: Okay iHall, explain to me the situation as fast as you can please. I want to take my sleep again.
+                        <*>iHall proceeds to explain the status of the ship, seems like a little meteor hit one side of the complex. The system needs a repair because the propulsion engine has been damaged.""",
                 timeToWrite
         );
     }
@@ -121,9 +124,34 @@ public class Strings {
         ColorChanger.printTextToGreen("/--//--//--//--//--//--//--//--//--/");
         ColorChanger.printTextToBlack("© All rights to be reserved...");
     }
-    public static void AlienIsHere(){
-        ColorChanger.printTextToRed("You feel chills down your spine. Something dangerous is here...");
+    public static void PrintMap(){
+        ColorChanger.printTextToGreen(
+
+              "\n" +
+              "                 ///////////////////////////////" +
+              "\n                 ||                           ||"+
+              "\n                 ||           WORKSHOP        ||"+
+              "\n                 ||                           ||"+
+              "\n /////////////////////                     /////////////////////////"+
+              "\n ||                  |                     |                      ||"+
+              "\n ||    DRESSER                OFFICES               BATHROOM      ||"+
+              "\n ||                  |                     |                      ||"+
+              "\n ||/////      //////////////      /////////////////       ////////||"+
+              "\n ||                  |      MACHINE        |                      ||"+
+              "\n ||                  |       ROOM          |                      ||"+
+              "\n ||////        /////////////////////////////////////     /////////||"+
+              "\n ||                  |                     |                      ||"+
+              "\n ||     KITCHEN               DINNING            BEDROOM          ||"+
+              "\n ||                  |         ROOM        |                      ||"+
+              "\n /////////////////////////////    //////////////////////////////////"+
+              "\n                              EXIT"
+        );
+
     }
+    public static void EndGame(){
+        ColorChanger.printTextToRed("End Game");
+    }
+
     public static void NpcIsHere(){
         ColorChanger.printTextToGreen("Tu compañero está en la sala ve a decirle hola!");
     }
@@ -131,6 +159,11 @@ public class Strings {
         ColorChanger.printTextToBlue("The alien is located in: " + text);
     }
     public static void WhereIsNpc(String text){ColorChanger.printTextToBlue("Your companion is located in: " + text);}
+
+
+
+
+
 
     public static void RandomFact(){
        int randomFact = (int)(Math.random()*5)+1;
@@ -161,5 +194,22 @@ public class Strings {
     }
     public static void EmptyInventory(){
         ColorChanger.printTextToGreen("You have nothing in your inventory");
+    }
+
+    // ALIEN INTERACTION STRINGS
+    public static void Infected(){
+        ColorChanger.printTextToRed("It seems like the alien has laid eggs in you... your belly splits open and something comes out of it. " );
+    }
+    public static void AlienIsHere(){
+        ColorChanger.printTextToRed("You feel chills down your spine. Something dangerous is here... \n you must act quickly");
+    }
+    public static void NoThreat(){
+        ColorChanger.printTextToBlue("it seems that the Alien is falling sleep for ever, is not longer a threat");
+    }
+    public static void AlienEatDonut(){
+        ColorChanger.printTextToBlue("you give the alien a little treat, he eats the donut and it seems that's acting like a sleeping pill");
+    }
+    public static void AlienKillsYou(){
+        ColorChanger.printTextToRed("as soon as you turn your back, you feel something piercing throw your skin \n you have been killed by the alien");
     }
 }
