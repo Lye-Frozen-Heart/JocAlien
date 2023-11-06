@@ -55,9 +55,6 @@ public class Player extends Character {
     return infected;
   }
 
-  public boolean getCanBreath() {
-    return canBreath;
-  }
 
   public boolean getSuitWorn() {
     return suitWorn;
@@ -78,9 +75,6 @@ public class Player extends Character {
     this.infected = infected;
   }
 
-  public void setCanBreath(boolean canBreath) {
-    this.canBreath = canBreath;
-  }
 
   public void setSuitWorn(boolean suitWorn) {
     this.suitWorn = suitWorn;
@@ -93,7 +87,7 @@ public class Player extends Character {
     this.flashlightOn = flashlightOn;
   }
 
-
+/*
   public void ToClose(Item[]items, Zone[] zone,int door) {
     if (hasCard(items)){
       System.out.println("You successfully closed the door");
@@ -103,6 +97,8 @@ public class Player extends Character {
       System.out.println("You dont have the card to open de door");
     }
   }
+
+ */
   public void LookAround(int[]availableZones){
     ColorChanger.printTextToGreen("You look around...Directions you can see:" +
     "\nHeading North: " + arrayRoomNames[availableZones[0]] + "\nTilting East: " + arrayRoomNames[availableZones[1]] +

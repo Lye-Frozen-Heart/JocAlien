@@ -107,6 +107,14 @@ public class Strings {
     public static void IHallFlashlightLocation(String flashlightLocation) {
         System.out.println("The Flashlight is located at: " + flashlightLocation);
     }
+    public static void noLight(Item[] items){
+        ColorChanger.printTextToRed("Tere is no light in this room, you cant see anything.");
+        if(items[3].getOwner()==1) {
+            ColorChanger.printTextToRed("It might be useful to turn on the flashlight");
+        }else{
+            ColorChanger.printTextToRed("A flashlight might be useful here");
+        }
+    }
 
     public static void ItemDropped(String playerLocation) {
         System.out.println("Item Dropped at " + playerLocation);
@@ -192,7 +200,7 @@ public class Strings {
     }
 
     public static void NpcIsHere() {
-        ColorChanger.printTextToGreen("Tu compañero está en la sala ve a decirle hola!");
+        ColorChanger.printTextToGreen("There is someone else in this room");
     }
 
     public static void WhereIsAlien(String text) {

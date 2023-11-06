@@ -37,7 +37,7 @@ public class ZoneInitializer {
         workshop.setDoors(new boolean[]{DOOR_NO_EXISTS, DOOR_NO_EXISTS, DOOR_EXISTS, DOOR_NO_EXISTS,});
         workshop.setDirections(new int[]{DOOR_FALSE, DOOR_FALSE, DOOR_CLOSED, DOOR_FALSE});
         workshop.setAvailableZones(new int[]{NO_ROOM, NO_ROOM, OFFICES, NO_ROOM});
-        workshop.setItems(workshop.addItems(items, WORKSHOP));
+        workshop.setItems(Zone.addItems(items, WORKSHOP));
         workshop.setDescriptionZone(
                 """
                         The workshop...A metallic and steamy place where the dark begins to blur your eyesight. Seems like the lights are off.
@@ -52,14 +52,14 @@ public class ZoneInitializer {
         offices.setName("Offices");
         offices.setIdZone(OFFICES);
         offices.setHasItem(true);
-        offices.setHasNpc(false);
-        offices.setHasLight(true);
+        offices.setHasNpc(true);
+        offices.setHasLight(false);
         offices.setHasTraps(false);
         offices.setAccessible(true);
         offices.setDoors(new boolean[]{DOOR_EXISTS, DOOR_EXISTS, DOOR_EXISTS, DOOR_EXISTS});
         offices.setDirections(new int[]{DOOR_OPEN, DOOR_OPEN, DOOR_OPEN, DOOR_OPEN});
         offices.setAvailableZones(new int[]{WORKSHOP, BATHROOM, MACHINE_ROOM, LOCKER_ROOM});
-        offices.setItems(offices.addItems(items, OFFICES));
+        offices.setItems(Zone.addItems(items, OFFICES));
         offices.setDescriptionZone(
                 """
                         The principal office! Apparently everything seems quiet and comfy, a perfect place for meetings and study sessions.
@@ -82,7 +82,7 @@ public class ZoneInitializer {
         machineRoom.setDoors(new boolean[]{DOOR_EXISTS, DOOR_NO_EXISTS, DOOR_NO_EXISTS, DOOR_NO_EXISTS,});
         machineRoom.setDirections(new int[]{DOOR_OPEN, DOOR_FALSE, DOOR_FALSE, DOOR_FALSE});
         machineRoom.setAvailableZones(new int[]{OFFICES, NO_ROOM, NO_ROOM, NO_ROOM});
-        machineRoom.setItems(machineRoom.addItems(items, MACHINE_ROOM));
+        machineRoom.setItems(Zone.addItems(items, MACHINE_ROOM));
         machineRoom.setDescriptionZone(
                 """
                         You will never stop getting surprised about this part of the ship.
@@ -106,7 +106,7 @@ public class ZoneInitializer {
         lockerRoom.setDoors(new boolean[]{DOOR_NO_EXISTS, DOOR_EXISTS, DOOR_EXISTS, DOOR_NO_EXISTS});
         lockerRoom.setDirections(new int[]{DOOR_FALSE, DOOR_CLOSED, DOOR_CLOSED, DOOR_FALSE});
         lockerRoom.setAvailableZones(new int[]{NO_ROOM, OFFICES, KITCHEN, NO_ROOM});
-        lockerRoom.setItems(lockerRoom.addItems(items, LOCKER_ROOM));
+        lockerRoom.setItems(Zone.addItems(items, LOCKER_ROOM));
         lockerRoom.setDescriptionZone(
                 """
                         Coats, suits and other clothes hide in this room.
@@ -128,7 +128,7 @@ public class ZoneInitializer {
         kitchen.setDoors(new boolean[]{DOOR_EXISTS, DOOR_EXISTS, DOOR_NO_EXISTS, DOOR_NO_EXISTS});
         kitchen.setDirections(new int[]{DOOR_CLOSED, DOOR_CLOSED, DOOR_FALSE, DOOR_FALSE});
         kitchen.setAvailableZones(new int[]{LOCKER_ROOM, DINNING_ROOM, NO_ROOM, NO_ROOM});
-        kitchen.setItems(kitchen.addItems(items, KITCHEN));
+        kitchen.setItems(Zone.addItems(items, KITCHEN));
         kitchen.setDescriptionZone(
                 "The metallic sound of the cooking tools itch in your ears.\nDon't get too close " +
                         "to the ones that are sharp, the hunter can smell your fear but also your blood."
@@ -148,7 +148,7 @@ public class ZoneInitializer {
         dinningRoom.setDoors(new boolean[]{DOOR_NO_EXISTS, DOOR_EXISTS, DOOR_EXISTS, DOOR_EXISTS});
         dinningRoom.setDirections(new int[]{DOOR_FALSE, DOOR_CLOSED, DOOR_CLOSED, DOOR_CLOSED});
         dinningRoom.setAvailableZones(new int[]{NO_ROOM, BEDROOM, EXIT_ROOM, KITCHEN});
-        dinningRoom.setItems(dinningRoom.addItems(items, DINNING_ROOM));
+        dinningRoom.setItems(Zone.addItems(items, DINNING_ROOM));
         dinningRoom.setDescriptionZone(
                 "A subliminal place to be.\nDesks and chairs get along your entire sight.\n" +
                         "The darkness and the well ordered room start to get you nervous and dizzy."
@@ -168,7 +168,7 @@ public class ZoneInitializer {
         bedRoom.setDoors(new boolean[]{DOOR_EXISTS, DOOR_NO_EXISTS, DOOR_NO_EXISTS, DOOR_EXISTS});
         bedRoom.setDirections(new int[]{DOOR_CLOSED, DOOR_FALSE, DOOR_FALSE, DOOR_CLOSED});
         bedRoom.setAvailableZones(new int[]{BATHROOM, NO_ROOM, NO_ROOM, DINNING_ROOM});
-        bedRoom.setItems(bedRoom.addItems(items, BEDROOM));
+        bedRoom.setItems(Zone.addItems(items, BEDROOM));
         bedRoom.setDescriptionZone(
                 "Get comfy, take a sleep, dream about everything you could be doing right now\n " +
                         "but remember, it is looking at you and your actions..."
@@ -188,7 +188,7 @@ public class ZoneInitializer {
         bathRooms.setDoors(new boolean[]{DOOR_NO_EXISTS, DOOR_NO_EXISTS, DOOR_EXISTS, DOOR_EXISTS});
         bathRooms.setDirections(new int[]{DOOR_FALSE, DOOR_FALSE, DOOR_CLOSED, DOOR_CLOSED});
         bathRooms.setAvailableZones(new int[]{NO_ROOM, NO_ROOM, BEDROOM, OFFICES});
-        bathRooms.setItems(bathRooms.addItems(items, BATHROOM));
+        bathRooms.setItems(Zone.addItems(items, BATHROOM));
         bathRooms.setDescriptionZone(
                 """
                         A pretty smelly place.
@@ -210,7 +210,7 @@ public class ZoneInitializer {
         exitRoom.setDoors(new boolean[]{DOOR_EXISTS, DOOR_NO_EXISTS, DOOR_NO_EXISTS, DOOR_NO_EXISTS,});
         exitRoom.setDirections(new int[]{DOOR_CLOSED, DOOR_FALSE, DOOR_FALSE, DOOR_FALSE});
         exitRoom.setAvailableZones(new int[]{DINNING_ROOM, NO_ROOM, NO_ROOM, NO_ROOM});
-        exitRoom.setItems(exitRoom.addItems(items, EXIT_ROOM));
+        exitRoom.setItems(Zone.addItems(items, EXIT_ROOM));
         exitRoom.setDescriptionZone(
                 """
                         Finally!

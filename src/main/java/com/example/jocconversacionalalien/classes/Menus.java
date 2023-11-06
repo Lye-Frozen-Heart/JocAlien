@@ -62,21 +62,31 @@ public class Menus {
                     shift++;
                     break;
                 case LOOK_DOORS:
-                    player.LookAround(currentZone(player, zones).getAvailableZones());
+                    if(currentZone(player, zones).isHasLight()|| player.isFlashlightOn()){
+                        player.LookAround(currentZone(player, zones).getAvailableZones());
+                    }else{
+                        Strings.noLight(items);
+                    }
+
                     shift++;
                     break;
                 case LOOK_ITEMS:
-                    currentZone(player, zones).printItems();
-                    if (currentZone(player, zones).hasItems()) {
-                        pickUpItemMenu(zones, player, items);
-                        setUpItems(zones, items, player);
+                    if(currentZone(player, zones).isHasLight()|| player.isFlashlightOn()){
+                        currentZone(player, zones).printItems();
+                        if (currentZone(player, zones).hasItems()) {
+                            pickUpItemMenu(zones, player, items);
+                            setUpItems(zones, items, player);
+                        }
+                        if(npc.getIdZone()==player.getIdZone()&& items[1].getOwner()==3){
+                            Strings.askingNpcForTheCard();
+                            items[1].setOwner(1);
+                            items[1].setLocalization(0);
+                            setUpItems(zones,items,player);
+                        }
+                    }else{
+                        Strings.noLight(items);
                     }
-                    if(npc.getIdZone()==player.getIdZone()&& items[1].getOwner()==3){
-                        Strings.askingNpcForTheCard();
-                        items[1].setOwner(1);
-                        items[1].setLocalization(0);
-                        setUpItems(zones,items,player);
-                    }
+
                     shift++;
                     break;
                 case OPEN_BACKPACK:
