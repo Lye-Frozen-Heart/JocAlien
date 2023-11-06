@@ -71,7 +71,23 @@ public class Menus {
                     shift++;
                     break;
                 case LOOK_ITEMS:
-                    if(currentZone(player, zones).isHasLight()|| player.isFlashlightOn()){
+                    if(currentZone(player, zones).getIdZone()!=items[3].getLocalization()){
+                        if(currentZone(player, zones).isHasLight()|| player.isFlashlightOn()){
+                            currentZone(player, zones).printItems();
+                            if (currentZone(player, zones).hasItems()) {
+                                pickUpItemMenu(zones, player, items);
+                                setUpItems(zones, items, player);
+                            }
+                            if(npc.getIdZone()==player.getIdZone()&& items[1].getOwner()==3){
+                                Strings.askingNpcForTheCard();
+                                items[1].setOwner(1);
+                                items[1].setLocalization(0);
+                                setUpItems(zones,items,player);
+                            }
+                        }else{
+                            Strings.noLight(items);
+                        }
+                    }else{
                         currentZone(player, zones).printItems();
                         if (currentZone(player, zones).hasItems()) {
                             pickUpItemMenu(zones, player, items);
@@ -83,9 +99,8 @@ public class Menus {
                             items[1].setLocalization(0);
                             setUpItems(zones,items,player);
                         }
-                    }else{
-                        Strings.noLight(items);
                     }
+
 
                     shift++;
                     break;
@@ -102,7 +117,12 @@ public class Menus {
                     shift++;
                     break;
                 case OPEN_MAP:
-                    Strings.PrintMap();
+
+                    if(items[6].getOwner()==1){
+                        Strings.PrintMap();
+                    }else{
+                        System.out.println("You dont have a map yet, you might find one looking around");
+                    }
 
                     break;
                 case EXIT_GAME:

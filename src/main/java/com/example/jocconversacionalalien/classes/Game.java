@@ -83,7 +83,7 @@ public class Game {
     //TODO                         //            WORKSHOP         //
     //TODO         /////////////////////                      ///////////////////////
     //TODO         ||                  |                      |                     ||
-    //TODO         ||    DRESSER                OFFICES               BATHROOM      ||
+    //TODO         ||     LOCKER                OFFICES               BATHROOM      ||
     //TODO         ||                  |                     |                      ||
     //TODO         ||||||||     ||||||||||||||||      ||||||||||||||||      ||||||||||
     //TODO         ||||||||     ||||||||      MACHINE        |||||||||      ||||||||||
