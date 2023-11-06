@@ -265,8 +265,17 @@ public class Strings {
     public static void howToOpenDoors() {
         ColorChanger.printTextToBlue("You need to show me your card so i can unlock the doors for you");
     }
-
     public static void whereIsTheCard() {
         ColorChanger.printTextToBlue("It should be at your desk in the office");
+    }
+
+    //NPC Interactions
+    public static void askingNpcForTheCard(){
+        ColorChanger.printTextToBlue("Your colleague is sitting at the end of the room... \nYou proceed to ask him for his card");
+        ColorChanger.printTextToGreen("Hey, do you steel have the card to open the exit door?");
+        System.out.println("Yes why do you ask?");
+        ColorChanger.printTextToGreen("Can i borrow it?");
+        System.out.println("Ye sure, there you have it");
+        ColorChanger.printTextToBlue("you acquire the Exit Card");
     }
 }

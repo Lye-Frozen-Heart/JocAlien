@@ -71,6 +71,12 @@ public class Menus {
                         pickUpItemMenu(zones, player, items);
                         setUpItems(zones, items, player);
                     }
+                    if(npc.getIdZone()==player.getIdZone()&& items[1].getOwner()==3){
+                        Strings.askingNpcForTheCard();
+                        items[1].setOwner(1);
+                        items[1].setLocalization(0);
+                        setUpItems(zones,items,player);
+                    }
                     shift++;
                     break;
                 case OPEN_BACKPACK:
@@ -325,6 +331,7 @@ public class Menus {
                             break;
                         case DONUT:
                             item.useDonut(items, selectedItem, player, alien);
+                            setUpItems(zones, items, player);
                             break;
                     }
                     option = EXIT;
