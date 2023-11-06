@@ -14,7 +14,7 @@ public class Player extends Character {
   "Locker Room", "Kitchen", "Dinning Room", "Bedroom","Bathroom", "Exit"};
 
   @Override
-  protected void GoTo(int imputDirection,boolean[] doors, int[] directions, int[]availableZones) {
+  protected void GoTo(int imputDirection,boolean[] doors, int[] directions, int[]availableZones,Zone currentZone) {
     if(checkDoorsOpen(imputDirection, doors, directions)){
       setIdZone(availableZones[imputDirection]);
       ColorChanger.printTextToGreen("You just moved to the " + arrayRoomNames[availableZones[imputDirection]]);
@@ -28,6 +28,14 @@ public class Player extends Character {
     setIdZone(idZone);
   }
 
+  public void MoveTo(int imputDirection,boolean[] doors, int[] directions, int[]availableZones,Player player, Zone[] zones){
+    if(checkDoorsOpen(imputDirection, doors, directions)){
+      setIdZone(availableZones[imputDirection]);
+      ColorChanger.printTextToGreen("You just moved to the " + arrayRoomNames[availableZones[imputDirection]]);
+      Menus.currentZone(player, zones).getDescriptionZone();
+    }
+  }
+
 
   public void ToOpen(Item[]items, Zone[] zone,int actualZone, int door) {
     if (hasCard(items)){
@@ -38,20 +46,6 @@ public class Player extends Character {
       System.out.println("You dont have the card to open de door");
     }
   }
-  public boolean doPlayerHaveSuit(){
-    //TODO Hay que hacer que los objetos esten en el inventario
-    boolean resp = false;
-    for (Item item : inventory){
-      if(item.getItemId() == ItemInitializer.SPACE_SUIT ){
-        setSuitWorn(true);
-        resp = true;
-      }
-    }
-    return resp;
-  }
-  /**
-   * 
-   */
 
   public ArrayList<Item> getInventory() {
     return inventory;

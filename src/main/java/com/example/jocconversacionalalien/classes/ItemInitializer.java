@@ -43,7 +43,7 @@ public class ItemInitializer {
         tool.setItemId(TOOL);
         tool.setName("Tool");
         tool.setDescription("This tool can be used to repair the engine");
-        tool.setOwner(NO_OWNER);
+        tool.setOwner(PLAYER);
         tool.setLocalization(1);
         tool.setStatus(false);
 
@@ -51,7 +51,7 @@ public class ItemInitializer {
         flashlight.setItemId(FLASHLIGHT);
         flashlight.setName("Flashlight");
         flashlight.setDescription("You can't see anything? Try to turn it on");
-        flashlight.setOwner(NO_OWNER);
+        flashlight.setOwner(PLAYER);
         flashlight.setLocalization(random.nextInt(8) + 1); //random.nextInt(8) + 1
         flashlight.setStatus(false);
 
@@ -59,7 +59,7 @@ public class ItemInitializer {
         spaceSuit.setItemId(SPACE_SUIT);
         spaceSuit.setName("Space Suit");
         spaceSuit.setDescription("It's just a space suit, put it on, you might look pretty cool");
-        spaceSuit.setOwner(NO_OWNER);
+        spaceSuit.setOwner(PLAYER);
         spaceSuit.setLocalization(4);//4
         spaceSuit.setStatus(false);
 
@@ -67,7 +67,7 @@ public class ItemInitializer {
         donut.setItemId(DONUT);
         donut.setName("Donut");
         donut.setDescription("A Donut it looks delicious!");
-        donut.setOwner(NO_OWNER);
+        donut.setOwner(PLAYER);
         donut.setLocalization(5);//5
         donut.setStatus(false);
 

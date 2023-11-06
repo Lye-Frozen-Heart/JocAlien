@@ -7,21 +7,21 @@ public class Menus {
     static Item item = new Item();
     static int option = 0;
     static int shift = 0;
-    static int infectedCount =0;
+    static int infectedCount = 0;
     static boolean validAnswer = false;
 
-    private static void setUpItems(Zone[] zones,Item[] items,Player player){
+    private static void setUpItems(Zone[] zones, Item[] items, Player player) {
         player.setInventory(player.addItemsInventory());
 
-        zones[player.getIdZone()-1].setItems(Zone.addItems(items, player.getIdZone()));
+        zones[player.getIdZone() - 1].setItems(Zone.addItems(items, player.getIdZone()));
     }
 
-    public Zone currentZone(Player player, Zone[]zones){
-        Zone currentZone= null;
+    public static Zone currentZone(Player player, Zone[] zones) {
+        Zone currentZone = null;
 
-        for (Zone zone:zones
-             ) {
-            if (zone.getIdZone()== player.getIdZone()){
+        for (Zone zone : zones
+        ) {
+            if (zone.getIdZone() == player.getIdZone()) {
                 currentZone = zone;
             }
 
@@ -29,7 +29,6 @@ public class Menus {
 
         return currentZone;
     }
-
 
     public void LightOnMenu(Zone[] zones, Item[] items, Player player, Enemy alien, NonPlayableCharacter npc, ArtificialIntelligence iHall) {
         final int SPEAK_IHALL = 1;
@@ -40,11 +39,12 @@ public class Menus {
         final int OPEN_MAP = 6;
         final int EXIT_GAME = 7;
 
-
-
         currentZone(player, zones).getDescriptionZone();
 
         do {
+            AlienAction(alien, player);
+            NpcAction(npc, player);
+
             do {
                 validAnswer = false;
                 Strings.MenuLightOnOptions();
@@ -56,15 +56,9 @@ public class Menus {
                 }
             } while (!validAnswer);
 
-            alien.pairShift(shift);
-            npc.fourthShift(shift);
-
-            if(alien.getIdZone() == player.getIdZone()) Strings.AlienIsHere(); //Si el alien está en la sala...
-            if(npc.getIdZone() == player.getIdZone()) Strings.NpcIsHere();
-
             switch (option) {
                 case SPEAK_IHALL:
-                    SpeakIHall(items, zones, player, iHall,alien,npc);
+                    SpeakIHall(items, zones, player, iHall, alien, npc);
                     shift++;
                     break;
                 case LOOK_DOORS:
@@ -73,28 +67,28 @@ public class Menus {
                     break;
                 case LOOK_ITEMS:
                     currentZone(player, zones).printItems();
-                    if(currentZone(player, zones).hasItems()){
+                    if (currentZone(player, zones).hasItems()) {
                         pickUpItemMenu(zones, player, items);
-                        setUpItems(zones,items,player);
+                        setUpItems(zones, items, player);
                     }
                     shift++;
                     break;
                 case OPEN_BACKPACK:
                     player.printItems();
-                    if(!player.getInventory().isEmpty()){
+                    if (!player.getInventory().isEmpty()) {
                         backpackItemSelection(items, player, alien, zones);
                     }
                     shift++;
                     break;
                 case MOVE:
                     movement(player, zones);
-                    currentZone(player, zones).getDescriptionZone();
+
                     shift++;
                     break;
                 case OPEN_MAP:
                     Strings.PrintMap();
 
-                break;
+                    break;
                 case EXIT_GAME:
                     Strings.EndGame();
                     Game.exitGame();
@@ -102,40 +96,39 @@ public class Menus {
                 default:
                     Strings.InputError();
             }
-            if(alien.getIdZone() == player.getIdZone()){
-                if(alien.isAsleep()){
+            if (alien.getIdZone() == player.getIdZone()) {
+                if (alien.isAsleep()) {
                     Strings.NoThreat();
 
-                }
-                else if(alien.isKnocked()){
+                } else if (alien.isKnocked()) {
                     player.setInfected(true);
-                }else{
+                } else {
+                    Strings.AlienKillsYou();
                     Strings.EndGame();
                     Game.exitGame();
                 }
             }
 
-            if(player.isInfected()){
+            if (player.isInfected()) {
                 infectedCount++;
-                if(infectedCount==3){
+                if (infectedCount == 3) {
                     Strings.Infected();
                     Strings.EndGame();
                     Game.exitGame();
                 }
             }
 
-           // if (player.getIdZone() == ZoneInitializer.EXIT_ROOM && player.doPlayerHaveSuit()) option = EXIT_GAME;
         } while (option != EXIT_GAME);
 
     }
 
-    private void pickUpItemMenu(Zone[] zones, Player player,Item[]items) {
+    private void pickUpItemMenu(Zone[] zones, Player player, Item[] items) {
         do {
             validAnswer = false;
             Strings.MenuPickUpItem();
             if (scanner.hasNextInt()) {
                 option = scanner.nextInt();
-                if (option > 0 && option < zones[player.getIdZone()-1].getItems().size() + 1) {
+                if (option > 0 && option < zones[player.getIdZone() - 1].getItems().size() + 1) {
                     validAnswer = true;
                 } else {
                     Strings.InputError();
@@ -144,21 +137,19 @@ public class Menus {
                 Strings.InputError();
             }
         } while (!validAnswer);
-        player.pickUpItem(option,items,player,zones);
+        player.pickUpItem(option, items, player, zones);
 
     }
 
-    public void SpeakIHall(Item[] items, Zone[] zones, Player player, ArtificialIntelligence iHall,Enemy alien,NonPlayableCharacter npc) {
-        final int FLASHLIGHT_LOCATION = 1;
-        final int ALIEN_LOCATION = 2;
-        final int OPEN_DOOR = 3;
-        final int HELP = 4;
-        final int COMPANION_LOCATION = 5;
-        final int EXIT_IHALL = 6;
+    public void SpeakIHall(Item[] items, Zone[] zones, Player player, ArtificialIntelligence iHall, Enemy alien, NonPlayableCharacter npc) {
+
+        final int HELP = 1;
+        final int OPEN_DOOR = 2;
+        final int EXIT_IHALL = 3;
         do {
             do {
                 validAnswer = false;
-                Strings.MenuIHall();
+                Strings.menuIHall();
                 if (scanner.hasNextInt()) {
                     option = scanner.nextInt();
                     validAnswer = true;
@@ -167,12 +158,7 @@ public class Menus {
                 }
             } while (!validAnswer);
             switch (option) {
-                case FLASHLIGHT_LOCATION:
-                    Strings.IHallFlashlightLocation(iHall.askForFlashlight());
-                    break;
-                case ALIEN_LOCATION:
-                    iHall.askForAlien(zones,alien);
-                    break;
+
                 case OPEN_DOOR:
                     do {
                         validAnswer = false;
@@ -181,7 +167,17 @@ public class Menus {
                             int direction = scanner.nextInt();
                             if (direction > 0 && direction < 5) {
                                 validAnswer = true;
-                                player.ToOpen(items, zones, player.getIdZone() - 1, direction - 1);
+                                if (player.getIdZone() != 9) {
+                                    player.ToOpen(items, zones, player.getIdZone() - 1, direction - 1);
+                                } else {
+                                    if (items[1].getOwner() == 1) {
+                                        player.ToOpen(items, zones, player.getIdZone() - 1, direction - 1);
+                                    } else {
+                                        Strings.IncorrectCard();
+                                    }
+                                }
+
+                                option = EXIT_IHALL;
                             } else {
                                 Strings.InputError();
                             }
@@ -191,10 +187,9 @@ public class Menus {
                     } while (!validAnswer);
                     break;
                 case HELP:
-                    Strings.IHallHelp();
+                    iHallHelpMenu(zones, npc, iHall, alien);
                     break;
-                case COMPANION_LOCATION:
-                    iHall.askForNpc(zones,npc);
+
                 case EXIT_IHALL:
                     Strings.IHallExit();
                     break;
@@ -202,7 +197,62 @@ public class Menus {
                     Strings.InputError();
             }
         } while (option != EXIT_IHALL);
+    }
 
+    private static void iHallHelpMenu(Zone[] zones, NonPlayableCharacter npc, ArtificialIntelligence iHall, Enemy alien) {
+        final int GENERAL_HELP = 1;
+        final int FLASHLIGHT_LOCATION = 2;
+        final int ALIEN_LOCATION = 3;
+        final int NPC_LOCATION = 4;
+        final int HOW_OPEN_DOORS = 5;
+        final int WHERE_IS_CARD = 6;
+        final int EXIT = 7;
+
+        boolean askedOpeningDoors = false;
+        do {
+            do {
+                validAnswer = false;
+                Strings.menuHelpIhall(askedOpeningDoors);
+                if (scanner.hasNextInt()) {
+                    option = scanner.nextInt();
+                    validAnswer = true;
+                } else {
+                    Strings.InputError();
+                }
+            } while (!validAnswer);
+
+            switch (option) {
+                case GENERAL_HELP:
+                    Strings.generalHelp();
+                    break;
+                case FLASHLIGHT_LOCATION:
+                    Strings.IHallFlashlightLocation(iHall.askForFlashlight());
+                    break;
+                case ALIEN_LOCATION:
+                    iHall.askForAlien(zones, alien);
+                    break;
+                case NPC_LOCATION:
+                    iHall.askForNpc(zones, npc);
+                    break;
+                case HOW_OPEN_DOORS:
+                    Strings.howToOpenDoors();
+                    askedOpeningDoors = true;
+                    break;
+                case WHERE_IS_CARD:
+                    if (askedOpeningDoors) {
+                        Strings.whereIsTheCard();
+                    } else {
+                        Strings.InputError();
+                    }
+                    break;
+                case EXIT:
+                    Strings.IHallExit();
+                    break;
+                default:
+                    Strings.InputError();
+            }
+
+        } while (option != EXIT);
 
     }
 
@@ -277,10 +327,11 @@ public class Menus {
                             item.useDonut(items, selectedItem, player, alien);
                             break;
                     }
+                    option = EXIT;
                     break;
                 case DROP_ITEM:
                     player.dropItem(selectedItem, items, player);
-                    setUpItems(zones,items, player);
+                    setUpItems(zones, items, player);
                     option = EXIT;
                     break;
                 case EXIT:
@@ -304,11 +355,11 @@ public class Menus {
                 if (selected < 0 || selected > 3) {
                     Strings.InputError();
                 } else {
-                    player.GoTo(
+                    player.MoveTo(
                             selected,
-                            zones[player.getIdZone() - 1].getDoors(),
-                            zones[player.getIdZone() - 1].getDirections(),
-                            zones[player.getIdZone() - 1].getAvailableZones()
+                            currentZone(player, zones).getDoors(),
+                            currentZone(player, zones).getDirections(),
+                            currentZone(player, zones).getAvailableZones(), player, zones
                     );
                     validAnswer = true;
                 }
@@ -318,6 +369,16 @@ public class Menus {
         } while (!validAnswer);
 
 
+    }
+
+    public void AlienAction(Enemy alien, Player player) {
+        alien.pairShift(shift);
+        if (alien.getIdZone() == player.getIdZone() && !alien.isAsleep()) Strings.AlienIsHere();
+    }
+
+    public void NpcAction(NonPlayableCharacter npc, Player player) {
+        npc.fourthShift(shift);
+        if (npc.getIdZone() == player.getIdZone()) Strings.NpcIsHere();
     }
 
 }

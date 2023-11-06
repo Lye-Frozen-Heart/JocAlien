@@ -29,7 +29,7 @@ public class Enemy extends Character{
         throw new UnsupportedOperationException("Unimplemented method 'CheckZone'");
     }
     @Override
-    protected void GoTo(int inputDirection, boolean[] doors, int[] directions, int[] availableZones) {
+    protected void GoTo(int inputDirection, boolean[] doors, int[] directions, int[] availableZones,Zone currentZone) {
 
     }
 

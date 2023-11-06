@@ -19,25 +19,31 @@ public class Strings {
                 "What do you want to do? \n1 - Speak with iHall \n2 - Look for doors \n3 - Look for items \n4 - Open Backpack \n5 - Move to another room\n6 - Open map \n7 - Exit Game"
         );
     }
+
     public static void MenuItemSelection() {
         ColorChanger.printTextToBlue(
                 "Select the item you want to look closer or pres 0 to EXIT "
         );
     }
-    public static void MenuPickUpItem(){
+
+    public static void MenuPickUpItem() {
         ColorChanger.printTextToBlue(
                 "Select the item you want to pick up "
         );
     }
+
     public static void MenuBackpack() {
         ColorChanger.printTextToBlue(
                 "what do you want to do? \n1 - Watch item closely \n2 - use item \n3 - drop item \n4 - Exit Backpack"
         );
     }
 
-    public static void MenuIHall() {
+    public static void menuIHall() {
         ColorChanger.printTextToBlue(
-                "Hi i'm IHall what do you need? \n1 - Flashlight location \n2 - Alien location \n3 - Open door \n4 - What to do \n5 - Companion location \n6 - Sorry my bad i didnt what to speak with you"
+                "Hi i'm IHall what do you need? " +
+                        "\n1 - What to do " +
+                        "\n2 - Open door " +
+                        "\n3 - Exit"
         );
     }
 
@@ -53,6 +59,27 @@ public class Strings {
                 "Where do you want to move?" +
                         "\n 1 - North, 2 - East, 3 - South, 4 - West"
         );
+    }
+
+    public static void menuHelpIhall(boolean openDoorsAsked) {
+        if (!openDoorsAsked) {
+            ColorChanger.printTextToBlue("What do you need help for?" +
+                    "\n1 - I dont know what i have to do" +
+                    "\n2 - Where is the flashlight?" +
+                    "\n3 - Where is the alien?" +
+                    "\n4 - Where is my companion" +
+                    "\n5 - How can i open doors?" +
+                    "\n7 - Exit");
+        } else {
+            ColorChanger.printTextToBlue("What do you need help for?" +
+                    "\n1 - I dont know what i have to do" +
+                    "\n2 - Where is the flashlight?" +
+                    "\n3 - Where is the alien?" +
+                    "\n4 - Where is my companion" +
+                    "\n5 - How can i open doors?" +
+                    "\n6 - Where can i find my Card?" +
+                    "\n7 - Exit");
+        }
     }
 
     public static void MenuInitGame() {
@@ -80,17 +107,25 @@ public class Strings {
     public static void IHallFlashlightLocation(String flashlightLocation) {
         System.out.println("The Flashlight is located at: " + flashlightLocation);
     }
+
     public static void ItemDropped(String playerLocation) {
         System.out.println("Item Dropped at " + playerLocation);
     }
-    public static void UseCard( ) {
+
+    public static void UseCard() {
         System.out.println("You can ask IHall to open doors with it");
     }
-    public static void EatDonut(){
+
+    public static void EatDonut() {
         ColorChanger.printTextToGreen("you just eat the donut, it calms your appetite");
     }
-    public static void NoInteracton( ) {
+
+    public static void NoInteracton() {
         System.out.println("You can't use this item now");
+    }
+
+    public static void IncorrectCard() {
+        ColorChanger.printTextToRed("you need a diferent card to open this door. \n Someone in the ship might have it");
     }
 
     public static void IHallHelp() {
@@ -98,7 +133,7 @@ public class Strings {
     }
 
     public static void IHallExit() {
-        WordElapser.writeWordWithTimeDelay("Closing menu...",timeToWrite);
+        WordElapser.writeWordWithTimeDelay("Closing menu...", timeToWrite);
     }
 
 
@@ -115,6 +150,7 @@ public class Strings {
                 timeToWrite
         );
     }
+
     public static void Credits() {
         ColorChanger.printTextToGreen("/--//--//--//--//--//--//--//--//--/");
         WordElapser.writeWordWithTimeDelay(
@@ -124,92 +160,113 @@ public class Strings {
         ColorChanger.printTextToGreen("/--//--//--//--//--//--//--//--//--/");
         ColorChanger.printTextToBlack("© All rights to be reserved...");
     }
-    public static void PrintMap(){
+
+    public static void PrintMap() {
         ColorChanger.printTextToGreen(
 
-              "\n" +
-              "                 ///////////////////////////////" +
-              "\n                 ||                           ||"+
-              "\n                 ||           WORKSHOP        ||"+
-              "\n                 ||                           ||"+
-              "\n /////////////////////                     /////////////////////////"+
-              "\n ||                  |                     |                      ||"+
-              "\n ||    DRESSER                OFFICES               BATHROOM      ||"+
-              "\n ||                  |                     |                      ||"+
-              "\n ||/////      //////////////      /////////////////       ////////||"+
-              "\n ||                  |      MACHINE        |                      ||"+
-              "\n ||                  |       ROOM          |                      ||"+
-              "\n ||////        /////////////////////////////////////     /////////||"+
-              "\n ||                  |                     |                      ||"+
-              "\n ||     KITCHEN               DINNING            BEDROOM          ||"+
-              "\n ||                  |         ROOM        |                      ||"+
-              "\n /////////////////////////////    //////////////////////////////////"+
-              "\n                              EXIT"
+                "\n" +
+                        "                 |||||||||||||||||||||||||||||||" +
+                        "\n                 ||                           ||" +
+                        "\n                 ||           WORKSHOP        ||" +
+                        "\n                 ||                           ||" +
+                        "\n |||||||||||||||||||||                     |||||||||||||||||||||||||" +
+                        "\n ||                  |                     |                      ||" +
+                        "\n ||    DRESSER                OFFICES               BATHROOM      ||" +
+                        "\n ||                  |                     |                      ||" +
+                        "\n ||||||||     ||||||||||||||||      ||||||||||||||||      ||||||||||" +
+                        "\n ||||||||     ||||||||      MACHINE        |||||||||      ||||||||||" +
+                        "\n ||||||||     ||||||||       ROOM          |||||||||      ||||||||||" +
+                        "\n ||||||||     ||||||||                     |||||||||      ||||||||||" +
+                        "\n ||||||||     ||||||||||||||||||||||||||||||||||||||      ||||||||||" +
+                        "\n ||                  |                     |                      ||" +
+                        "\n ||     KITCHEN               DINNING            BEDROOM          ||" +
+                        "\n ||                  |         ROOM        |                      ||" +
+                        "\n |||||||||||||||||||||||||||||    ||||||||||||||||||||||||||||||||||" +
+                        "\n                              EXIT"
         );
 
     }
-    public static void EndGame(){
+
+    public static void EndGame() {
         ColorChanger.printTextToRed("End Game");
     }
 
-    public static void NpcIsHere(){
+    public static void NpcIsHere() {
         ColorChanger.printTextToGreen("Tu compañero está en la sala ve a decirle hola!");
     }
-    public static void WhereIsAlien(String text){
+
+    public static void WhereIsAlien(String text) {
         ColorChanger.printTextToBlue("The alien is located in: " + text);
     }
-    public static void WhereIsNpc(String text){ColorChanger.printTextToBlue("Your companion is located in: " + text);}
 
-
-
-
-
-
-    public static void RandomFact(){
-       int randomFact = (int)(Math.random()*5)+1;
-       switch (randomFact){
-           case 0:
-           WordElapser.writeWordWithTimeDelay("Did you know?\nHoney never spoils.\n" +
-           " Archaeologists have found pots of honey in ancient Egyptian tombs\n that are over 3,000 years old and still perfectly edible. ",timeToWrite);
-           break;
-           case 1:
-           WordElapser.writeWordWithTimeDelay("Did you know?\nThe shortest war in history took place between Britain and Zanzibar on August 27, 1896.\n" +
-           " It lasted just 38 minutes.",timeToWrite);
-           break;
-           case 2:
-           WordElapser.writeWordWithTimeDelay("Did you know?\nOctopuses have three hearts. Two pump blood to the gills,\n" +
-           "while the third pumps it to the rest of the body.",timeToWrite);
-           break;
-           case 3:
-           WordElapser.writeWordWithTimeDelay("Did you know?\nThe Eiffel Tower can be 15 cm taller during the summer\ndue to the expansion of the iron in the heat.",timeToWrite);
-           break;
-           case 4:
-           WordElapser.writeWordWithTimeDelay("Did you know?\nThe unicorn is Scotland's national animal.",timeToWrite);
-           break;
-           case 5:
-           WordElapser.writeWordWithTimeDelay("Did you know?\nBananas are berries, but strawberries are not.\nIn botanical terms," +
-           " a berry is a fruit produced from the ovary of a single flower\nwith seeds embedded in the flesh. ",timeToWrite);
-           break;
-       }
+    public static void WhereIsNpc(String text) {
+        ColorChanger.printTextToBlue("Your companion is located in: " + text);
     }
-    public static void EmptyInventory(){
+
+
+    public static void RandomFact() {
+        int randomFact = (int) (Math.random() * 5) + 1;
+        switch (randomFact) {
+            case 0:
+                WordElapser.writeWordWithTimeDelay("Did you know?\nHoney never spoils.\n" +
+                        " Archaeologists have found pots of honey in ancient Egyptian tombs\n that are over 3,000 years old and still perfectly edible. ", timeToWrite);
+                break;
+            case 1:
+                WordElapser.writeWordWithTimeDelay("Did you know?\nThe shortest war in history took place between Britain and Zanzibar on August 27, 1896.\n" +
+                        " It lasted just 38 minutes.", timeToWrite);
+                break;
+            case 2:
+                WordElapser.writeWordWithTimeDelay("Did you know?\nOctopuses have three hearts. Two pump blood to the gills,\n" +
+                        "while the third pumps it to the rest of the body.", timeToWrite);
+                break;
+            case 3:
+                WordElapser.writeWordWithTimeDelay("Did you know?\nThe Eiffel Tower can be 15 cm taller during the summer\ndue to the expansion of the iron in the heat.", timeToWrite);
+                break;
+            case 4:
+                WordElapser.writeWordWithTimeDelay("Did you know?\nThe unicorn is Scotland's national animal.", timeToWrite);
+                break;
+            case 5:
+                WordElapser.writeWordWithTimeDelay("Did you know?\nBananas are berries, but strawberries are not.\nIn botanical terms," +
+                        " a berry is a fruit produced from the ovary of a single flower\nwith seeds embedded in the flesh. ", timeToWrite);
+                break;
+        }
+    }
+
+    public static void EmptyInventory() {
         ColorChanger.printTextToGreen("You have nothing in your inventory");
     }
 
     // ALIEN INTERACTION STRINGS
-    public static void Infected(){
-        ColorChanger.printTextToRed("It seems like the alien has laid eggs in you... your belly splits open and something comes out of it. " );
+    public static void Infected() {
+        ColorChanger.printTextToRed("It seems like the alien has laid eggs in you... your belly splits open and something comes out of it. ");
     }
-    public static void AlienIsHere(){
+
+    public static void AlienIsHere() {
         ColorChanger.printTextToRed("You feel chills down your spine. Something dangerous is here... \n you must act quickly");
     }
-    public static void NoThreat(){
+
+    public static void NoThreat() {
         ColorChanger.printTextToBlue("it seems that the Alien is falling sleep for ever, is not longer a threat");
     }
-    public static void AlienEatDonut(){
+
+    public static void AlienEatDonut() {
         ColorChanger.printTextToBlue("you give the alien a little treat, he eats the donut and it seems that's acting like a sleeping pill");
     }
-    public static void AlienKillsYou(){
+
+    public static void AlienKillsYou() {
         ColorChanger.printTextToRed("as soon as you turn your back, you feel something piercing throw your skin \n you have been killed by the alien");
+    }
+
+    //IHall Help
+    public static void generalHelp() {
+        ColorChanger.printTextToBlue("Something has happened to your ship, you need to scape before it explodes, \ngo to the exit and pick up a scape pod if you want to survive");
+    }
+
+    public static void howToOpenDoors() {
+        ColorChanger.printTextToBlue("You need to show me your card so i can unlock the doors for you");
+    }
+
+    public static void whereIsTheCard() {
+        ColorChanger.printTextToBlue("It should be at your desk in the office");
     }
 }
