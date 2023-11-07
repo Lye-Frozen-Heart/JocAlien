@@ -34,7 +34,7 @@ public class Strings {
 
     public static void MenuBackpack() {
         ColorChanger.printTextToBlue(
-                "what do you want to do? \n1 - Watch item closely \n2 - use item \n3 - drop item \n4 - Exit Backpack"
+                "What do you want to do? \n1 - Watch item closely \n2 - Use item \n3 - Drop item \n4 - Exit Backpack"
         );
     }
 
@@ -108,7 +108,7 @@ public class Strings {
         System.out.println("The Flashlight is located at: " + flashlightLocation);
     }
     public static void noLight(Item[] items){
-        ColorChanger.printTextToRed("Tere is no light in this room, you cant see anything.");
+        ColorChanger.printTextToRed("There is no light in this room, you cant see anything.");
         if(items[3].getOwner()==1) {
             ColorChanger.printTextToRed("It might be useful to turn on the flashlight");
         }else{
@@ -121,11 +121,11 @@ public class Strings {
     }
 
     public static void UseCard() {
-        System.out.println("You can ask IHall to open doors with it");
+        System.out.println("You can ask iHall to open doors with it");
     }
 
     public static void EatDonut() {
-        ColorChanger.printTextToGreen("you just eat the donut, it calms your appetite");
+        ColorChanger.printTextToGreen("You just ate the donut, it calms your appetite");
     }
 
     public static void NoInteracton() {
@@ -133,11 +133,11 @@ public class Strings {
     }
 
     public static void IncorrectCard() {
-        ColorChanger.printTextToRed("you need a diferent card to open this door. \n Someone in the ship might have it");
+        ColorChanger.printTextToRed("You need a different card to open this door. \n Someone in the ship might have it");
     }
 
     public static void IHallHelp() {
-        ColorChanger.printTextToGreen("you might be able to fix the ship using the tools from the Workshop");
+        ColorChanger.printTextToGreen("You might be able to fix the ship using the tools from the Workshop");
     }
 
     public static void IHallExit() {
@@ -166,7 +166,7 @@ public class Strings {
                 timeToWrite
         );
         ColorChanger.printTextToGreen("/--//--//--//--//--//--//--//--//--/");
-        ColorChanger.printTextToBlack("© All rights to be reserved...");
+        ColorChanger.printTextToBlue("© All rights to be reserved...");
     }
 
     public static void PrintMap() {
@@ -246,28 +246,28 @@ public class Strings {
 
     // ALIEN INTERACTION STRINGS
     public static void Infected() {
-        ColorChanger.printTextToRed("It seems like the alien has laid eggs in you... your belly splits open and something comes out of it. ");
+        ColorChanger.printTextToRed("It seems like the alien has laid eggs in you... Your belly splits open and something comes out of it. ");
     }
 
     public static void AlienIsHere() {
-        ColorChanger.printTextToRed("You feel chills down your spine. Something dangerous is here... \n you must act quickly");
+        ColorChanger.printTextToRed("You feel chills down your spine. Something dangerous is here... \n You must act quickly");
     }
 
     public static void NoThreat() {
-        ColorChanger.printTextToBlue("it seems that the Alien is falling sleep for ever, is not longer a threat");
+        ColorChanger.printTextToBlue("It seems that the Alien is falling sleep for ever, is not longer a threat");
     }
 
     public static void AlienEatDonut() {
-        ColorChanger.printTextToBlue("you give the alien a little treat, he eats the donut and it seems that's acting like a sleeping pill");
+        ColorChanger.printTextToBlue("You give the alien a little treat, he eats the donut and it seems that's acting like a sleeping pill");
     }
 
     public static void AlienKillsYou() {
-        ColorChanger.printTextToRed("as soon as you turn your back, you feel something piercing throw your skin \n you have been killed by the alien");
+        ColorChanger.printTextToRed("As soon as you turn your back, you feel something piercing your skin \n You have been killed by the alien");
     }
 
     //IHall Help
     public static void generalHelp() {
-        ColorChanger.printTextToBlue("Something has happened to your ship, you need to scape before it explodes, \ngo to the exit and pick up a scape pod if you want to survive");
+        ColorChanger.printTextToBlue("Something has happened to your ship, you need to escape before it explodes, \nGo to the exit and pick up a scape pod if you want to survive!");
     }
 
     public static void howToOpenDoors() {
@@ -279,11 +279,11 @@ public class Strings {
 
     //NPC Interactions
     public static void askingNpcForTheCard(){
-        ColorChanger.printTextToBlue("Your colleague is sitting at the end of the room... \nYou proceed to ask him for his card");
-        ColorChanger.printTextToGreen("Hey, do you steel have the card to open the exit door?");
+        ColorChanger.printTextToBlue("Your colleague is sitting at the end of the room... \nYou proceed to ask him about his card");
+        ColorChanger.printTextToGreen("Hey, do you still have the card of the exit door?");
         System.out.println("Yes why do you ask?");
         ColorChanger.printTextToGreen("Can i borrow it?");
-        System.out.println("Ye sure, there you have it");
-        ColorChanger.printTextToBlue("you acquire the Exit Card");
+        System.out.println("Yeah sure, there you have it");
+        ColorChanger.printTextToBlue("You acquired the Exit Card");
     }
 }
