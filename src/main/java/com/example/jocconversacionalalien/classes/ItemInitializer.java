@@ -18,6 +18,7 @@ public class ItemInitializer {
     private static final int FLASHLIGHT = 3;
     public static final int SPACE_SUIT = 4;
     private static final int DONUT = 5;
+    private static final int MAP= 6;
 
     static Random random = new Random();
 
@@ -27,8 +28,8 @@ public class ItemInitializer {
         card.setItemId(CARD);
         card.setName("Card");
         card.setDescription("Its a card used to open rooms");
-        card.setOwner(PLAYER);
-        card.setLocalization(0);
+        card.setOwner(NO_OWNER);
+        card.setLocalization(2);
         card.setStatus(false);
 
         Item npcCard = new Item();
@@ -36,7 +37,7 @@ public class ItemInitializer {
         npcCard.setName("NPC Card");
         npcCard.setDescription("Its a card used to open rooms");
         npcCard.setOwner(NPC);
-        npcCard.setLocalization(3);
+        npcCard.setLocalization(0);
         npcCard.setStatus(false);
 
         Item tool = new Item();
@@ -71,8 +72,16 @@ public class ItemInitializer {
         donut.setLocalization(5);//5
         donut.setStatus(false);
 
+        Item map = new Item();
+        map.setItemId(MAP);
+        map.setName("Map");
+        map.setDescription("A map of the spaceship");
+        map.setOwner(NO_OWNER);
+        map.setLocalization(random.nextInt(8) + 1);//Random
+        map.setStatus(false);
+
         return new Item[]{
-                card, npcCard, tool, flashlight, spaceSuit,donut
+                card, npcCard, tool, flashlight, spaceSuit,donut, map
         };
     }
 }

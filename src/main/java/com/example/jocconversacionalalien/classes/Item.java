@@ -44,25 +44,34 @@ public class Item {
     if(player.getIdZone()==alien.getIdZone()){
       items[itemSelected].setOwner(2);
       items[itemSelected].setLocalization(0);
+      alien.setAsleep(true);
+      Strings.AlienEatDonut();
     }else{
       items[itemSelected].setOwner(0);
       items[itemSelected].setLocalization(0);
+      Strings.EatDonut();
     }
 
   }
   public void useFlashlight(Player player){
     if(player.isFlashlightOn()){
       player.setFlashlightOn(false);
+      System.out.println("you turned off the flashlight");
     }else{
       player.setFlashlightOn(true);
+      System.out.println("you turned on the flashlight");
     }
   }
   public void useTool(Player player, Enemy alien){
-    if(player.getIdZone()==alien.getIdZone()){
+    if(player.getIdZone()==alien.getIdZone()&& !alien.isAsleep()){
       player.setInfected(true);
       alien.setAsleep(true);
+      System.out.println("you hit hard the alien with the tool");
+
     }else if(player.getIdZone() == 9){
       System.out.println("you opened the final door finally you are free");
+      Strings.EndGame();
+      Game.exitGame();
 
     }
     else{
@@ -72,8 +81,10 @@ public class Item {
   public void useSpaceSuit(Player player){
     if (player.getSuitWorn()) {
       player.setSuitWorn(false);
+      System.out.println(" Suit off");
     }else{
       player.setSuitWorn(true);
+      System.out.println("Suit on");
     }
   }
   public void useCard(){

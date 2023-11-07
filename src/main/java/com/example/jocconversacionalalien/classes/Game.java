@@ -43,7 +43,7 @@ public class Game {
         final int CREDITS = 2;
         final int EXIT_GAME = 3;
 
-        boolean validAnswer = false;
+        boolean validAnswer;
         int option = 0;
         Scanner scanner = new Scanner(System.in);
 
@@ -75,28 +75,21 @@ public class Game {
     }
 
 
-    private void pauseGame() {
-        //TODO
-    }
-
-    private void restartGame() {
-        //TODO
-    }
-
     public static void exitGame() {
         System.exit(0);
     }
 
-    //TODO                        /////////////////////////////////
-    //TODO                       //            WORKSHOP         //
+    //TODO                          /////////////////////////////////
+    //TODO                         //            WORKSHOP         //
     //TODO         /////////////////////                      ///////////////////////
     //TODO         ||                  |                      |                     ||
-    //TODO         ||    DRESSER                OFFICES               BATHROOM      ||
+    //TODO         ||     LOCKER                OFFICES               BATHROOM      ||
     //TODO         ||                  |                     |                      ||
-    //TODO         ||/////      //////////////      /////////////////       ////////||
-    //TODO         ||                  |      MACHINE        |                      ||
-    //TODO         ||                  |       ROOM          |                      ||
-    //TODO         ||////        /////////////////////////////////////     /////////||
+    //TODO         ||||||||     ||||||||||||||||      ||||||||||||||||      ||||||||||
+    //TODO         ||||||||     ||||||||      MACHINE        |||||||||      ||||||||||
+    //TODO         ||||||||     ||||||||       ROOM          |||||||||      ||||||||||
+    //TODO         ||||||||     ||||||||       ROOM          |||||||||      ||||||||||
+    //TODO         ||||||||     ||||||||||||||||||||||||||||||||||||||      ||||||||||
     //TODO         ||                  |                     |                      ||
     //TODO         ||     KITCHEN           DINNING                BEDROOM          ||
     //TODO         ||                  |     ROOM            |                      ||

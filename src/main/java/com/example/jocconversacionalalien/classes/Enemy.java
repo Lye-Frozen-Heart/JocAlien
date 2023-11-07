@@ -3,8 +3,9 @@ package com.example.jocconversacionalalien.classes;
 import java.util.ArrayList;
 
 public class Enemy extends Character{
-    private int idZone;
+    private int idZone=7;
     private boolean asleep = false;
+    private boolean knocked = false;
     public void setInventory(ArrayList<Item> inventory) {
         this.inventory = inventory;
     }
@@ -28,7 +29,7 @@ public class Enemy extends Character{
         throw new UnsupportedOperationException("Unimplemented method 'CheckZone'");
     }
     @Override
-    protected void GoTo(int inputDirection, boolean[] doors, int[] directions, int[] availableZones) {
+    protected void GoTo(int inputDirection, boolean[] doors, int[] directions, int[] availableZones,Zone currentZone) {
 
     }
 
@@ -36,11 +37,20 @@ public class Enemy extends Character{
         return idZone;
     }
 
+
     public boolean isAsleep() {
         return asleep;
     }
 
+    public boolean isKnocked() {
+        return knocked;
+    }
+
     public void setAsleep(boolean asleep) {
         this.asleep = asleep;
+    }
+
+    public void setKnocked(boolean knocked) {
+        this.knocked = knocked;
     }
 }

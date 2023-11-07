@@ -14,7 +14,7 @@ public class Player extends Character {
   "Locker Room", "Kitchen", "Dinning Room", "Bedroom","Bathroom", "Exit"};
 
   @Override
-  protected void GoTo(int imputDirection,boolean[] doors, int[] directions, int[]availableZones) {
+  protected void GoTo(int imputDirection,boolean[] doors, int[] directions, int[]availableZones,Zone currentZone) {
     if(checkDoorsOpen(imputDirection, doors, directions)){
       setIdZone(availableZones[imputDirection]);
       ColorChanger.printTextToGreen("You just moved to the " + arrayRoomNames[availableZones[imputDirection]]);
@@ -28,6 +28,14 @@ public class Player extends Character {
     setIdZone(idZone);
   }
 
+  public void MoveTo(int imputDirection,boolean[] doors, int[] directions, int[]availableZones,Player player, Zone[] zones){
+    if(checkDoorsOpen(imputDirection, doors, directions)){
+      setIdZone(availableZones[imputDirection]);
+      ColorChanger.printTextToGreen("You just moved to the " + arrayRoomNames[availableZones[imputDirection]]);
+      Menus.currentZone(player, zones).getDescriptionZone();
+    }
+  }
+
 
   public void ToOpen(Item[]items, Zone[] zone,int actualZone, int door) {
     if (hasCard(items)){
@@ -38,32 +46,15 @@ public class Player extends Character {
       System.out.println("You dont have the card to open de door");
     }
   }
-  public boolean doPlayerHaveSuit(){
-    //TODO Hay que hacer que los objetos esten en el inventario
-    boolean resp = false;
-    for (Item item : inventory){
-      if(item.getItemId() == ItemInitializer.SPACE_SUIT ){
-        setSuitWorn(true);
-        resp = true;
-      }
-    }
-    return resp;
-  }
-  /**
-   * 
-   */
 
   public ArrayList<Item> getInventory() {
     return inventory;
   }
 
-  public boolean getInfected() {
+  public boolean isInfected() {
     return infected;
   }
 
-  public boolean getCanBreath() {
-    return canBreath;
-  }
 
   public boolean getSuitWorn() {
     return suitWorn;
@@ -84,9 +75,6 @@ public class Player extends Character {
     this.infected = infected;
   }
 
-  public void setCanBreath(boolean canBreath) {
-    this.canBreath = canBreath;
-  }
 
   public void setSuitWorn(boolean suitWorn) {
     this.suitWorn = suitWorn;
@@ -99,7 +87,7 @@ public class Player extends Character {
     this.flashlightOn = flashlightOn;
   }
 
-
+/*
   public void ToClose(Item[]items, Zone[] zone,int door) {
     if (hasCard(items)){
       System.out.println("You successfully closed the door");
@@ -109,6 +97,8 @@ public class Player extends Character {
       System.out.println("You dont have the card to open de door");
     }
   }
+
+ */
   public void LookAround(int[]availableZones){
     ColorChanger.printTextToGreen("You look around...Directions you can see:" +
     "\nHeading North: " + arrayRoomNames[availableZones[0]] + "\nTilting East: " + arrayRoomNames[availableZones[1]] +
@@ -168,9 +158,9 @@ public class Player extends Character {
     gameItems[itemId].setLocalization(player.getIdZone());
     Strings.ItemDropped(arrayRoomNames[player.getIdZone()-1]);
   }
-  public void getItemDescription(int inventoryPosition, Item[] gameItems){
-    int itemId = inventory.get(inventoryPosition-1).getItemId();
-    String description = gameItems[itemId].getDescription();
+  public void getItemDescription(int selectedItemID, Item[] gameItems){
+    //int itemId = inventory.get(inventoryPosition-1).getItemId();
+    String description = gameItems[selectedItemID].getDescription();
       System.out.println(description);
   }
   public void pickUpItem(int invetoryPosition, Item[] gameItems, Player player,Zone []zones){

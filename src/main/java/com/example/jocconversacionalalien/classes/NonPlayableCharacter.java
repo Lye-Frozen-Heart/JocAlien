@@ -21,7 +21,7 @@ public class NonPlayableCharacter extends Character{
 
     private int idZone;
     @Override
-    protected void GoTo(int imputDirection,boolean[] doors, int[] directions, int[]availableZones){}
+    protected void GoTo(int imputDirection,boolean[] doors, int[] directions, int[]availableZones,Zone currentZone){}
 
     @Override
     protected void CheckZone(int idZone) {
