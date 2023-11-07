@@ -100,8 +100,6 @@ public class Menus {
                             setUpItems(zones,items,player);
                         }
                     }
-
-
                     shift++;
                     break;
                 case OPEN_BACKPACK:
@@ -127,7 +125,6 @@ public class Menus {
                     break;
                 case EXIT_GAME:
                     Strings.EndGame();
-                    Game.exitGame();
                     break;
                 default:
                     Strings.InputError();
@@ -309,7 +306,8 @@ public class Menus {
             }
         } while (!validAnswer);
         if (option != EXIT) {
-            backpackMenu(items, player, option, alien, zones);
+            int selectedItem = player.getInventory().get(option-1).getItemId();
+            backpackMenu(items, player, selectedItem, alien, zones);
         }
 
 

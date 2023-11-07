@@ -3,7 +3,7 @@ package com.example.jocconversacionalalien.classes;
 import java.util.ArrayList;
 
 public class Enemy extends Character{
-    private int idZone;
+    private int idZone=7;
     private boolean asleep = false;
     private boolean knocked = false;
     public void setInventory(ArrayList<Item> inventory) {

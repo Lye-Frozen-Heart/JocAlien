@@ -158,9 +158,9 @@ public class Player extends Character {
     gameItems[itemId].setLocalization(player.getIdZone());
     Strings.ItemDropped(arrayRoomNames[player.getIdZone()-1]);
   }
-  public void getItemDescription(int inventoryPosition, Item[] gameItems){
-    int itemId = inventory.get(inventoryPosition-1).getItemId();
-    String description = gameItems[itemId].getDescription();
+  public void getItemDescription(int selectedItemID, Item[] gameItems){
+    //int itemId = inventory.get(inventoryPosition-1).getItemId();
+    String description = gameItems[selectedItemID].getDescription();
       System.out.println(description);
   }
   public void pickUpItem(int invetoryPosition, Item[] gameItems, Player player,Zone []zones){
