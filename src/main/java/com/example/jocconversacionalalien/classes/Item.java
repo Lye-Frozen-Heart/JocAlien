@@ -56,20 +56,20 @@ public class Item {
   public void useFlashlight(Player player){
     if(player.isFlashlightOn()){
       player.setFlashlightOn(false);
-      System.out.println("you turned off the flashlight");
+      System.out.println("You turned off the flashlight");
     }else{
       player.setFlashlightOn(true);
-      System.out.println("you turned on the flashlight");
+      System.out.println("You turned on the flashlight");
     }
   }
   public void useTool(Player player, Enemy alien){
     if(player.getIdZone()==alien.getIdZone()&& !alien.isAsleep()){
       player.setInfected(true);
       alien.setAsleep(true);
-      System.out.println("you hit hard the alien with the tool");
+      System.out.println("You hit hard the alien with the tool");
 
     }else if(player.getIdZone() == 9){
-      System.out.println("you opened the final door finally you are free");
+      System.out.println("You opened the final door finally you are free");
       Strings.EndGame();
       Game.exitGame();
 
@@ -81,7 +81,7 @@ public class Item {
   public void useSpaceSuit(Player player){
     if (player.getSuitWorn()) {
       player.setSuitWorn(false);
-      System.out.println(" Suit off");
+      System.out.println("Suit off");
     }else{
       player.setSuitWorn(true);
       System.out.println("Suit on");

@@ -117,9 +117,9 @@ public class Zone {
     public void printItems() {
         int itemPosition = 1;
         if (items.toArray().length == 0) {
-            System.out.println("there is nothing in this room");
+            System.out.println("There is nothing in this room");
         } else {
-            System.out.println("theres something on the ground");
+            System.out.println("There's something on the ground");
             for (Item itemlist : items) {
                 System.out.println(itemPosition + " - " + itemlist.getName());
                 itemPosition++;
