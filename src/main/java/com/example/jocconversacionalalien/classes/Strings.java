@@ -1,7 +1,7 @@
 package com.example.jocconversacionalalien.classes;
 
 public class Strings {
-    private static final int timeToWrite = 0;
+    private static final int timeToWrite = 5;
 
     //Error Strings
     public static void InputError() {
@@ -148,13 +148,13 @@ public class Strings {
     public static void gameIntroduction() {
         WordElapser.writeWordWithTimeDelay(
                 """
-                        It's the year 2120 D.C. The spaceship P.A.I XXII explores the empty void of space. It's destination... The planet SM-2523G where it's believed to be the appropriate environment to root another human life colony.We can't stay longer freely on Earth so it is necessary to explore other planets.
+                        It's the year 2120 D.C. The spaceship P.A.I XXII explores the empty void of space.\nIt's destination... The planet SM-2523G where it's believed to be the appropriate environment to root another human life colony.\nWe can't stay longer freely on Earth so it is necessary to explore other planets.
                         The chief of the ship awakes from the inducted sleep. The main computer of the ship, iHall, has detected one anomaly inside the ship so it does need the Captain intervention
                         iHall: How did you sleep Captain? Sadly I have to get you up from your sleep...But I detected an anomaly inside the ship.
                         Captain: *sighs* I hope it was worth it for you to awake me...Or you will need an intensive reprogramming session.
                         iHall: I guarantee you Captain, it's not a false alarm. I can't risk to be punished like that.
                         Captain: Okay iHall, explain to me the situation as fast as you can please. I want to take my sleep again.
-                        <*>iHall proceeds to explain the status of the ship, seems like a little meteor hit one side of the complex. The system needs a repair because the propulsion engine has been damaged.""",
+                        <*>iHall proceeds to explain the status of the ship, seems like a little meteor hit one side of the complex.\nThe system needs a repair because the propulsion engine has been damaged.""",
                 timeToWrite
         );
     }
