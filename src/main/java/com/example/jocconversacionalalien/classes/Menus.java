@@ -138,7 +138,8 @@ public class Menus {
                 } else {
                     Strings.AlienKillsYou();
                     Strings.EndGame();
-                    Game.startGame();
+                    Game.exitGame();
+
                 }
             }
 

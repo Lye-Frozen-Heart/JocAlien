@@ -1,7 +1,7 @@
 package com.example.jocconversacionalalien.classes;
 
 public class Strings {
-    private static final int timeToWrite = 5;
+    private static final int timeToWrite = 0;
 
     //Error Strings
     public static void InputError() {
